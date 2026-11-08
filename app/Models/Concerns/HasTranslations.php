@@ -12,4 +12,10 @@ trait HasTranslations
 
         return ($values[app()->getLocale()] ?? null) ?: ($values['en'] ?? null);
     }
+
+    /** Store Hindi/Gujarati as real characters (not \u escapes), so text search works and rows stay small. */
+    protected function asJson($value, $flags = 0)
+    {
+        return parent::asJson($value, $flags | JSON_UNESCAPED_UNICODE);
+    }
 }

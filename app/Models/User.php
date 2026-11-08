@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->hasMany(Kundli::class);
     }
 
+    public function favorites(): HasMany
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
     public function isBlocked(): bool
     {
         return $this->status === self::STATUS_BLOCKED;

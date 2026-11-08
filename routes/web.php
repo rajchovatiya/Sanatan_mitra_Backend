@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\MuhuratDateController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\RashifalController;
 use App\Http\Controllers\Admin\StudioMediaController;
+use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Admin\SuvicharController;
 use App\Http\Controllers\Admin\TempleController;
 use Illuminate\Support\Facades\Route;
@@ -47,5 +48,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('guides', GuideController::class)->except('show');
         Route::resource('studio', StudioMediaController::class)->except('show');
         Route::resource('learning', LearningVideoController::class)->except('show');
+
+        Route::get('feedback', [SupportController::class, 'feedback'])->name('feedback.index');
+        Route::patch('feedback/{feedback}', [SupportController::class, 'markSeen'])->name('feedback.seen');
+        Route::delete('feedback/{feedback}', [SupportController::class, 'destroyFeedback'])->name('feedback.destroy');
+        Route::get('pages', [SupportController::class, 'pages'])->name('pages.index');
+        Route::get('pages/{page}/edit', [SupportController::class, 'editPage'])->name('pages.edit');
+        Route::put('pages/{page}', [SupportController::class, 'updatePage'])->name('pages.update');
     });
 });

@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AstrologyController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\DeviceController;
+use App\Http\Controllers\Api\FavoriteController;
 use App\Http\Controllers\Api\FestivalController;
 use App\Http\Controllers\Api\GuideController;
 use App\Http\Controllers\Api\HomeController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Api\LibraryController;
 use App\Http\Controllers\Api\MediaController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RashifalController;
+use App\Http\Controllers\Api\SupportController;
 use App\Http\Controllers\Api\TempleController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +27,9 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
 
     Route::get('app/config', AppConfigController::class)->name('app.config');
     Route::get('home', HomeController::class)->name('home');
+    Route::get('search', [SupportController::class, 'search'])->middleware('throttle:search')->name('search');
+    Route::post('feedback', [SupportController::class, 'feedback'])->middleware('throttle:feedback')->name('feedback');
+    Route::get('pages/{slug}', [SupportController::class, 'page'])->whereAlpha('slug')->name('pages.show');
 
     Route::post('auth/otp/send', [AuthController::class, 'sendOtp'])
         ->middleware('throttle:otp-send')->name('auth.otp.send');
@@ -82,6 +87,10 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
         Route::post('me/photo', [ProfileController::class, 'updatePhoto'])->name('me.photo');
         Route::post('me/business-logo', [ProfileController::class, 'updateBusinessLogo'])->name('me.business-logo');
         Route::post('me/devices', [DeviceController::class, 'store'])->name('me.devices.store');
+        Route::get('me/favorites', [FavoriteController::class, 'index'])->name('me.favorites.index');
+        Route::post('me/favorites', [FavoriteController::class, 'store'])->name('me.favorites.store');
+        Route::delete('me/favorites/{type}/{itemId}', [FavoriteController::class, 'destroy'])
+            ->whereAlpha('type')->whereNumber('itemId')->name('me.favorites.destroy');
         Route::apiResource('me/kundlis', KundliController::class)
             ->only(['index', 'store', 'update', 'destroy'])
             ->parameters(['kundlis' => 'kundli'])

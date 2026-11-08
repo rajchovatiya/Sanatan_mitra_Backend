@@ -62,6 +62,10 @@ class AppServiceProvider extends ServiceProvider
             strtolower((string) $r->input('email')).'|'.$r->ip()
         ));
 
+        // Search scans text, feedback can be spammed.
+        RateLimiter::for('search', fn (Request $r) => Limit::perMinute(30)->by($r->user()?->id ?: $r->ip()));
+        RateLimiter::for('feedback', fn (Request $r) => Limit::perHour(5)->by($r->user()?->id ?: $r->ip()));
+
         // Provider calls may cost money; cached answers are cheap but still limited.
         RateLimiter::for('astro', fn (Request $r) => Limit::perMinute(30)->by($r->user()?->id ?: $r->ip()));
     }
