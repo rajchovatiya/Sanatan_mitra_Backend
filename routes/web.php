@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DarshanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FestivalController;
 use App\Http\Controllers\Admin\MantraController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\RashifalController;
+use App\Http\Controllers\Admin\TempleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('welcome'));
@@ -26,5 +28,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('mantras', MantraController::class)->except('show');
         Route::resource('festivals', FestivalController::class)->except('show');
         Route::resource('rashifal', RashifalController::class)->except('show')->parameters(['rashifal' => 'rashifal']);
+        Route::resource('temples', TempleController::class)->except('show');
+        Route::resource('darshans', DarshanController::class)->except('show');
     });
 });

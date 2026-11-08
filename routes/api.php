@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\FestivalController;
 use App\Http\Controllers\Api\KundliController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RashifalController;
+use App\Http\Controllers\Api\TempleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,6 +42,10 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
     Route::get('festivals/{festival}', [FestivalController::class, 'show'])->whereNumber('festival')->name('festivals.show');
 
     Route::get('rashifal', [RashifalController::class, 'index'])->name('rashifal.index');
+
+    Route::get('temples', [TempleController::class, 'index'])->name('temples.index');
+    Route::get('temples/{temple}', [TempleController::class, 'show'])->whereNumber('temple')->name('temples.show');
+    Route::get('darshan/today', [TempleController::class, 'darshanToday'])->name('darshan.today');
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
