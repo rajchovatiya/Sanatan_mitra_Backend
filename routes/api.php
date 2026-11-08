@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\KundliController;
 use App\Http\Controllers\Api\LibraryController;
 use App\Http\Controllers\Api\MediaController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RashifalController;
 use App\Http\Controllers\Api\SupportController;
@@ -97,6 +98,9 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
             ->names('me.kundlis');
 
         Route::delete('account', [AccountController::class, 'destroy'])->name('account.destroy');
+
+        Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
+        Route::post('notifications/read', [NotificationController::class, 'markRead'])->name('notifications.read');
 
         Route::middleware('throttle:astro')->group(function () {
             Route::post('astro/kundli', [AstrologyController::class, 'kundli'])->name('astro.kundli');

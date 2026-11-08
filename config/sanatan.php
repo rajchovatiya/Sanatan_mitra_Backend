@@ -26,6 +26,15 @@ return [
         'cache_days' => 30,
     ],
 
+    /*
+    | Push notifications. "log" until Firebase is set up; then "fcm" with the path to the
+    | service-account JSON from Firebase console (keep it outside public/ and out of Git).
+    */
+    'push' => [
+        'driver' => env('PUSH_DRIVER', 'log'),
+        'credentials' => env('FIREBASE_CREDENTIALS', storage_path('app/private/firebase.json')),
+    ],
+
     'kundlis_per_user' => 20,
 
     // Where uploaded images and audio go. "public" = this server; switch to an S3/R2 disk before launch.

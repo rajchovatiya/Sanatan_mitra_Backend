@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\LearningVideoController;
 use App\Http\Controllers\Admin\LibraryItemController;
 use App\Http\Controllers\Admin\MantraController;
 use App\Http\Controllers\Admin\MuhuratDateController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\RashifalController;
 use App\Http\Controllers\Admin\StudioMediaController;
@@ -49,6 +50,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('studio', StudioMediaController::class)->except('show');
         Route::resource('learning', LearningVideoController::class)->except('show');
 
+        Route::resource('notifications', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);
         Route::get('feedback', [SupportController::class, 'feedback'])->name('feedback.index');
         Route::patch('feedback/{feedback}', [SupportController::class, 'markSeen'])->name('feedback.seen');
         Route::delete('feedback/{feedback}', [SupportController::class, 'destroyFeedback'])->name('feedback.destroy');

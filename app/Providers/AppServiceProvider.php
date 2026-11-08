@@ -7,6 +7,9 @@ use App\Services\Astrology\AstrologyProvider;
 use App\Services\Astrology\NullAstrologyProvider;
 use App\Services\Otp\LogOtpSender;
 use App\Services\Otp\OtpSender;
+use App\Services\Push\FcmPushSender;
+use App\Services\Push\LogPushSender;
+use App\Services\Push\PushSender;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -21,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(OtpSender::class, fn () => match (config('sanatan.otp.driver')) {
             'log' => new LogOtpSender,
             default => throw new InvalidArgumentException('Unknown OTP_DRIVER.'),
+        });
+
+        $this->app->bind(PushSender::class, fn () => match (config('sanatan.push.driver')) {
+            'log' => new LogPushSender,
+            'fcm' => new FcmPushSender(config('sanatan.push.credentials')),
+            default => throw new InvalidArgumentException('Unknown PUSH_DRIVER.'),
         });
 
         $this->app->bind(AstrologyProvider::class, fn () => match (config('sanatan.astrology.driver')) {

@@ -40,6 +40,7 @@ class User extends Authenticatable
             'rashi' => 'integer',
             'notifications_enabled' => 'boolean',
             'last_login_at' => 'datetime',
+            'notifications_read_at' => 'datetime',
         ];
     }
 
