@@ -27,7 +27,15 @@ Update this file at the end of every work session. Last update: 2026-11-08.
 7. Connect the Flutter app module by module (replace `lib/data/mock_*`)
 8. Before launch: SMS provider, astrology provider, cloud storage for media, server setup per DEPLOYMENT.md
 
+## Local preview (2026-11-08)
+- `.env` points at `database/preview.sqlite` (ignored by Git) because the running MySQL 9.7 (`C:\tools\mysql`)
+  rejects the password in `.env`. The old MySQL80 service (8.0, unused since 2020) does not start; leave it stopped.
+- Preview admin: `admin@sanatanmitra.local` (password given to the user in chat; change it with
+  `php artisan tinker` or recreate with `admin:create`).
+- Start the server from `public/` so uploads up to 25 MB work:
+  `cd public; php -d upload_max_filesize=25M -d post_max_size=30M -S 127.0.0.1:8000 ..\vendor\laravel\framework\src\Illuminate\Foundation\resources\server.php`
+
 ## Waiting on the user
-- MySQL password in `.env`
+- The MySQL 9.7 root password (then switch `.env` back to `DB_CONNECTION=mysql`, `DB_DATABASE=sanatan_mitra`, and migrate)
 - Astrology provider docs + key
 - SMS provider choice
