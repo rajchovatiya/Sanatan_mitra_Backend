@@ -14,6 +14,8 @@
             <a href="{{ route('admin.categories.index') }}" @class(['active' => request()->routeIs('admin.categories.*')])>Categories</a>
             <a href="{{ route('admin.posters.index') }}" @class(['active' => request()->routeIs('admin.posters.*')])>Posters</a>
             <a href="{{ route('admin.mantras.index') }}" @class(['active' => request()->routeIs('admin.mantras.*')])>Mantras</a>
+            <a href="{{ route('admin.festivals.index') }}" @class(['active' => request()->routeIs('admin.festivals.*')])>Festivals</a>
+            <a href="{{ route('admin.rashifal.index') }}" @class(['active' => request()->routeIs('admin.rashifal.*')])>Rashifal</a>
         </nav>
         <form method="post" action="{{ route('admin.logout') }}">
             @csrf

@@ -3,8 +3,10 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\FestivalController;
 use App\Http\Controllers\Admin\MantraController;
 use App\Http\Controllers\Admin\PosterController;
+use App\Http\Controllers\Admin\RashifalController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('welcome'));
@@ -22,5 +24,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('categories', CategoryController::class)->except('show');
         Route::resource('posters', PosterController::class)->except('show');
         Route::resource('mantras', MantraController::class)->except('show');
+        Route::resource('festivals', FestivalController::class)->except('show');
+        Route::resource('rashifal', RashifalController::class)->except('show')->parameters(['rashifal' => 'rashifal']);
     });
 });

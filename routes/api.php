@@ -6,8 +6,10 @@ use App\Http\Controllers\Api\AstrologyController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\DeviceController;
+use App\Http\Controllers\Api\FestivalController;
 use App\Http\Controllers\Api\KundliController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\RashifalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +35,12 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
         ->defaults('type', 'mantra')->name('mantras.categories');
     Route::get('mantras', [ContentController::class, 'mantras'])->name('mantras.index');
     Route::get('mantras/{mantra}', [ContentController::class, 'mantra'])->whereNumber('mantra')->name('mantras.show');
+
+    Route::get('festivals', [FestivalController::class, 'index'])->name('festivals.index');
+    Route::get('festivals/upcoming', [FestivalController::class, 'upcoming'])->name('festivals.upcoming');
+    Route::get('festivals/{festival}', [FestivalController::class, 'show'])->whereNumber('festival')->name('festivals.show');
+
+    Route::get('rashifal', [RashifalController::class, 'index'])->name('rashifal.index');
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('auth/logout', [AuthController::class, 'logout'])->name('auth.logout');

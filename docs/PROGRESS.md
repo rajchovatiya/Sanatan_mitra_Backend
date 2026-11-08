@@ -12,6 +12,8 @@ Update this file at the end of every work session. Last update: 2026-11-08.
 - [x] Mantras: admin upload with deity image and audio, plus app API list and detail
 - [x] Content text in en/hi/gu (json columns, `HasTranslations::tr`), `Accept-Language` picks the language
 - [x] Media helper `App\Support\Media` (`MEDIA_DISK`), so moving to cloud storage is a settings change
+- [x] Festivals & Vrat: admin by month, app API month/upcoming/detail (44 tests passing)
+- [x] Daily Rashifal: admin day view (x/12 written), 5 areas + stars + lucky items, app API cached per day/language
 
 ## Next (in this order)
 1. MySQL: user fills `DB_PASSWORD` in `.env`, then run
@@ -20,7 +22,7 @@ Update this file at the end of every work session. Last update: 2026-11-08.
 2. Raise PHP upload limits for audio (php.ini: `upload_max_filesize=25M`, `post_max_size=30M`; Nginx `client_max_body_size 30m`)
 3. Admin audit log (who changed what) and admin user management (super_admin only, gate `manage-admins`)
 4. More content modules, same pattern (migration, model with `HasTranslations`, admin controller, form, app API, tests):
-   Festivals/Vrat, Rashifal, Temples/Darshan, Library (Katha/Aarti/Chalisa), Gita, Suvichar, Muhurat, Guides,
+   Temples/Darshan, Library (Katha/Aarti/Chalisa), Gita, Suvichar, Muhurat, Guides,
    Wallpapers/Videos, Live/Courses
 5. `/home` combined endpoint, search, favorites, notifications (FCM sending from admin), feedback, pages
 6. Admin: app users list/block (blocking must also delete their tokens), settings screen for app config

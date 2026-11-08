@@ -87,13 +87,19 @@ Text fields come in the `Accept-Language` language (en/hi/gu), falling back to E
 Admin panel (`/admin`): categories (poster/mantra), poster upload, and mantra upload with image and audio.
 The first admin is created with `php artisan admin:create <email> "<name>"`.
 
+## Festivals and Rashifal
+| Status | Method | Path | Notes |
+|---|---|---|---|
+| ✅ | GET | `/festivals?month=&year=&type=festival\|vrat` | One month (default: this month), up to 100: `{id, name, tithi, date, is_vrat, image_url}` |
+| ✅ | GET | `/festivals/upcoming?limit=5` | From today, for Home (limit 1–20) |
+| ✅ | GET | `/festivals/{id}` | The same plus `about` and `rituals` (array of steps) |
+| ✅ | GET | `/rashifal?date=&rashi=` | Default today; all written rashis, or one with `rashi` (0–11). Each: `{rashi, date, texts:{overall,love,career,health,money}, stars:{area: 1–5}, lucky_number, lucky_colour, lucky_time, lucky_direction}`. A rashi the admin has not written is missing, so the app should show its built-in text. |
+
 ## Content (planned, managed from the admin panel)
 All lists paginated. Text comes in the user's language (`Accept-Language: hi`), falling back to English.
 
 | Module | Endpoints |
 |---|---|
-| Rashifal | `GET /rashifal?rashi=&date=` |
-| Festivals & Vrat | `GET /festivals?month=&year=&type=`, `GET /festivals/{id}` |
 | Muhurat | `GET /muhurat/categories`, `GET /muhurat/{category}?year=` |
 | Temples & Darshan | `GET /temples?state=&type=`, `GET /temples/{id}`, `GET /darshan/today` |
 | Katha, Gita, Prayer | `GET /library/categories`, `GET /library?category=`, `GET /library/{id}`, `GET /gita/chapters`, `GET /gita/chapters/{n}/verses`, `GET /suvichar?date=` |
