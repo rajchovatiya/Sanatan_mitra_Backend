@@ -8,8 +8,10 @@ use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\DeviceController;
 use App\Http\Controllers\Api\FestivalController;
 use App\Http\Controllers\Api\GuideController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\KundliController;
 use App\Http\Controllers\Api\LibraryController;
+use App\Http\Controllers\Api\MediaController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RashifalController;
 use App\Http\Controllers\Api\TempleController;
@@ -22,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->name('api.v1.')->group(function () {
 
     Route::get('app/config', AppConfigController::class)->name('app.config');
+    Route::get('home', HomeController::class)->name('home');
 
     Route::post('auth/otp/send', [AuthController::class, 'sendOtp'])
         ->middleware('throttle:otp-send')->name('auth.otp.send');
@@ -59,6 +62,14 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
     Route::get('muhurat/categories', [ContentController::class, 'categories'])
         ->defaults('type', 'muhurat')->name('muhurat.categories');
     Route::get('muhurat', [GuideController::class, 'muhuratDates'])->name('muhurat.dates');
+    Route::get('wallpapers/categories', [ContentController::class, 'categories'])->defaults('type', 'wallpaper')->name('wallpapers.categories');
+    Route::get('wallpapers', [MediaController::class, 'studio'])->defaults('kind', 'wallpaper')->name('wallpapers.index');
+    Route::get('videos/categories', [ContentController::class, 'categories'])->defaults('type', 'video')->name('videos.categories');
+    Route::get('videos', [MediaController::class, 'studio'])->defaults('kind', 'video')->name('videos.index');
+    Route::get('live', [MediaController::class, 'live'])->name('live.index');
+    Route::get('courses', [ContentController::class, 'categories'])->defaults('type', 'course')->name('courses.index');
+    Route::get('courses/{course}', [MediaController::class, 'course'])->whereNumber('course')->name('courses.show');
+
     Route::get('guides/{module}', [GuideController::class, 'index'])->whereAlpha('module')->name('guides.index');
     Route::get('guides/{module}/{guide}', [GuideController::class, 'show'])
         ->whereAlpha('module')->whereNumber('guide')->name('guides.show');

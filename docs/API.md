@@ -95,16 +95,36 @@ The first admin is created with `php artisan admin:create <email> "<name>"`.
 | ✅ | GET | `/festivals/{id}` | The same plus `about` and `rituals` (array of steps) |
 | ✅ | GET | `/rashifal?date=&rashi=` | Default today; all written rashis, or one with `rashi` (0–11). Each: `{rashi, date, texts:{overall,love,career,health,money}, stars:{area: 1–5}, lucky_number, lucky_colour, lucky_time, lucky_direction}`. A rashi the admin has not written is missing, so the app should show its built-in text. |
 
-## Content (planned, managed from the admin panel)
-All lists paginated. Text comes in the user's language (`Accept-Language: hi`), falling back to English.
+## More content
+Text comes in the `Accept-Language` language, falling back to English. "Paged" lists return `data`, `links` and `meta`.
 
+| Status | Method | Path | Notes |
+|---|---|---|---|
+| ✅ | GET | `/home` | One call for Home: `rashifal` (today, all written), `festivals` (next 5), `suvichar`, `gita_verse`, `darshan`, `mantras` (8), `temples` (10). Cached 10 minutes. |
+| ✅ | GET | `/temples?type=&state=` | Paged (30). `type`: jyotirlinga, shakti_peeth, char_dham, other |
+| ✅ | GET | `/temples/{id}` | Adds `about`, `timings`, `best_time`, `lat`, `lng` |
+| ✅ | GET | `/darshan/today` | Latest darshan up to today, or `data: null` |
+| ✅ | GET | `/library?type=` | Paged (30). `type`: katha, aarti, beej, chalisa |
+| ✅ | GET | `/library/{id}` | Adds `body` |
+| ✅ | GET | `/gita/chapters` | All 18 with `verse_count` |
+| ✅ | GET | `/gita/chapters/{n}/verses` | Paged (50): `{chapter, verse, sanskrit, transliteration, meaning}` |
+| ✅ | GET | `/gita/verse-of-the-day` | Rotates through featured verses, or `null` |
+| ✅ | GET | `/suvichar/today` | `{text, author}` or `null` |
+| ✅ | GET | `/muhurat/categories` | Muhurat types with `description` |
+| ✅ | GET | `/muhurat?category=&year=` | Dates in a year: `{id, date, start_time, end_time, note}` |
+| ✅ | GET | `/guides/{module}` | Paged (50). `module`: gems, rudraksha, tarot, numerology, palmistry, graphology |
+| ✅ | GET | `/guides/{module}/{id}` | Adds `body`, `facts` ([{label, value}]), `points` ([text]) |
+| ✅ | GET | `/wallpapers/categories`, `/videos/categories` | Category lists |
+| ✅ | GET | `/wallpapers?category=`, `/videos?category=` | Paged (30): `{id, category_id, title, image_url, video_url}` |
+| ✅ | GET | `/live` | Live streams: `{id, title, description, video_url, thumbnail_url}` |
+| ✅ | GET | `/courses` | Course list (categories) |
+| ✅ | GET | `/courses/{id}` | Course with `lessons` |
+
+## Still planned
 | Module | Endpoints |
 |---|---|
-| Muhurat | `GET /muhurat/categories`, `GET /muhurat/{category}?year=` |
-| Temples & Darshan | `GET /temples?state=&type=`, `GET /temples/{id}`, `GET /darshan/today` |
-| Katha, Gita, Prayer | `GET /library/categories`, `GET /library?category=`, `GET /library/{id}`, `GET /gita/chapters`, `GET /gita/chapters/{n}/verses`, `GET /suvichar?date=` |
-| Studio | `GET /videos?category=`, `GET /wallpapers?category=` |
-| Guides | `GET /guides/{module}`, `GET /guides/{module}/{id}` (gems, rudraksha, tarot, numerology, palmistry, graphology) |
-| Live & Learning | `GET /live`, `GET /courses`, `GET /courses/{id}` |
-| Notifications 🔑 | `GET /notifications`, `POST /notifications/read` |
+| Favorites 🔑 | `GET/POST/DELETE /me/favorites` |
+| Notifications 🔑 | `GET /notifications`, `POST /notifications/read` (admin sends via Firebase) |
+| Search | `GET /search?q=` |
 | Feedback | `POST /feedback` |
+| Pages | `GET /pages/{slug}` (privacy, terms, about) |

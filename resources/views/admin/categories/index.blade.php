@@ -19,7 +19,7 @@
                 <td>@if ($c->icon_path)<img class="thumb" src="{{ \App\Support\Media::url($c->icon_path) }}" alt="">@endif</td>
                 <td>{{ $c->name['en'] ?? '' }}<br><small>{{ $c->name['hi'] ?? '' }}</small></td>
                 <td>{{ \App\Models\Category::TYPES[$c->type] ?? $c->type }}</td>
-                <td>{{ $c->posters_count + $c->mantras_count + $c->muhurat_dates_count }}</td>
+                <td>{{ $c->posters_count + $c->mantras_count + $c->muhurat_dates_count + $c->studio_media_count + $c->learning_videos_count }}</td>
                 <td>{{ $c->sort_order }}</td>
                 <td>{!! $c->is_active ? '<span class="on">On</span>' : '<span class="off">Off</span>' !!}</td>
                 <td class="actions">

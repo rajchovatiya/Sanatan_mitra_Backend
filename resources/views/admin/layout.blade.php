@@ -23,6 +23,8 @@
             <a href="{{ route('admin.suvichars.index') }}" @class(['active' => request()->routeIs('admin.suvichars.*')])>Suvichar</a>
             <a href="{{ route('admin.muhurat.index') }}" @class(['active' => request()->routeIs('admin.muhurat.*')])>Muhurat</a>
             <a href="{{ route('admin.guides.index') }}" @class(['active' => request()->routeIs('admin.guides.*')])>Guides</a>
+            <a href="{{ route('admin.studio.index') }}" @class(['active' => request()->routeIs('admin.studio.*')])>Wallpapers &amp; Videos</a>
+            <a href="{{ route('admin.learning.index') }}" @class(['active' => request()->routeIs('admin.learning.*')])>Live &amp; Courses</a>
         </nav>
         <form method="post" action="{{ route('admin.logout') }}">
             @csrf

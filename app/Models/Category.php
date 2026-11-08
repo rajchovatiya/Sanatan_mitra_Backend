@@ -15,7 +15,13 @@ class Category extends Model
     use HasTranslations;
 
     /** Module => label. Add a type here to give a new module categories. */
-    public const TYPES = ['poster' => 'Posters', 'mantra' => 'Mantras', 'muhurat' => 'Muhurat types'];
+    public const TYPES = [
+        'poster' => 'Posters', 'mantra' => 'Mantras', 'muhurat' => 'Muhurat types',
+        'wallpaper' => 'Wallpapers', 'video' => 'Video templates', 'course' => 'Courses',
+    ];
+
+    /** Relations that hold a category's items; a category with any of them cannot be deleted. */
+    public const ITEM_RELATIONS = ['posters', 'mantras', 'muhuratDates', 'studioMedia', 'learningVideos'];
 
     protected $attributes = ['sort_order' => 0, 'is_active' => true];
 
@@ -63,5 +69,26 @@ class Category extends Model
     public function muhuratDates(): HasMany
     {
         return $this->hasMany(MuhuratDate::class);
+    }
+
+    public function studioMedia(): HasMany
+    {
+        return $this->hasMany(StudioMedia::class);
+    }
+
+    public function learningVideos(): HasMany
+    {
+        return $this->hasMany(LearningVideo::class);
+    }
+
+    public function hasItems(): bool
+    {
+        foreach (self::ITEM_RELATIONS as $relation) {
+            if ($this->{$relation}()->exists()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

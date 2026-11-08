@@ -16,7 +16,8 @@ Update this file at the end of every work session. Last update: 2026-11-08.
 - [x] Daily Rashifal: admin day view (x/12 written), 5 areas + stars + lucky items, app API cached per day/language
 - [x] Temples & Daily Darshan (admin + API)
 - [x] Library (Katha/Aarti/Beej/Chalisa with audio), Bhagavad Gita (18 chapters built in, verses, verse of the day), Suvichar (51 tests)
-- [ ] NEXT: Muhurat dates, Guides (gems/rudraksha/tarot/numerology/palmistry/graphology), Wallpapers/Videos, Live/Courses, /home
+- [x] Muhurat (types = categories, dates per year), Guides (one format for gems/rudraksha/tarot/numerology/palmistry/graphology)
+- [x] Wallpapers & video templates, Live & Courses (courses = categories, lessons = videos), `/home` in one cached call (57 tests)
 
 ## Next (in this order)
 1. MySQL: user fills `DB_PASSWORD` in `.env`, then run
@@ -24,10 +25,9 @@ Update this file at the end of every work session. Last update: 2026-11-08.
    `php artisan storage:link`, `php artisan admin:create <email> "<name>"`
 2. Raise PHP upload limits for audio (php.ini: `upload_max_filesize=25M`, `post_max_size=30M`; Nginx `client_max_body_size 30m`)
 3. Admin audit log (who changed what) and admin user management (super_admin only, gate `manage-admins`)
-4. More content modules, same pattern (migration, model with `HasTranslations`, admin controller, form, app API, tests):
-   Temples/Darshan, Library (Katha/Aarti/Chalisa), Gita, Suvichar, Muhurat, Guides,
-   Wallpapers/Videos, Live/Courses
-5. `/home` combined endpoint, search, favorites, notifications (FCM sending from admin), feedback, pages
+4. All content modules are done. New ones follow the same pattern (migration, model with `HasTranslations`,
+   admin controller + form, app API, tests)
+5. Search, favorites, notifications (FCM sending from admin), feedback, pages
 6. Admin: app users list/block (blocking must also delete their tokens), settings screen for app config
 7. Connect the Flutter app module by module (replace `lib/data/mock_*`)
 8. Before launch: SMS provider, astrology provider, cloud storage for media, server setup per DEPLOYMENT.md
