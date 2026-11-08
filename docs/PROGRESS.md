@@ -14,6 +14,9 @@ Update this file at the end of every work session. Last update: 2026-11-08.
 - [x] Media helper `App\Support\Media` (`MEDIA_DISK`), so moving to cloud storage is a settings change
 - [x] Festivals & Vrat: admin by month, app API month/upcoming/detail (44 tests passing)
 - [x] Daily Rashifal: admin day view (x/12 written), 5 areas + stars + lucky items, app API cached per day/language
+- [x] Temples & Daily Darshan (admin + API)
+- [x] Library (Katha/Aarti/Beej/Chalisa with audio), Bhagavad Gita (18 chapters built in, verses, verse of the day), Suvichar (51 tests)
+- [ ] NEXT: Muhurat dates, Guides (gems/rudraksha/tarot/numerology/palmistry/graphology), Wallpapers/Videos, Live/Courses, /home
 
 ## Next (in this order)
 1. MySQL: user fills `DB_PASSWORD` in `.env`, then run

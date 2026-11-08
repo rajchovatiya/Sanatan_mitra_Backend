@@ -21,6 +21,7 @@
         </label>
 
         <x-admin.lang-input name="name" label="Name" :value="$category->name ?? []" />
+        <x-admin.lang-input name="description" label="Description (optional, e.g. about this muhurat)" :value="$category->description ?? []" textarea :required="false" />
 
         <label>Icon (optional, jpg/png/webp, max 3 MB)
             @if ($category->icon_path)<img class="thumb" src="{{ \App\Support\Media::url($category->icon_path) }}" alt="">@endif

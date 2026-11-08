@@ -23,7 +23,7 @@ class ContentController extends Controller
     public function categories(Request $request, string $type): JsonResponse
     {
         $data = Cache::rememberForever(Category::cacheKey($type, app()->getLocale()), fn () => CategoryResource::collection(
-            Category::ofType($type)->visible()->get(['id', 'name', 'icon_path'])
+            Category::ofType($type)->visible()->get(['id', 'name', 'description', 'icon_path'])
         )->resolve($request));
 
         return response()->json(['data' => $data]);

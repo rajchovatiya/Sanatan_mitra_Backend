@@ -15,6 +15,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->tr('name'),
+            'description' => $this->tr('description'),
             'icon_url' => Media::url($this->icon_path),
         ];
     }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\DeviceController;
 use App\Http\Controllers\Api\FestivalController;
+use App\Http\Controllers\Api\GuideController;
 use App\Http\Controllers\Api\KundliController;
 use App\Http\Controllers\Api\LibraryController;
 use App\Http\Controllers\Api\ProfileController;
@@ -54,6 +55,13 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
     Route::get('gita/chapters/{chapter}/verses', [LibraryController::class, 'verses'])->whereNumber('chapter')->name('gita.verses');
     Route::get('gita/verse-of-the-day', [LibraryController::class, 'verseOfTheDay'])->name('gita.daily');
     Route::get('suvichar/today', [LibraryController::class, 'suvichar'])->name('suvichar.today');
+
+    Route::get('muhurat/categories', [ContentController::class, 'categories'])
+        ->defaults('type', 'muhurat')->name('muhurat.categories');
+    Route::get('muhurat', [GuideController::class, 'muhuratDates'])->name('muhurat.dates');
+    Route::get('guides/{module}', [GuideController::class, 'index'])->whereAlpha('module')->name('guides.index');
+    Route::get('guides/{module}/{guide}', [GuideController::class, 'show'])
+        ->whereAlpha('module')->whereNumber('guide')->name('guides.show');
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('auth/logout', [AuthController::class, 'logout'])->name('auth.logout');

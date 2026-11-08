@@ -21,6 +21,8 @@
             <a href="{{ route('admin.library.index') }}" @class(['active' => request()->routeIs('admin.library.*')])>Katha &amp; Aarti</a>
             <a href="{{ route('admin.gita.chapters') }}" @class(['active' => request()->routeIs('admin.gita*')])>Gita</a>
             <a href="{{ route('admin.suvichars.index') }}" @class(['active' => request()->routeIs('admin.suvichars.*')])>Suvichar</a>
+            <a href="{{ route('admin.muhurat.index') }}" @class(['active' => request()->routeIs('admin.muhurat.*')])>Muhurat</a>
+            <a href="{{ route('admin.guides.index') }}" @class(['active' => request()->routeIs('admin.guides.*')])>Guides</a>
         </nav>
         <form method="post" action="{{ route('admin.logout') }}">
             @csrf

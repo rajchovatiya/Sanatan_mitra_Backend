@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
         $categories = Category::query()
             ->when($type, fn ($q) => $q->ofType($type))
-            ->withCount(['posters', 'mantras'])
+            ->withCount(['posters', 'mantras', 'muhuratDates'])
             ->orderBy('type')->orderBy('sort_order')->orderBy('id')
             ->paginate(30)->withQueryString();
 
@@ -59,7 +59,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category): RedirectResponse
     {
-        if ($category->posters()->exists() || $category->mantras()->exists()) {
+        if ($category->posters()->exists() || $category->mantras()->exists() || $category->muhuratDates()->exists()) {
             return back()->withErrors(['category' => 'Move or delete the items in this category first, or just turn it off.']);
         }
 

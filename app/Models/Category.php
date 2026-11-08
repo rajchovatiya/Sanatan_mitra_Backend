@@ -9,19 +9,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
 
-#[Fillable(['type', 'name', 'icon_path', 'sort_order', 'is_active'])]
+#[Fillable(['type', 'name', 'description', 'icon_path', 'sort_order', 'is_active'])]
 class Category extends Model
 {
     use HasTranslations;
 
     /** Module => label. Add a type here to give a new module categories. */
-    public const TYPES = ['poster' => 'Posters', 'mantra' => 'Mantras'];
+    public const TYPES = ['poster' => 'Posters', 'mantra' => 'Mantras', 'muhurat' => 'Muhurat types'];
 
     protected $attributes = ['sort_order' => 0, 'is_active' => true];
 
     protected function casts(): array
     {
-        return ['name' => 'array', 'is_active' => 'boolean'];
+        return ['name' => 'array', 'description' => 'array', 'is_active' => 'boolean'];
     }
 
     protected static function booted(): void
@@ -58,5 +58,10 @@ class Category extends Model
     public function mantras(): HasMany
     {
         return $this->hasMany(Mantra::class);
+    }
+
+    public function muhuratDates(): HasMany
+    {
+        return $this->hasMany(MuhuratDate::class);
     }
 }

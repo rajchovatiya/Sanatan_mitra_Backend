@@ -6,8 +6,10 @@ use App\Http\Controllers\Admin\DarshanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FestivalController;
 use App\Http\Controllers\Admin\GitaController;
+use App\Http\Controllers\Admin\GuideController;
 use App\Http\Controllers\Admin\LibraryItemController;
 use App\Http\Controllers\Admin\MantraController;
+use App\Http\Controllers\Admin\MuhuratDateController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\RashifalController;
 use App\Http\Controllers\Admin\SuvicharController;
@@ -39,5 +41,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('gita/chapters/{chapter}/edit', [GitaController::class, 'editChapter'])->name('gita.chapters.edit');
         Route::put('gita/chapters/{chapter}', [GitaController::class, 'updateChapter'])->name('gita.chapters.update');
         Route::resource('gita-verses', GitaController::class)->except('show');
+        Route::resource('muhurat', MuhuratDateController::class)->except('show');
+        Route::resource('guides', GuideController::class)->except('show');
     });
 });

@@ -12,6 +12,7 @@ class CategoryRequest extends ContentRequest
         return [
             'type' => ['required', Rule::in(array_keys(Category::TYPES))],
             ...TranslatedRules::for('name', max: 60),
+            ...TranslatedRules::for('description', required: false, max: 1000),
             'icon' => $this->imageRules(false),
             ...$this->common(),
         ];
