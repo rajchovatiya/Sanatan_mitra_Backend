@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Support\Media;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class AccountController extends Controller
 {
@@ -22,7 +22,7 @@ class AccountController extends Controller
             $user->delete();
         });
 
-        Storage::disk('public')->delete($files);
+        Media::delete(...$files);
 
         return response()->noContent();
     }

@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AccountController;
 use App\Http\Controllers\Api\AppConfigController;
 use App\Http\Controllers\Api\AstrologyController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\DeviceController;
 use App\Http\Controllers\Api\KundliController;
 use App\Http\Controllers\Api\ProfileController;
@@ -24,6 +25,14 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
 
     Route::get('astro/panchang', [AstrologyController::class, 'panchang'])
         ->middleware('throttle:astro')->name('astro.panchang');
+
+    Route::get('posters/categories', [ContentController::class, 'categories'])
+        ->defaults('type', 'poster')->name('posters.categories');
+    Route::get('posters', [ContentController::class, 'posters'])->name('posters.index');
+    Route::get('mantras/categories', [ContentController::class, 'categories'])
+        ->defaults('type', 'mantra')->name('mantras.categories');
+    Route::get('mantras', [ContentController::class, 'mantras'])->name('mantras.index');
+    Route::get('mantras/{mantra}', [ContentController::class, 'mantra'])->whereNumber('mantra')->name('mantras.show');
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('auth/logout', [AuthController::class, 'logout'])->name('auth.logout');

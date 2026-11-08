@@ -28,6 +28,12 @@ return [
 
     'kundlis_per_user' => 20,
 
+    // Where uploaded images and audio go. "public" = this server; switch to an S3/R2 disk before launch.
+    'media_disk' => env('MEDIA_DISK', 'public'),
+
+    // Content languages. English is the fallback when a translation is empty.
+    'languages' => ['en', 'hi', 'gu'],
+
     /*
     | Defaults for GET /app/config. Values saved in the settings table override these.
     */

@@ -73,6 +73,20 @@ Until a provider is configured these return **503**, and the app should use its 
 
 The `data` shape of these three is set when the provider is chosen.
 
+## Posters and Mantras
+Text fields come in the `Accept-Language` language (en/hi/gu), falling back to English.
+
+| Status | Method | Path | Notes |
+|---|---|---|---|
+| ✅ | GET | `/posters/categories` | `[{id, name, icon_url}]`, cached |
+| ✅ | GET | `/posters?category=&page=` | 30 per page: `{id, category_id, title, image_url, frame}`. Hidden: turned off, or `show_from` in the future. |
+| ✅ | GET | `/mantras/categories` | same shape as poster categories |
+| ✅ | GET | `/mantras?category=&page=` | 30 per page: `{id, category_id, title, deity, image_url, audio_url, duration_seconds}` |
+| ✅ | GET | `/mantras/{id}` | the same plus `lyrics` and `meaning` |
+
+Admin panel (`/admin`): categories (poster/mantra), poster upload, and mantra upload with image and audio.
+The first admin is created with `php artisan admin:create <email> "<name>"`.
+
 ## Content (planned, managed from the admin panel)
 All lists paginated. Text comes in the user's language (`Accept-Language: hi`), falling back to English.
 
@@ -81,10 +95,9 @@ All lists paginated. Text comes in the user's language (`Accept-Language: hi`), 
 | Rashifal | `GET /rashifal?rashi=&date=` |
 | Festivals & Vrat | `GET /festivals?month=&year=&type=`, `GET /festivals/{id}` |
 | Muhurat | `GET /muhurat/categories`, `GET /muhurat/{category}?year=` |
-| Mantra & Audio | `GET /mantras/categories`, `GET /mantras?category=&deity=`, `GET /mantras/{id}` |
 | Temples & Darshan | `GET /temples?state=&type=`, `GET /temples/{id}`, `GET /darshan/today` |
 | Katha, Gita, Prayer | `GET /library/categories`, `GET /library?category=`, `GET /library/{id}`, `GET /gita/chapters`, `GET /gita/chapters/{n}/verses`, `GET /suvichar?date=` |
-| Studio | `GET /posters/categories`, `GET /posters?category=`, `GET /videos?category=`, `GET /wallpapers?category=` |
+| Studio | `GET /videos?category=`, `GET /wallpapers?category=` |
 | Guides | `GET /guides/{module}`, `GET /guides/{module}/{id}` (gems, rudraksha, tarot, numerology, palmistry, graphology) |
 | Live & Learning | `GET /live`, `GET /courses`, `GET /courses/{id}` |
 | Notifications 🔑 | `GET /notifications`, `POST /notifications/read` |

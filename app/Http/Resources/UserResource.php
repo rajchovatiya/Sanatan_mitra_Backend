@@ -3,9 +3,9 @@
 namespace App\Http\Resources;
 
 use App\Models\User;
+use App\Support\Media;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Facades\Storage;
 
 /** @mixin User */
 class UserResource extends JsonResource
@@ -26,17 +26,12 @@ class UserResource extends JsonResource
             'rashi' => $this->rashi,
             'language' => $this->language,
             'notifications_enabled' => $this->notifications_enabled,
-            'photo_url' => $this->fileUrl($this->photo_path),
+            'photo_url' => Media::url($this->photo_path),
             'business_type' => $this->business_type,
             'business_name' => $this->business_name,
             'business_address' => $this->business_address,
-            'business_logo_url' => $this->fileUrl($this->business_logo_path),
+            'business_logo_url' => Media::url($this->business_logo_path),
             'other_details' => $this->other_details,
         ];
-    }
-
-    private function fileUrl(?string $path): ?string
-    {
-        return $path ? Storage::disk('public')->url($path) : null;
     }
 }

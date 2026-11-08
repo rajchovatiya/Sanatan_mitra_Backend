@@ -7,8 +7,8 @@ use App\Http\Requests\Api\UpdateProfileRequest;
 use App\Http\Requests\Api\UploadImageRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Support\Media;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -40,13 +40,7 @@ class ProfileController extends Controller
     {
         /** @var User $user */
         $user = $request->user();
-        $old = $user->{$column};
-
-        $user->forceFill([$column => $request->file('image')->store($folder, 'public')])->save();
-
-        if ($old) {
-            Storage::disk('public')->delete($old);
-        }
+        $user->forceFill([$column => Media::replace($request->file('image'), $user->{$column}, $folder)])->save();
 
         return new UserResource($user);
     }
