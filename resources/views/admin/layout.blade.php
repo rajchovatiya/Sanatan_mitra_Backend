@@ -8,42 +8,56 @@
 </head>
 <body>
 @auth('admin')
-    <header class="topbar">
-        <a href="{{ route('admin.dashboard') }}" class="brand">🪔 {{ config('app.name') }} Admin</a>
-        <nav>
-            <a href="{{ route('admin.categories.index') }}" @class(['active' => request()->routeIs('admin.categories.*')])>Categories</a>
-            <a href="{{ route('admin.posters.index') }}" @class(['active' => request()->routeIs('admin.posters.*')])>Posters</a>
-            <a href="{{ route('admin.mantras.index') }}" @class(['active' => request()->routeIs('admin.mantras.*')])>Mantras</a>
-            <a href="{{ route('admin.festivals.index') }}" @class(['active' => request()->routeIs('admin.festivals.*')])>Festivals</a>
-            <a href="{{ route('admin.rashifal.index') }}" @class(['active' => request()->routeIs('admin.rashifal.*')])>Rashifal</a>
-            <a href="{{ route('admin.temples.index') }}" @class(['active' => request()->routeIs('admin.temples.*')])>Temples</a>
-            <a href="{{ route('admin.darshans.index') }}" @class(['active' => request()->routeIs('admin.darshans.*')])>Darshan</a>
-            <a href="{{ route('admin.library.index') }}" @class(['active' => request()->routeIs('admin.library.*')])>Katha &amp; Aarti</a>
-            <a href="{{ route('admin.gita.chapters') }}" @class(['active' => request()->routeIs('admin.gita*')])>Gita</a>
-            <a href="{{ route('admin.suvichars.index') }}" @class(['active' => request()->routeIs('admin.suvichars.*')])>Suvichar</a>
-            <a href="{{ route('admin.muhurat.index') }}" @class(['active' => request()->routeIs('admin.muhurat.*')])>Muhurat</a>
-            <a href="{{ route('admin.guides.index') }}" @class(['active' => request()->routeIs('admin.guides.*')])>Guides</a>
-            <a href="{{ route('admin.studio.index') }}" @class(['active' => request()->routeIs('admin.studio.*')])>Wallpapers &amp; Videos</a>
-            <a href="{{ route('admin.learning.index') }}" @class(['active' => request()->routeIs('admin.learning.*')])>Live &amp; Courses</a>
-        </nav>
-        <form method="post" action="{{ route('admin.logout') }}">
-            @csrf
-            <button class="link">Logout ({{ auth('admin')->user()->name }})</button>
-        </form>
-    </header>
-@endauth
-<main class="page">
-    @if (session('status'))
-        <p class="flash">{{ session('status') }}</p>
-    @endif
-    @if ($errors->any())
-        <div class="flash error">
-            @foreach ($errors->all() as $error)
-                <div>{{ $error }}</div>
+    @php
+        $menu = [
+            'Daily' => [
+                'admin.rashifal' => 'Rashifal', 'admin.festivals' => 'Festivals & Vrat', 'admin.darshans' => 'Daily Darshan',
+                'admin.suvichars' => 'Suvichar', 'admin.muhurat' => 'Muhurat',
+            ],
+            'Content' => [
+                'admin.posters' => 'Posters', 'admin.studio' => 'Wallpapers & Videos', 'admin.mantras' => 'Mantras',
+                'admin.library' => 'Katha & Aarti', 'admin.gita' => 'Bhagavad Gita', 'admin.temples' => 'Temples',
+                'admin.guides' => 'Guides', 'admin.learning' => 'Live & Courses', 'admin.categories' => 'Categories',
+            ],
+            'Users' => [
+                'admin.users' => 'App users', 'admin.notifications' => 'Notifications', 'admin.feedback' => 'Feedback', 'admin.pages' => 'Pages',
+            ],
+        ];
+        if (auth('admin')->user()->isSuper()) {
+            $menu['Admin'] = ['admin.settings' => 'App settings', 'admin.admins' => 'Admins', 'admin.audit' => 'Audit log'];
+        }
+        // Each menu item opens the module's main page.
+        $target = fn ($prefix) => match ($prefix) {
+            'admin.gita' => route('admin.gita.chapters'),
+            'admin.settings' => route('admin.settings.edit'),
+            default => route($prefix.'.index'),
+        };
+    @endphp
+    <div class="shell">
+        <aside class="sidebar">
+            <a href="{{ route('admin.dashboard') }}" class="brand">🪔 {{ config('app.name') }}</a>
+            <a href="{{ route('admin.dashboard') }}" @class(['active' => request()->routeIs('admin.dashboard')])>Dashboard</a>
+            @foreach ($menu as $group => $items)
+                <p class="group">{{ $group }}</p>
+                @foreach ($items as $prefix => $label)
+                    <a href="{{ $target($prefix) }}" @class(['active' => request()->routeIs($prefix.'*')])>{{ $label }}</a>
+                @endforeach
             @endforeach
-        </div>
-    @endif
-    @yield('content')
-</main>
+            <form method="post" action="{{ route('admin.logout') }}" class="logout">
+                @csrf
+                <button class="link">Logout ({{ auth('admin')->user()->name }})</button>
+            </form>
+        </aside>
+        <main class="page">
+            @include('admin.partials.flash')
+            @yield('content')
+        </main>
+    </div>
+@else
+    <main class="page">
+        @include('admin.partials.flash')
+        @yield('content')
+    </main>
+@endauth
 </body>
 </html>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AppUserController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DarshanController;
@@ -14,10 +16,12 @@ use App\Http\Controllers\Admin\MuhuratDateController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\RashifalController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\StudioMediaController;
 use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Admin\SuvicharController;
 use App\Http\Controllers\Admin\TempleController;
+use App\Http\Middleware\AuditAdminChanges;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('welcome'));
@@ -29,9 +33,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('login', [AuthController::class, 'store'])->middleware('throttle:admin-login')->name('login.store');
     });
 
-    Route::middleware(['auth:admin', 'can:manage-content'])->group(function () {
+    Route::middleware(['auth:admin', 'can:manage-content', AuditAdminChanges::class])->group(function () {
         Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
         Route::get('/', DashboardController::class)->name('dashboard');
+
+        // Content (super admins and editors).
         Route::resource('categories', CategoryController::class)->except('show');
         Route::resource('posters', PosterController::class)->except('show');
         Route::resource('mantras', MantraController::class)->except('show');
@@ -50,6 +56,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('studio', StudioMediaController::class)->except('show');
         Route::resource('learning', LearningVideoController::class)->except('show');
 
+        // Users and communication.
         Route::resource('notifications', NotificationController::class)->only(['index', 'create', 'store', 'destroy']);
         Route::get('feedback', [SupportController::class, 'feedback'])->name('feedback.index');
         Route::patch('feedback/{feedback}', [SupportController::class, 'markSeen'])->name('feedback.seen');
@@ -57,5 +64,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('pages', [SupportController::class, 'pages'])->name('pages.index');
         Route::get('pages/{page}/edit', [SupportController::class, 'editPage'])->name('pages.edit');
         Route::put('pages/{page}', [SupportController::class, 'updatePage'])->name('pages.update');
+        Route::get('users', [AppUserController::class, 'index'])->name('users.index');
+        Route::get('users/{user}', [AppUserController::class, 'show'])->name('users.show');
+        Route::patch('users/{user}/block', [AppUserController::class, 'toggleBlock'])->name('users.block');
+
+        // Super admin only.
+        Route::middleware('can:manage-admins')->group(function () {
+            Route::get('settings', [SettingsController::class, 'edit'])->name('settings.edit');
+            Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
+            Route::resource('admins', AdminUserController::class)->except(['show', 'destroy']);
+            Route::get('audit', [AdminUserController::class, 'audit'])->name('audit.index');
+        });
     });
 });

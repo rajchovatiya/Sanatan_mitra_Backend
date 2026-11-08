@@ -120,11 +120,19 @@ Text comes in the `Accept-Language` language, falling back to English. "Paged" l
 | ✅ | GET | `/courses` | Course list (categories) |
 | ✅ | GET | `/courses/{id}` | Course with `lessons` |
 
-## Still planned
-| Module | Endpoints |
-|---|---|
-| Favorites 🔑 | `GET/POST/DELETE /me/favorites` |
-| Notifications 🔑 | `GET /notifications`, `POST /notifications/read` (admin sends via Firebase) |
-| Search | `GET /search?q=` |
-| Feedback | `POST /feedback` |
-| Pages | `GET /pages/{slug}` (privacy, terms, about) |
+## Favourites, notifications, search, feedback, pages
+| Status | Method | Path | Notes |
+|---|---|---|---|
+| ✅🔑 | GET | `/me/favorites?type=` | `[{type, item}]` newest first, with card data. Items turned off are left out. |
+| ✅🔑 | POST | `/me/favorites` | `{type, item_id}`, type: mantra, library, temple, festival, poster, wallpaper. Max 500. 204 |
+| ✅🔑 | DELETE | `/me/favorites/{type}/{item_id}` | 204 |
+| ✅🔑 | GET | `/notifications` | Paged (30): `{id, title, body, image_url, link, sent_at, unread}`, plus top-level `unread_count` |
+| ✅🔑 | POST | `/notifications/read` | Marks all as read. 204 |
+| ✅ | GET | `/search?q=` | 2–50 chars, any language: `{mantras, temples, library, festivals}` (10 each). 30/min |
+| ✅ | POST | `/feedback` | `{message, contact?, platform?, app_version?}`, with or without login. 5/hour. 204 |
+| ✅ | GET | `/pages/{slug}` | privacy, terms, about: `{slug, title, body}` |
+
+## Push notifications (for the app)
+The admin's notifications go to Firebase topics `all_en`, `all_hi` and `all_gu`. The app subscribes to `all_<language>`
+after start, switches topic when the language changes, and unsubscribes when the user turns notifications off.
+The data payload has `notification_id` and `link` (app path like `/festivals/5`, or an https link).
