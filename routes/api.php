@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\DeviceController;
 use App\Http\Controllers\Api\FestivalController;
 use App\Http\Controllers\Api\KundliController;
+use App\Http\Controllers\Api\LibraryController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RashifalController;
 use App\Http\Controllers\Api\TempleController;
@@ -46,6 +47,13 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
     Route::get('temples', [TempleController::class, 'index'])->name('temples.index');
     Route::get('temples/{temple}', [TempleController::class, 'show'])->whereNumber('temple')->name('temples.show');
     Route::get('darshan/today', [TempleController::class, 'darshanToday'])->name('darshan.today');
+
+    Route::get('library', [LibraryController::class, 'index'])->name('library.index');
+    Route::get('library/{item}', [LibraryController::class, 'show'])->whereNumber('item')->name('library.show');
+    Route::get('gita/chapters', [LibraryController::class, 'chapters'])->name('gita.chapters');
+    Route::get('gita/chapters/{chapter}/verses', [LibraryController::class, 'verses'])->whereNumber('chapter')->name('gita.verses');
+    Route::get('gita/verse-of-the-day', [LibraryController::class, 'verseOfTheDay'])->name('gita.daily');
+    Route::get('suvichar/today', [LibraryController::class, 'suvichar'])->name('suvichar.today');
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('auth/logout', [AuthController::class, 'logout'])->name('auth.logout');

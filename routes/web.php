@@ -5,9 +5,12 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DarshanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FestivalController;
+use App\Http\Controllers\Admin\GitaController;
+use App\Http\Controllers\Admin\LibraryItemController;
 use App\Http\Controllers\Admin\MantraController;
 use App\Http\Controllers\Admin\PosterController;
 use App\Http\Controllers\Admin\RashifalController;
+use App\Http\Controllers\Admin\SuvicharController;
 use App\Http\Controllers\Admin\TempleController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +33,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('rashifal', RashifalController::class)->except('show')->parameters(['rashifal' => 'rashifal']);
         Route::resource('temples', TempleController::class)->except('show');
         Route::resource('darshans', DarshanController::class)->except('show');
+        Route::resource('library', LibraryItemController::class)->except('show');
+        Route::resource('suvichars', SuvicharController::class)->except('show');
+        Route::get('gita', [GitaController::class, 'chapters'])->name('gita.chapters');
+        Route::get('gita/chapters/{chapter}/edit', [GitaController::class, 'editChapter'])->name('gita.chapters.edit');
+        Route::put('gita/chapters/{chapter}', [GitaController::class, 'updateChapter'])->name('gita.chapters.update');
+        Route::resource('gita-verses', GitaController::class)->except('show');
     });
 });
