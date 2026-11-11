@@ -10,6 +10,9 @@ use App\Services\Otp\OtpSender;
 use App\Services\Push\FcmPushSender;
 use App\Services\Push\LogPushSender;
 use App\Services\Push\PushSender;
+use App\Services\Translation\GoogleTranslator;
+use App\Services\Translation\NullTranslator;
+use App\Services\Translation\Translator;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -30,6 +33,12 @@ class AppServiceProvider extends ServiceProvider
             'log' => new LogPushSender,
             'fcm' => new FcmPushSender(config('sanatan.push.credentials')),
             default => throw new InvalidArgumentException('Unknown PUSH_DRIVER.'),
+        });
+
+        $this->app->bind(Translator::class, fn () => match (config('sanatan.translate.driver')) {
+            'none' => new NullTranslator,
+            'google' => new GoogleTranslator((string) config('sanatan.translate.google_key')),
+            default => throw new InvalidArgumentException('Unknown TRANSLATE_DRIVER.'),
         });
 
         $this->app->bind(AstrologyProvider::class, fn () => match (config('sanatan.astrology.driver')) {
@@ -66,6 +75,9 @@ class AppServiceProvider extends ServiceProvider
             Limit::perMinute(10)->by('otp-verify-ip:'.$r->ip()),
             Limit::perHour(30)->by('otp-verify:'.$mobile($r)),
         ]);
+
+        // Translation is paid per character.
+        RateLimiter::for('admin-translate', fn (Request $r) => Limit::perMinute(30)->by('translate:'.$r->user('admin')?->id));
 
         RateLimiter::for('admin-login', fn (Request $r) => Limit::perMinute(5)->by(
             strtolower((string) $r->input('email')).'|'.$r->ip()

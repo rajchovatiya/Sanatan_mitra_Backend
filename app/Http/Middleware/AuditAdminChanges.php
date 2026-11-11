@@ -21,7 +21,10 @@ class AuditAdminChanges
         $failedValidation = in_array('errors', $request->session()->get('_flash.new', []), true);
         $succeeded = $response->getStatusCode() < 400 && ! $failedValidation;
 
-        if ($admin && ! $request->isMethodSafe() && $succeeded) {
+        // Translating only fills form boxes; nothing is saved, so it is not an audited change.
+        $changesData = ! $request->routeIs('admin.translate');
+
+        if ($admin && ! $request->isMethodSafe() && $succeeded && $changesData) {
             AdminAuditLog::create([
                 'admin_id' => $admin->id,
                 'action' => (string) $request->route()?->getName(),

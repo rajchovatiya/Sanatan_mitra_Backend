@@ -35,6 +35,14 @@ return [
         'credentials' => env('FIREBASE_CREDENTIALS', storage_path('app/private/firebase.json')),
     ],
 
+    /*
+    | "Translate" button in admin forms (English to Hindi/Gujarati). "none" until a service is chosen.
+    */
+    'translate' => [
+        'driver' => env('TRANSLATE_DRIVER', 'none'),
+        'google_key' => env('GOOGLE_TRANSLATE_KEY'),
+    ],
+
     'kundlis_per_user' => 20,
 
     // Where uploaded images and audio go. "public" = this server; switch to an S3/R2 disk before launch.

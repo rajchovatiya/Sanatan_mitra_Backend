@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\StudioMediaController;
 use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Admin\SuvicharController;
 use App\Http\Controllers\Admin\TempleController;
+use App\Http\Controllers\Admin\TranslateController;
 use App\Http\Middleware\AuditAdminChanges;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware(['auth:admin', 'can:manage-content', AuditAdminChanges::class])->group(function () {
         Route::post('logout', [AuthController::class, 'destroy'])->name('logout');
         Route::get('/', DashboardController::class)->name('dashboard');
+        Route::post('translate', TranslateController::class)->middleware('throttle:admin-translate')->name('translate');
 
         // Content (super admins and editors).
         Route::resource('categories', CategoryController::class)->except('show');

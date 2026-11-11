@@ -36,5 +36,6 @@
         <env name="OTP_EXPOSE_CODE" value="false"/>
         <env name="ASTROLOGY_DRIVER" value="none"/>
         <env name="PUSH_DRIVER" value="log"/>
+        <env name="TRANSLATE_DRIVER" value="none"/>
     </php>
 </phpunit>

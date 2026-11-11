@@ -10,7 +10,7 @@
         @include('admin.partials.category-select', ['selected' => $mantra->category_id])
         <x-admin.lang-input name="title" label="Title" :value="$mantra->title ?? []" />
         <x-admin.lang-input name="deity" label="Deity (e.g. Maa Gayatri)" :value="$mantra->deity ?? []" />
-        <x-admin.lang-input name="lyrics" label="Lyrics" :value="$mantra->lyrics ?? []" textarea />
+        <x-admin.lang-input name="lyrics" label="Lyrics (Sanskrit is not translated)" :value="$mantra->lyrics ?? []" textarea :translate="false" />
         <x-admin.lang-input name="meaning" label="Meaning" :value="$mantra->meaning ?? []" textarea :required="false" />
 
         <div class="row">

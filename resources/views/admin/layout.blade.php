@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Admin') · {{ config('app.name') }}</title>
     <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
+    @auth('admin')
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="translate-url" content="{{ route('admin.translate') }}">
+        <script src="{{ asset('assets/js/admin-translate.js') }}" defer></script>
+    @endauth
 </head>
 <body>
 @auth('admin')

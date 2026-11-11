@@ -37,6 +37,10 @@ small { color: var(--muted); }
 
 .btn { display: inline-block; background: var(--saffron); color: #fff; border: 0; border-radius: 8px; padding: 9px 18px; font: inherit; font-weight: 600; cursor: pointer; text-decoration: none; }
 .btn:hover { background: var(--saffron-dark); }
+.btn.secondary { background: #fff; color: var(--saffron-dark); border: 1.5px solid var(--saffron); }
+.btn.secondary:hover { background: #fff1dc; }
+.btn:disabled { opacity: .6; cursor: wait; }
+.translate-btn { justify-self: start; }
 button.link { background: none; border: 0; padding: 0; font: inherit; color: var(--saffron-dark); cursor: pointer; text-decoration: underline; }
 .danger { color: var(--bad) !important; }
 
