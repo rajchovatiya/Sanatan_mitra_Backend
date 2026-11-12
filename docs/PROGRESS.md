@@ -6,7 +6,7 @@ Update this file at the end of every work session. Last update: 2026-11-08.
 - Foundation: Laravel 13, Sanctum, rate limits, JSON errors, docs (API.md, DEPLOYMENT.md), Git
 - App users: OTP login, profile, photo/logo, devices, account deletion, saved kundlis, favourites, notifications list
 - App config (versions, maintenance, feature switches) editable in admin
-- Astrology endpoints (Panchang/Kundli/Matching) behind a provider interface (provider not connected)
+- Astrology endpoints (Panchang/Kundli/Matching) connected to Prokerala (ASTROLOGY_DRIVER=prokerala, keys in .env), answers cached 30 days
 - Content with admin screens and app API: Posters, Mantras (audio), Festivals & Vrat, Rashifal, Temples, Daily Darshan,
   Katha/Aarti/Beej/Chalisa (audio), Bhagavad Gita (18 chapters built in), Suvichar, Muhurat, Guides (gems, rudraksha,
   tarot, numerology, palmistry, graphology), Wallpapers, Video templates, Live, Courses
@@ -33,6 +33,6 @@ Update this file at the end of every work session. Last update: 2026-11-08.
 
 ## Waiting on the user
 - MySQL 9.7 root password
-- Astrology provider docs + key
+- (done) Prokerala keys added
 - SMS provider choice
 - Firebase project (service-account JSON) for push notifications

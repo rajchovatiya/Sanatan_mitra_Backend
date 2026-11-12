@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Admin;
 use App\Services\Astrology\AstrologyProvider;
 use App\Services\Astrology\NullAstrologyProvider;
+use App\Services\Astrology\ProkeralaProvider;
 use App\Services\Otp\LogOtpSender;
 use App\Services\Otp\OtpSender;
 use App\Services\Push\FcmPushSender;
@@ -43,6 +44,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(AstrologyProvider::class, fn () => match (config('sanatan.astrology.driver')) {
             'none' => new NullAstrologyProvider,
+            'prokerala' => new ProkeralaProvider(
+                (string) config('sanatan.astrology.prokerala.client_id'),
+                (string) config('sanatan.astrology.prokerala.client_secret'),
+            ),
             default => throw new InvalidArgumentException('Unknown ASTROLOGY_DRIVER.'),
         });
     }

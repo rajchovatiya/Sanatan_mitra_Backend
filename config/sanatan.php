@@ -22,6 +22,10 @@ return [
     */
     'astrology' => [
         'driver' => env('ASTROLOGY_DRIVER', 'none'),
+        'prokerala' => [
+            'client_id' => env('PROKERALA_CLIENT_ID'),
+            'client_secret' => env('PROKERALA_CLIENT_SECRET'),
+        ],
         // Results for the same input never change, so they are cached to save provider calls.
         'cache_days' => 30,
     ],
