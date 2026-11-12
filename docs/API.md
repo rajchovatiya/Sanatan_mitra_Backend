@@ -71,7 +71,11 @@ Until a provider is configured these return **503**, and the app should use its 
 | ✅🔑 | POST | `/astro/kundli` | `{date, time, lat, lng, tz?}` |
 | ✅🔑 | POST | `/astro/matching` | `{boy:{date,time,lat,lng,tz?}, girl:{...}}` |
 
-The `data` shape of these three is set when the provider is chosen.
+Provider: Prokerala (Lahiri ayanamsa). The server reshapes answers into this app format (indexes follow the app lists:
+rashi 0 = Mesha, nakshatra 0 = Ashwini, yoga 0 = Vishkambha, tithi 0 = Shukla Pratipada ... 14 = Purnima ... 29 = Amavasya):
+- Panchang: `{source, sunrise, sunset, moonrise, moonset, tithi:[{index,end}], nakshatra:[{index,end}], yoga:[{index,end}], karana:[{name,end}], periods:{abhijit, brahma, rahu_kaal, yamaganda, gulika, durmuhurat, varjyam: [{start,end}]}}`
+- Kundli: `{source, lagna_rashi, moon_rashi, sun_rashi, nakshatra:{index,pada}, varna, vashya, yoni, gana, nadi, rashi_lord, lucky_gem, syllables, manglik:{has,description}, kaal_sarp, yogas:[{name,description}], dasha:[{planet,start,end,antardasha:[{planet,start,end}]}], planets:[{name,short,rashi,house,degree,longitude,nakshatra,retro}]}`
+- Matching: `{source, total, max, kootas:[{name,obtained,max}], boy:{rashi,nakshatra,pada,manglik}, girl:{...}, provider_verdict}`
 
 ## Posters and Mantras
 Text fields come in the `Accept-Language` language (en/hi/gu), falling back to English.

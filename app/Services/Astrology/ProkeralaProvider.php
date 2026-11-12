@@ -22,36 +22,42 @@ class ProkeralaProvider implements AstrologyProvider
 
     public function panchang(string $date, float $lat, float $lng, float $tz): array
     {
-        return $this->get('/v2/astrology/panchang/advanced', [
+        return ProkeralaMapper::panchang($this->get('/v2/astrology/panchang/advanced', [
             'ayanamsa' => self::LAHIRI,
             'coordinates' => $this->coordinates($lat, $lng),
             // Around sunrise, so the day's tithi and nakshatra are the ones in force that morning.
             'datetime' => $this->datetime($date, '06:00', $tz),
             'la' => 'en',
-        ]);
+        ]));
     }
 
+    /** Two calls: the Kundli details and the planet positions (for the Lagna chart). */
     public function kundli(array $birth): array
     {
-        // The full Kundli (with every dasha period) is about 250 KB, so it gets more time.
-        return $this->get('/v2/astrology/kundli/advanced', timeout: 60, query: [
+        $query = [
             'ayanamsa' => self::LAHIRI,
             'coordinates' => $this->coordinates($birth['lat'], $birth['lng']),
             'datetime' => $this->datetime($birth['date'], $birth['time'], $birth['tz']),
             'la' => 'en',
-        ]);
+        ];
+
+        // The full Kundli (with every dasha level) is about 250 KB, so it gets more time.
+        return ProkeralaMapper::kundli(
+            $this->get('/v2/astrology/kundli/advanced', timeout: 60, query: $query),
+            $this->get('/v2/astrology/planet-position', $query),
+        );
     }
 
     public function matching(array $boy, array $girl): array
     {
-        return $this->get('/v2/astrology/kundli-matching/advanced', [
+        return ProkeralaMapper::matching($this->get('/v2/astrology/kundli-matching/advanced', [
             'ayanamsa' => self::LAHIRI,
             'boy_coordinates' => $this->coordinates($boy['lat'], $boy['lng']),
             'boy_dob' => $this->datetime($boy['date'], $boy['time'], $boy['tz']),
             'girl_coordinates' => $this->coordinates($girl['lat'], $girl['lng']),
             'girl_dob' => $this->datetime($girl['date'], $girl['time'], $girl['tz']),
             'la' => 'en',
-        ]);
+        ]));
     }
 
     private function get(string $path, array $query, int $timeout = 20): array

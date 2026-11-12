@@ -20,7 +20,7 @@ class AstrologyService
         $lng = round($lng, 2);
 
         return $this->remember(
-            "astro:panchang:{$date}:{$lat}:{$lng}:{$tz}",
+            "astro:v2:panchang:{$date}:{$lat}:{$lng}:{$tz}",
             fn () => $this->provider->panchang($date, $lat, $lng, $tz),
         );
     }
@@ -28,7 +28,7 @@ class AstrologyService
     public function kundli(array $birth): array
     {
         return $this->remember(
-            'astro:kundli:'.$this->fingerprint($birth),
+            'astro:v2:kundli:'.$this->fingerprint($birth),
             fn () => $this->provider->kundli($birth),
         );
     }
@@ -36,7 +36,7 @@ class AstrologyService
     public function matching(array $boy, array $girl): array
     {
         return $this->remember(
-            'astro:match:'.$this->fingerprint($boy).':'.$this->fingerprint($girl),
+            'astro:v2:match:'.$this->fingerprint($boy).':'.$this->fingerprint($girl),
             fn () => $this->provider->matching($boy, $girl),
         );
     }

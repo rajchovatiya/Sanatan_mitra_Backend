@@ -1,0 +1,159 @@
+{
+    "girl_info": {
+        "koot": {
+            "varna": "Shudra",
+            "vasya": "Manava",
+            "tara": "Vishaka",
+            "yoni": "Vyagrah",
+            "graha_maitri": "Venus",
+            "gana": "Rakshasa",
+            "bhakoot": "Tula",
+            "nadi": "Antya"
+        },
+        "nakshatra": {
+            "id": 15,
+            "name": "Vishaka",
+            "lord": {
+                "id": 5,
+                "name": "Jupiter",
+                "vedic_name": "Guru"
+            },
+            "pada": 3
+        },
+        "rasi": {
+            "id": 6,
+            "name": "Tula",
+            "lord": {
+                "id": 3,
+                "name": "Venus",
+                "vedic_name": "Shukra"
+            }
+        }
+    },
+    "boy_info": {
+        "koot": {
+            "varna": "Kshatriya",
+            "vasya": "Vanachara",
+            "tara": "Magha",
+            "yoni": "Mushika",
+            "graha_maitri": "Sun",
+            "gana": "Rakshasa",
+            "bhakoot": "Simha",
+            "nadi": "Antya"
+        },
+        "nakshatra": {
+            "id": 9,
+            "name": "Magha",
+            "lord": {
+                "id": 102,
+                "name": "Ketu",
+                "vedic_name": "Ketu"
+            },
+            "pada": 4
+        },
+        "rasi": {
+            "id": 4,
+            "name": "Simha",
+            "lord": {
+                "id": 0,
+                "name": "Sun",
+                "vedic_name": "Ravi"
+            }
+        }
+    },
+    "message": {
+        "type": "bad",
+        "description": "Union is not recommended due to the presence of Nadi Maha Dosha. Since Nadi Kuta is given supreme priority during match making. The Boy and Girl are not affected by Mangal Dosha"
+    },
+    "guna_milan": {
+        "total_points": 17.5,
+        "maximum_points": 36,
+        "guna": [
+            {
+                "id": 1,
+                "name": "Varna Koot",
+                "girl_koot": "Shudra",
+                "boy_koot": "Kshatriya",
+                "maximum_points": 1,
+                "obtained_points": 1,
+                "description": "The Varna indicates the level of spiritual or ego development in the couples getting married. Based on the janma-rashi, Varna is divided into four categories such as the Brahmin, Kshatriya, Vaisya, and Sudra. Marriage is considered to be ideal if the grade or caste of the groom is higher than the bride. The boy's varna is Kshatriya Varna while the girl comes under Shudra Varna. This type of combination is very much favorable for a union. For this couple Varna Koot is Good. Varna Koot is Good"
+            },
+            {
+                "id": 2,
+                "name": "Vasya Koot",
+                "girl_koot": "Manava",
+                "boy_koot": "Vanachara",
+                "maximum_points": 2,
+                "obtained_points": 0,
+                "description": "Vasya assess the degree of magnetic control or influence the husband or wife can exert on each other. Each Moon sign has specific signs that are amenable to their control, these are classified into five categories and they are Chatushpada, Manava, Jalachara, Vanachara, and Keeta. For a compatible marriage life, it is ideal for two people with moon signs of the same group to get married. The boy's Vasya is Vanachara Vasya while the girl comes under Manava Vasya. This is a worst match. For this couple Vasya Koot is Not Satisfactory. However, if other gunas are matched well, then this alliance may be taken into consideration. Vasya Koot is Bad"
+            },
+            {
+                "id": 3,
+                "name": "Tara Koot",
+                "girl_koot": "Vishaka",
+                "boy_koot": "Magha",
+                "maximum_points": 3,
+                "obtained_points": 1.5,
+                "description": "Tarakoot is evaluated by counting the number of stars between the groom's birth star and the bride's birth star. A marriage is considered ideal when the birthstar, or janmatara, of both partners align favorably. The boy and girl are in different Tara Group. The boy's nakshatra Magha is 7th position from girl's nakshatra Vishaka and this is Malefic. At the same time The girl's nakshatra Vishaka is 4th position from boy's nakshatra Magha and this is Benefic. This is a normal match. For this couple Tara Koot is Normal. But if other gunas are matched well, then this alliance may be taken into consideration. Tara Koot is Average"
+            },
+            {
+                "id": 4,
+                "name": "Yoni Koot",
+                "girl_koot": "Vyagrah",
+                "boy_koot": "Mushika",
+                "maximum_points": 4,
+                "obtained_points": 2,
+                "description": "Yoni measures the sexual compatibility between the couples. Considering the constellations, there are both male and female constellations, and each of the nakshatra is related to an animal. For a happy married life, union between the people of same class of yoni or animal is considered auspicious. The boy's Yoni is Mushika while the girl comes under Vyagrah Yoni. This is a preferable combination. For this couple Yoni Koot is Average. Yoni Koot is Average"
+            },
+            {
+                "id": 5,
+                "name": "Graha Maitri",
+                "girl_koot": "Venus",
+                "boy_koot": "Sun",
+                "maximum_points": 5,
+                "obtained_points": 0,
+                "description": "Graha Maitri is based on the goodwill between the ruling planets and their respective moon rasis, and it examines the psychological disposition of the couples. The graha maitri is calculated based on the relationship between the lunar rulers of the groom and the bride. If the lunar rulers share friendship the marriage is considered to be ideal. The boy's Rasi Lord is Sun while the girl's Rasi Lord is Venus. The boy's Rasi is Simha while the girl's Rasi is Tula. This is inauspicious combination. For this couple Graha Maitri Koot is Not GoodGraha Maitri is Very Bad. "
+            },
+            {
+                "id": 6,
+                "name": "Gana Koot",
+                "girl_koot": "Rakshasa",
+                "boy_koot": "Rakshasa",
+                "maximum_points": 6,
+                "obtained_points": 6,
+                "description": "There are three ganas or temperaments and the gana kuta measures the compatibility of temperament essential for a happy marriage life. Each nakshatras is assigned with one of the three ganas, which are Deva, Manushya, and Rakshasa. For a compatible married life, it is ideal for two people within the same gana to get married. The boy and the girl both belong to same Gana Rakshasa. This is considered to be an excellent combination for gana match. For this couple Gana Koot is Excellent. Gana Koot is Excellent"
+            },
+            {
+                "id": 7,
+                "name": "Bhakoot Koot",
+                "girl_koot": "Tula",
+                "boy_koot": "Simha",
+                "maximum_points": 7,
+                "obtained_points": 7,
+                "description": "Bhakoot emphasizes the Moon signs (rasis) of the couple and signifies the overall happiness of the married life. It is considered auspicious when woman’s moon sign follow man’s moon. Further if the moons are at the same sign, nakshatras are considered, and it is considered beneficial if the woman’s Moon nakshatra follows the man’s. The boy's Zodiac sign is Simha while the girl's Zodiac sign is Tula. This is an excellent combination from the happiness and prosperity point of view. For this couple Bhakoot Koot is Excellent. Bhakoot Koot is Excellent"
+            },
+            {
+                "id": 8,
+                "name": "Nadi Koot",
+                "girl_koot": "Antya",
+                "boy_koot": "Antya",
+                "maximum_points": 8,
+                "obtained_points": 0,
+                "description": "The Nadi Kuta relates to progeny. It reflects the nervous system's Ayurvedic constitution, influenced by the Moon and other planets. The three nadis are vata, pitta, and kapha. Ideally, a couple's Moon and nakshatras should fall in different nadis for compatibility. The boy and the girl both belong to same Nadi Antya. This is inauspicious combination. For this couple Nadi Koot is not Good. Nadi Koot is Bad"
+            }
+        ]
+    },
+    "girl_mangal_dosha_details": {
+        "has_dosha": false,
+        "has_exception": false,
+        "dosha_type": null,
+        "description": "The person is Not Manglik"
+    },
+    "boy_mangal_dosha_details": {
+        "has_dosha": false,
+        "has_exception": false,
+        "dosha_type": null,
+        "description": "The person is Not Manglik"
+    },
+    "exceptions": []
+}

@@ -25,11 +25,11 @@ class ProkeralaTest extends TestCase
     {
         Http::fake([
             'api.prokerala.com/token' => Http::response(['access_token' => 'tok', 'expires_in' => 3600]),
-            'api.prokerala.com/v2/*' => Http::response(['status' => 'ok', 'data' => ['vaara' => 'Thursday']]),
+            'api.prokerala.com/v2/*' => Http::response(['status' => 'ok', 'data' => ['tithi' => [['id' => 18, 'end' => '2026-11-12T18:09:49+05:30']]]]),
         ]);
 
         $this->getJson('/api/v1/astro/panchang?date=2026-11-12&lat=23.0225&lng=72.5714')
-            ->assertOk()->assertJsonPath('data.vaara', 'Thursday');
+            ->assertOk()->assertJsonPath('data.source', 'prokerala')->assertJsonPath('data.tithi.0.index', 2);
         $this->getJson('/api/v1/astro/panchang?date=2026-11-13&lat=23.0225&lng=72.5714')->assertOk();
 
         Http::assertSentCount(3); // one token + two Panchang days
@@ -44,14 +44,14 @@ class ProkeralaTest extends TestCase
     {
         Http::fake([
             'api.prokerala.com/token' => Http::response(['access_token' => 'tok', 'expires_in' => 3600]),
-            'api.prokerala.com/v2/*' => Http::response(['data' => ['guna_milan' => ['total_points' => 28]]]),
+            'api.prokerala.com/v2/*' => Http::response(['data' => ['guna_milan' => ['total_points' => 28, 'maximum_points' => 36]]]),
         ]);
         Sanctum::actingAs(User::factory()->create());
 
         $this->postJson('/api/v1/astro/matching', [
             'boy' => ['date' => '1995-04-12', 'time' => '06:30', 'lat' => 21.17, 'lng' => 72.83],
             'girl' => ['date' => '1997-02-01', 'time' => '18:05', 'lat' => 23.02, 'lng' => 72.57],
-        ])->assertOk()->assertJsonPath('data.guna_milan.total_points', 28);
+        ])->assertOk()->assertJsonPath('data.total', 28)->assertJsonPath('data.max', 36);
 
         Http::assertSent(fn (Request $r) => str_contains($r->url(), 'kundli-matching')
             && $r['boy_dob'] === '1995-04-12T06:30:00+05:30'

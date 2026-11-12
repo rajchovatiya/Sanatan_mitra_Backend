@@ -1,0 +1,758 @@
+{
+    "nakshatra_details": {
+        "nakshatra": {
+            "id": 9,
+            "name": "Magha",
+            "lord": {
+                "id": 102,
+                "name": "Ketu",
+                "vedic_name": "Ketu"
+            },
+            "pada": 4
+        },
+        "chandra_rasi": {
+            "id": 4,
+            "name": "Simha",
+            "lord": {
+                "id": 0,
+                "name": "Sun",
+                "vedic_name": "Ravi"
+            }
+        },
+        "soorya_rasi": {
+            "id": 11,
+            "name": "Meena",
+            "lord": {
+                "id": 5,
+                "name": "Jupiter",
+                "vedic_name": "Guru"
+            }
+        },
+        "zodiac": {
+            "id": 0,
+            "name": "Aries"
+        },
+        "additional_info": {
+            "deity": "Pitris/Pitragana",
+            "ganam": "Asura",
+            "symbol": "Palanquin",
+            "animal_sign": "Rat",
+            "nadi": "Kapha",
+            "color": "Cream",
+            "best_direction": "West",
+            "syllables": "Ma, Me, Mu, Me",
+            "birth_stone": "Chrysoberyl",
+            "gender": "Male",
+            "planet": "Ketu",
+            "enemy_yoni": "Cat"
+        }
+    },
+    "mangal_dosha": {
+        "has_dosha": false,
+        "description": "The person is Not Manglik",
+        "has_exception": false,
+        "type": null,
+        "exceptions": [],
+        "remedies": []
+    },
+    "yoga_details": [
+        {
+            "name": "Major Yogas",
+            "description": "Your kundli has 1 major yogas",
+            "yoga_list": [
+                {
+                    "name": "Gajakesari Yoga",
+                    "has_yoga": true,
+                    "description": "When Jupiter occupies a Kendra relative to the Moon, Gajakesari Yoga is formed. In this horoscope, Jupiter occupies the Ninth house and is positioned as a kendra relative to the Moon, satisfies the condition for the formation of Gajakesari Yoga. "
+                },
+                {
+                    "name": "Kedara Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Kedara Yoga"
+                },
+                {
+                    "name": "Kahala Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Kahala Yoga"
+                },
+                {
+                    "name": "Kamal Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Kamal Yoga"
+                },
+                {
+                    "name": "Musala Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Musala Yoga"
+                },
+                {
+                    "name": "Raja Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Raja Yoga"
+                },
+                {
+                    "name": "Ruchaka Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Ruchaka Yoga"
+                },
+                {
+                    "name": "Bhadra Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Bhadra Yoga"
+                },
+                {
+                    "name": "Hamsa Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Hamsa Yoga"
+                },
+                {
+                    "name": "Malavya Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Malavya Yoga"
+                },
+                {
+                    "name": "Sasa Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Sasa Yoga"
+                }
+            ]
+        },
+        {
+            "name": "Chandra Yogas",
+            "description": "Your kundli has 1 chandra yogas. ",
+            "yoga_list": [
+                {
+                    "name": "Sunapha Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Sunapha Yoga"
+                },
+                {
+                    "name": "Anapha Yoga",
+                    "has_yoga": true,
+                    "description": "When planets, excluding the Sun, are situated in the twelfth house from the Moon, it leads to the formation of Anapha Yoga. In this horoscope, twelfth house from Moon is occupied Mars, satisfying the conditions for the formation of Anapha Yoga. "
+                },
+                {
+                    "name": "Duradhara Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Duradhara Yoga"
+                },
+                {
+                    "name": "Kemadruma Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Kemadruma Yoga"
+                }
+            ]
+        },
+        {
+            "name": "Soorya Yogas",
+            "description": "Your kundli has 1 soorya yogas. ",
+            "yoga_list": [
+                {
+                    "name": "Vesi Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Vesi Yoga"
+                },
+                {
+                    "name": "Vasi Yoga",
+                    "has_yoga": true,
+                    "description": "When planets, excluding the Moon, occupy the twelfth house from the Sun, it results in the formation of Vasi Yoga. In this horoscope, twelfth house from Sun is occupied Venus and Saturn, satisfying the conditions for the formation of Vasi Yoga. "
+                },
+                {
+                    "name": "Ubhaya Chari Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Ubhaya Chari Yoga"
+                }
+            ]
+        },
+        {
+            "name": "Inauspicious Yogas",
+            "description": "Your kundli has 1 inauspicious yogas. ",
+            "yoga_list": [
+                {
+                    "name": "Daridra Yoga",
+                    "has_yoga": true,
+                    "description": "Daridra Yoga is formed when the lords of the 12th and Lagna exchange positions and are conjoined or aspected by the 7th lord. In this horoscope, the eleventh house lord, Saturn, is positioned in the Twelfth house, a trika house, the lagna lord, Jupiter, receives an aspect from the Saturn, the lord of 12th house. Also, receiving an aspect from Saturn, a malefic planet and Moon, lord of fifth house, resides in Sixth house, receiving an aspect from Venus, the lord of 8th house and Saturn, the lord of 12th house, indicating the formation of Daridra Yoga. "
+                },
+                {
+                    "name": "Grahan Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Grahan Yoga"
+                },
+                {
+                    "name": "Shakat Yoga",
+                    "has_yoga": false,
+                    "description": "In this horoscope, there is no Shakat Yoga"
+                }
+            ]
+        }
+    ],
+    "dasha_periods": [
+        {
+            "id": 102,
+            "name": "Ketu",
+            "start": "1988-09-17T00:56:39+05:30",
+            "end": "1995-09-17T18:56:38+05:30",
+            "antardasha": [
+                {
+                    "id": 102,
+                    "name": "Ketu",
+                    "start": "1988-09-17T00:56:39+05:30",
+                    "end": "1989-02-13T04:23:38+05:30"
+                },
+                {
+                    "id": 3,
+                    "name": "Venus",
+                    "start": "1989-02-13T04:23:39+05:30",
+                    "end": "1990-04-15T07:23:38+05:30"
+                },
+                {
+                    "id": 0,
+                    "name": "Sun",
+                    "start": "1990-04-15T07:23:39+05:30",
+                    "end": "1990-08-21T03:29:38+05:30"
+                },
+                {
+                    "id": 1,
+                    "name": "Moon",
+                    "start": "1990-08-21T03:29:39+05:30",
+                    "end": "1991-03-22T04:59:38+05:30"
+                },
+                {
+                    "id": 4,
+                    "name": "Mars",
+                    "start": "1991-03-22T04:59:39+05:30",
+                    "end": "1991-08-18T08:26:38+05:30"
+                },
+                {
+                    "id": 101,
+                    "name": "Rahu",
+                    "start": "1991-08-18T08:26:39+05:30",
+                    "end": "1992-09-04T20:44:38+05:30"
+                },
+                {
+                    "id": 5,
+                    "name": "Jupiter",
+                    "start": "1992-09-04T20:44:39+05:30",
+                    "end": "1993-08-11T18:20:38+05:30"
+                },
+                {
+                    "id": 6,
+                    "name": "Saturn",
+                    "start": "1993-08-11T18:20:39+05:30",
+                    "end": "1994-09-20T13:59:38+05:30"
+                },
+                {
+                    "id": 2,
+                    "name": "Mercury",
+                    "start": "1994-09-20T13:59:39+05:30",
+                    "end": "1995-09-17T18:56:38+05:30"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Venus",
+            "start": "1995-09-17T18:56:39+05:30",
+            "end": "2015-09-17T18:56:38+05:30",
+            "antardasha": [
+                {
+                    "id": 3,
+                    "name": "Venus",
+                    "start": "1995-09-17T18:56:39+05:30",
+                    "end": "1999-01-17T06:56:38+05:30"
+                },
+                {
+                    "id": 0,
+                    "name": "Sun",
+                    "start": "1999-01-17T06:56:39+05:30",
+                    "end": "2000-01-17T12:56:38+05:30"
+                },
+                {
+                    "id": 1,
+                    "name": "Moon",
+                    "start": "2000-01-17T12:56:39+05:30",
+                    "end": "2001-09-17T06:56:38+05:30"
+                },
+                {
+                    "id": 4,
+                    "name": "Mars",
+                    "start": "2001-09-17T06:56:39+05:30",
+                    "end": "2002-11-17T09:56:38+05:30"
+                },
+                {
+                    "id": 101,
+                    "name": "Rahu",
+                    "start": "2002-11-17T09:56:39+05:30",
+                    "end": "2005-11-17T03:56:38+05:30"
+                },
+                {
+                    "id": 5,
+                    "name": "Jupiter",
+                    "start": "2005-11-17T03:56:39+05:30",
+                    "end": "2008-07-18T03:56:38+05:30"
+                },
+                {
+                    "id": 6,
+                    "name": "Saturn",
+                    "start": "2008-07-18T03:56:39+05:30",
+                    "end": "2011-09-17T18:56:38+05:30"
+                },
+                {
+                    "id": 2,
+                    "name": "Mercury",
+                    "start": "2011-09-17T18:56:39+05:30",
+                    "end": "2014-07-18T15:56:38+05:30"
+                },
+                {
+                    "id": 102,
+                    "name": "Ketu",
+                    "start": "2014-07-18T15:56:39+05:30",
+                    "end": "2015-09-17T18:56:38+05:30"
+                }
+            ]
+        },
+        {
+            "id": 0,
+            "name": "Sun",
+            "start": "2015-09-17T18:56:39+05:30",
+            "end": "2021-09-17T06:56:38+05:30",
+            "antardasha": [
+                {
+                    "id": 0,
+                    "name": "Sun",
+                    "start": "2015-09-17T18:56:39+05:30",
+                    "end": "2016-01-05T08:44:38+05:30"
+                },
+                {
+                    "id": 1,
+                    "name": "Moon",
+                    "start": "2016-01-05T08:44:39+05:30",
+                    "end": "2016-07-05T23:44:38+05:30"
+                },
+                {
+                    "id": 4,
+                    "name": "Mars",
+                    "start": "2016-07-05T23:44:39+05:30",
+                    "end": "2016-11-10T19:50:38+05:30"
+                },
+                {
+                    "id": 101,
+                    "name": "Rahu",
+                    "start": "2016-11-10T19:50:39+05:30",
+                    "end": "2017-10-05T13:14:38+05:30"
+                },
+                {
+                    "id": 5,
+                    "name": "Jupiter",
+                    "start": "2017-10-05T13:14:39+05:30",
+                    "end": "2018-07-24T18:02:38+05:30"
+                },
+                {
+                    "id": 6,
+                    "name": "Saturn",
+                    "start": "2018-07-24T18:02:39+05:30",
+                    "end": "2019-07-06T17:44:38+05:30"
+                },
+                {
+                    "id": 2,
+                    "name": "Mercury",
+                    "start": "2019-07-06T17:44:39+05:30",
+                    "end": "2020-05-12T04:50:38+05:30"
+                },
+                {
+                    "id": 102,
+                    "name": "Ketu",
+                    "start": "2020-05-12T04:50:39+05:30",
+                    "end": "2020-09-17T00:56:38+05:30"
+                },
+                {
+                    "id": 3,
+                    "name": "Venus",
+                    "start": "2020-09-17T00:56:39+05:30",
+                    "end": "2021-09-17T06:56:38+05:30"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Moon",
+            "start": "2021-09-17T06:56:39+05:30",
+            "end": "2031-09-17T18:56:38+05:30",
+            "antardasha": [
+                {
+                    "id": 1,
+                    "name": "Moon",
+                    "start": "2021-09-17T06:56:39+05:30",
+                    "end": "2022-07-18T15:56:38+05:30"
+                },
+                {
+                    "id": 4,
+                    "name": "Mars",
+                    "start": "2022-07-18T15:56:39+05:30",
+                    "end": "2023-02-16T17:26:38+05:30"
+                },
+                {
+                    "id": 101,
+                    "name": "Rahu",
+                    "start": "2023-02-16T17:26:39+05:30",
+                    "end": "2024-08-17T14:26:38+05:30"
+                },
+                {
+                    "id": 5,
+                    "name": "Jupiter",
+                    "start": "2024-08-17T14:26:39+05:30",
+                    "end": "2025-12-17T14:26:38+05:30"
+                },
+                {
+                    "id": 6,
+                    "name": "Saturn",
+                    "start": "2025-12-17T14:26:39+05:30",
+                    "end": "2027-07-18T21:56:38+05:30"
+                },
+                {
+                    "id": 2,
+                    "name": "Mercury",
+                    "start": "2027-07-18T21:56:39+05:30",
+                    "end": "2028-12-17T08:26:38+05:30"
+                },
+                {
+                    "id": 102,
+                    "name": "Ketu",
+                    "start": "2028-12-17T08:26:39+05:30",
+                    "end": "2029-07-18T09:56:38+05:30"
+                },
+                {
+                    "id": 3,
+                    "name": "Venus",
+                    "start": "2029-07-18T09:56:39+05:30",
+                    "end": "2031-03-19T03:56:38+05:30"
+                },
+                {
+                    "id": 0,
+                    "name": "Sun",
+                    "start": "2031-03-19T03:56:39+05:30",
+                    "end": "2031-09-17T18:56:38+05:30"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Mars",
+            "start": "2031-09-17T18:56:39+05:30",
+            "end": "2038-09-17T12:56:38+05:30",
+            "antardasha": [
+                {
+                    "id": 4,
+                    "name": "Mars",
+                    "start": "2031-09-17T18:56:39+05:30",
+                    "end": "2032-02-13T22:23:38+05:30"
+                },
+                {
+                    "id": 101,
+                    "name": "Rahu",
+                    "start": "2032-02-13T22:23:39+05:30",
+                    "end": "2033-03-03T10:41:38+05:30"
+                },
+                {
+                    "id": 5,
+                    "name": "Jupiter",
+                    "start": "2033-03-03T10:41:39+05:30",
+                    "end": "2034-02-07T08:17:38+05:30"
+                },
+                {
+                    "id": 6,
+                    "name": "Saturn",
+                    "start": "2034-02-07T08:17:39+05:30",
+                    "end": "2035-03-19T03:56:38+05:30"
+                },
+                {
+                    "id": 2,
+                    "name": "Mercury",
+                    "start": "2035-03-19T03:56:39+05:30",
+                    "end": "2036-03-15T08:53:38+05:30"
+                },
+                {
+                    "id": 102,
+                    "name": "Ketu",
+                    "start": "2036-03-15T08:53:39+05:30",
+                    "end": "2036-08-11T12:20:38+05:30"
+                },
+                {
+                    "id": 3,
+                    "name": "Venus",
+                    "start": "2036-08-11T12:20:39+05:30",
+                    "end": "2037-10-11T15:20:38+05:30"
+                },
+                {
+                    "id": 0,
+                    "name": "Sun",
+                    "start": "2037-10-11T15:20:39+05:30",
+                    "end": "2038-02-16T11:26:38+05:30"
+                },
+                {
+                    "id": 1,
+                    "name": "Moon",
+                    "start": "2038-02-16T11:26:39+05:30",
+                    "end": "2038-09-17T12:56:38+05:30"
+                }
+            ]
+        },
+        {
+            "id": 101,
+            "name": "Rahu",
+            "start": "2038-09-17T12:56:39+05:30",
+            "end": "2056-09-17T00:56:38+05:30",
+            "antardasha": [
+                {
+                    "id": 101,
+                    "name": "Rahu",
+                    "start": "2038-09-17T12:56:39+05:30",
+                    "end": "2041-05-30T17:08:38+05:30"
+                },
+                {
+                    "id": 5,
+                    "name": "Jupiter",
+                    "start": "2041-05-30T17:08:39+05:30",
+                    "end": "2043-10-24T07:32:38+05:30"
+                },
+                {
+                    "id": 6,
+                    "name": "Saturn",
+                    "start": "2043-10-24T07:32:39+05:30",
+                    "end": "2046-08-30T06:38:38+05:30"
+                },
+                {
+                    "id": 2,
+                    "name": "Mercury",
+                    "start": "2046-08-30T06:38:39+05:30",
+                    "end": "2049-03-18T15:56:38+05:30"
+                },
+                {
+                    "id": 102,
+                    "name": "Ketu",
+                    "start": "2049-03-18T15:56:39+05:30",
+                    "end": "2050-04-06T04:14:38+05:30"
+                },
+                {
+                    "id": 3,
+                    "name": "Venus",
+                    "start": "2050-04-06T04:14:39+05:30",
+                    "end": "2053-04-05T22:14:38+05:30"
+                },
+                {
+                    "id": 0,
+                    "name": "Sun",
+                    "start": "2053-04-05T22:14:39+05:30",
+                    "end": "2054-02-28T15:38:38+05:30"
+                },
+                {
+                    "id": 1,
+                    "name": "Moon",
+                    "start": "2054-02-28T15:38:39+05:30",
+                    "end": "2055-08-30T12:38:38+05:30"
+                },
+                {
+                    "id": 4,
+                    "name": "Mars",
+                    "start": "2055-08-30T12:38:39+05:30",
+                    "end": "2056-09-17T00:56:38+05:30"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Jupiter",
+            "start": "2056-09-17T00:56:39+05:30",
+            "end": "2072-09-17T00:56:38+05:30",
+            "antardasha": [
+                {
+                    "id": 5,
+                    "name": "Jupiter",
+                    "start": "2056-09-17T00:56:39+05:30",
+                    "end": "2058-11-05T05:44:38+05:30"
+                },
+                {
+                    "id": 6,
+                    "name": "Saturn",
+                    "start": "2058-11-05T05:44:39+05:30",
+                    "end": "2061-05-18T12:56:38+05:30"
+                },
+                {
+                    "id": 2,
+                    "name": "Mercury",
+                    "start": "2061-05-18T12:56:39+05:30",
+                    "end": "2063-08-24T10:32:38+05:30"
+                },
+                {
+                    "id": 102,
+                    "name": "Ketu",
+                    "start": "2063-08-24T10:32:39+05:30",
+                    "end": "2064-07-30T08:08:38+05:30"
+                },
+                {
+                    "id": 3,
+                    "name": "Venus",
+                    "start": "2064-07-30T08:08:39+05:30",
+                    "end": "2067-03-31T08:08:38+05:30"
+                },
+                {
+                    "id": 0,
+                    "name": "Sun",
+                    "start": "2067-03-31T08:08:39+05:30",
+                    "end": "2068-01-17T12:56:38+05:30"
+                },
+                {
+                    "id": 1,
+                    "name": "Moon",
+                    "start": "2068-01-17T12:56:39+05:30",
+                    "end": "2069-05-18T12:56:38+05:30"
+                },
+                {
+                    "id": 4,
+                    "name": "Mars",
+                    "start": "2069-05-18T12:56:39+05:30",
+                    "end": "2070-04-24T10:32:38+05:30"
+                },
+                {
+                    "id": 101,
+                    "name": "Rahu",
+                    "start": "2070-04-24T10:32:39+05:30",
+                    "end": "2072-09-17T00:56:38+05:30"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Saturn",
+            "start": "2072-09-17T00:56:39+05:30",
+            "end": "2091-09-17T18:56:38+05:30",
+            "antardasha": [
+                {
+                    "id": 6,
+                    "name": "Saturn",
+                    "start": "2072-09-17T00:56:39+05:30",
+                    "end": "2075-09-20T19:59:38+05:30"
+                },
+                {
+                    "id": 2,
+                    "name": "Mercury",
+                    "start": "2075-09-20T19:59:39+05:30",
+                    "end": "2078-05-30T23:08:38+05:30"
+                },
+                {
+                    "id": 102,
+                    "name": "Ketu",
+                    "start": "2078-05-30T23:08:39+05:30",
+                    "end": "2079-07-09T18:47:38+05:30"
+                },
+                {
+                    "id": 3,
+                    "name": "Venus",
+                    "start": "2079-07-09T18:47:39+05:30",
+                    "end": "2082-09-08T09:47:38+05:30"
+                },
+                {
+                    "id": 0,
+                    "name": "Sun",
+                    "start": "2082-09-08T09:47:39+05:30",
+                    "end": "2083-08-21T09:29:38+05:30"
+                },
+                {
+                    "id": 1,
+                    "name": "Moon",
+                    "start": "2083-08-21T09:29:39+05:30",
+                    "end": "2085-03-21T16:59:38+05:30"
+                },
+                {
+                    "id": 4,
+                    "name": "Mars",
+                    "start": "2085-03-21T16:59:39+05:30",
+                    "end": "2086-04-30T12:38:38+05:30"
+                },
+                {
+                    "id": 101,
+                    "name": "Rahu",
+                    "start": "2086-04-30T12:38:39+05:30",
+                    "end": "2089-03-06T11:44:38+05:30"
+                },
+                {
+                    "id": 5,
+                    "name": "Jupiter",
+                    "start": "2089-03-06T11:44:39+05:30",
+                    "end": "2091-09-17T18:56:38+05:30"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Mercury",
+            "start": "2091-09-17T18:56:39+05:30",
+            "end": "2108-09-18T00:56:38+05:30",
+            "antardasha": [
+                {
+                    "id": 2,
+                    "name": "Mercury",
+                    "start": "2091-09-17T18:56:39+05:30",
+                    "end": "2094-02-13T10:23:38+05:30"
+                },
+                {
+                    "id": 102,
+                    "name": "Ketu",
+                    "start": "2094-02-13T10:23:39+05:30",
+                    "end": "2095-02-10T15:20:38+05:30"
+                },
+                {
+                    "id": 3,
+                    "name": "Venus",
+                    "start": "2095-02-10T15:20:39+05:30",
+                    "end": "2097-12-11T12:20:38+05:30"
+                },
+                {
+                    "id": 0,
+                    "name": "Sun",
+                    "start": "2097-12-11T12:20:39+05:30",
+                    "end": "2098-10-17T23:26:38+05:30"
+                },
+                {
+                    "id": 1,
+                    "name": "Moon",
+                    "start": "2098-10-17T23:26:39+05:30",
+                    "end": "2100-03-19T09:56:38+05:30"
+                },
+                {
+                    "id": 4,
+                    "name": "Mars",
+                    "start": "2100-03-19T09:56:39+05:30",
+                    "end": "2101-03-16T14:53:38+05:30"
+                },
+                {
+                    "id": 101,
+                    "name": "Rahu",
+                    "start": "2101-03-16T14:53:39+05:30",
+                    "end": "2103-10-04T00:11:38+05:30"
+                },
+                {
+                    "id": 5,
+                    "name": "Jupiter",
+                    "start": "2103-10-04T00:11:39+05:30",
+                    "end": "2106-01-08T21:47:38+05:30"
+                },
+                {
+                    "id": 6,
+                    "name": "Saturn",
+                    "start": "2106-01-08T21:47:39+05:30",
+                    "end": "2108-09-18T00:56:38+05:30"
+                }
+            ]
+        }
+    ],
+    "dasha_balance": {
+        "lord": {
+            "id": 102,
+            "name": "Ketu",
+            "vedic_name": "Ketu"
+        },
+        "duration": "P0Y5M5DT12H5M39S",
+        "description": " 5 months 5 days"
+    }
+}
