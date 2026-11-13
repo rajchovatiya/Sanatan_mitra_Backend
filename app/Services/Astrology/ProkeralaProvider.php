@@ -60,10 +60,16 @@ class ProkeralaProvider implements AstrologyProvider
         ]));
     }
 
+    /** While Prokerala is down or over its limit, every request answers at once instead of waiting. */
+    private const PAUSE_KEY = 'prokerala:paused';
+
     private function get(string $path, array $query, int $timeout = 20): array
     {
+        $this->failIfPaused();
+
         try {
             $data = Http::withToken($this->token())
+                ->connectTimeout(5)
                 ->timeout($timeout)
                 ->get(self::BASE.$path, $query)
                 ->throw()
@@ -71,6 +77,7 @@ class ProkeralaProvider implements AstrologyProvider
         } catch (RequestException|ConnectionException $e) {
             // Logged without the token; the app falls back to its own calculation.
             Log::warning('Prokerala request failed', ['path' => $path, 'error' => $e->getMessage()]);
+            $this->pause($e);
             throw new AstrologyUnavailable('Astrology provider request failed.');
         }
 
@@ -86,18 +93,36 @@ class ProkeralaProvider implements AstrologyProvider
         }
 
         try {
-            $res = Http::asForm()->timeout(15)->post(self::BASE.'/token', [
+            $res = Http::asForm()->connectTimeout(5)->timeout(15)->post(self::BASE.'/token', [
                 'grant_type' => 'client_credentials',
                 'client_id' => $this->clientId,
                 'client_secret' => $this->clientSecret,
             ])->throw()->json();
-        } catch (RequestException|ConnectionException) {
+        } catch (RequestException|ConnectionException $e) {
+            $this->pause($e);
             throw new AstrologyUnavailable('Astrology provider login failed. Check PROKERALA_CLIENT_ID and PROKERALA_CLIENT_SECRET.');
         }
 
         Cache::put($key, $res['access_token'], now()->addSeconds(max(60, ($res['expires_in'] ?? 3600) - 120)));
 
         return $res['access_token'];
+    }
+
+    private function failIfPaused(): void
+    {
+        if (Cache::has(self::PAUSE_KEY)) {
+            throw new AstrologyUnavailable('Astrology provider is paused after an error.');
+        }
+    }
+
+    /**
+     * Stop calling Prokerala for a while: 10 minutes after "too many requests" (429), 2 minutes
+     * after a network problem. One slow or refused call then cannot hold up the whole server.
+     */
+    private function pause(RequestException|ConnectionException $e): void
+    {
+        $tooMany = $e instanceof RequestException && $e->response->status() === 429;
+        Cache::put(self::PAUSE_KEY, true, now()->addMinutes($tooMany ? 10 : 2));
     }
 
     private function coordinates(float $lat, float $lng): string

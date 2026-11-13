@@ -68,6 +68,24 @@ class ProkeralaTest extends TestCase
         $this->getJson('/api/v1/astro/panchang?date=2026-11-12&lat=23.02&lng=72.57')->assertStatus(503);
     }
 
+    public function test_after_a_failure_the_server_stops_asking_for_a_while(): void
+    {
+        Http::fake([
+            'api.prokerala.com/token' => Http::response(['access_token' => 'tok', 'expires_in' => 3600]),
+            'api.prokerala.com/v2/*' => Http::response(['detail' => 'You have exceeded the limit'], 429),
+        ]);
+
+        $this->getJson('/api/v1/astro/panchang?date=2026-11-12&lat=23.02&lng=72.57')->assertStatus(503);
+        // Another day, so it is not a cached answer: it fails at once, without calling Prokerala.
+        $this->getJson('/api/v1/astro/panchang?date=2026-11-13&lat=23.02&lng=72.57')->assertStatus(503);
+        Http::assertSentCount(2); // token + the first Panchang only
+
+        // After the pause, it tries again.
+        $this->travel(11)->minutes();
+        $this->getJson('/api/v1/astro/panchang?date=2026-11-14&lat=23.02&lng=72.57')->assertStatus(503);
+        Http::assertSentCount(3);
+    }
+
     public function test_wrong_keys_give_503(): void
     {
         Http::fake(['api.prokerala.com/token' => Http::response(['error' => 'invalid_client'], 401)]);
