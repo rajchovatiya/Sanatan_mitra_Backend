@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\KundliController;
 use App\Http\Controllers\Api\LibraryController;
 use App\Http\Controllers\Api\MediaController;
+use App\Http\Controllers\Api\PlaceController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\RashifalController;
@@ -39,6 +40,9 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
 
     Route::get('astro/panchang', [AstrologyController::class, 'panchang'])
         ->middleware('throttle:astro')->name('astro.panchang');
+
+    Route::get('places', [PlaceController::class, 'search'])
+        ->middleware('throttle:places')->name('places.search');
 
     Route::get('posters/categories', [ContentController::class, 'categories'])
         ->defaults('type', 'poster')->name('posters.categories');

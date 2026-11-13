@@ -16,6 +16,7 @@ cp .env.example .env    # then fill in the values below
 php artisan key:generate
 php artisan migrate --force
 php artisan storage:link
+php artisan places:import   # birth places, about 580,000 rows; downloads from GeoNames, takes ~10 min, safe to re-run
 php artisan config:cache && php artisan route:cache && php artisan view:cache
 ```
 `.env` for production: `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL=https://...`,

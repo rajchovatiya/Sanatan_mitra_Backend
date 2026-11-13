@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    // Birth place search: OpenStreetMap is only asked when our own places table finds almost nothing.
+    'places' => [
+        'osm_fallback' => env('PLACES_OSM_FALLBACK', true),
+        'user_agent' => env('PLACES_USER_AGENT', 'SanatanShaily/1.0 (birth place search)'),
+    ],
+
 ];

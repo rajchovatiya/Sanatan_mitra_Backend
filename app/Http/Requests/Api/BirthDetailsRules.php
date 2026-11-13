@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Api;
 
+use Carbon\CarbonImmutable;
+
 /** Validation rules for one person's birth details, optionally nested under a key. */
 final class BirthDetailsRules
 {
@@ -13,6 +15,8 @@ final class BirthDetailsRules
             $prefix.'lat' => ['required', 'numeric', 'between:-90,90'],
             $prefix.'lng' => ['required', 'numeric', 'between:-180,180'],
             $prefix.'tz' => ['nullable', 'numeric', 'between:-12,14'],
+            // Place's time zone (e.g. America/New_York); wins over tz, with the offset that applied on the birth date.
+            $prefix.'timezone' => ['nullable', 'string', 'timezone:all'],
         ];
     }
 
@@ -24,7 +28,15 @@ final class BirthDetailsRules
             'time' => $input['time'],
             'lat' => (float) $input['lat'],
             'lng' => (float) $input['lng'],
-            'tz' => (float) ($input['tz'] ?? 5.5),
+            'tz' => ! empty($input['timezone'])
+                ? self::offsetAt($input['date'], $input['time'], $input['timezone'])
+                : (float) ($input['tz'] ?? 5.5),
         ];
+    }
+
+    /** UTC offset in hours at that local date and time (handles summer time and old offsets). */
+    public static function offsetAt(string $date, string $time, string $timezone): float
+    {
+        return CarbonImmutable::parse("$date $time", $timezone)->utcOffset() / 60;
     }
 }

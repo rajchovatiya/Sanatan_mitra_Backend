@@ -1,8 +1,11 @@
 # Progress and next steps
 
-Update this file at the end of every work session. Last update: 2026-11-08.
+Update this file at the end of every work session. Last update: 2026-11-13.
 
-## Done (70 tests passing)
+## Done (87 tests passing)
+- Birth place search `/places` (GeoNames: every Indian village/town/city + world cities, ~580k rows via
+  `php artisan places:import`; OpenStreetMap fallback). Kundli/Matching accept `timezone` for births abroad.
+  The preview database already has the places loaded. App renamed to "Sanatan Shaily" (package id unchanged).
 - Foundation: Laravel 13, Sanctum, rate limits, JSON errors, docs (API.md, DEPLOYMENT.md), Git
 - App users: OTP login, profile, photo/logo, devices, account deletion, saved kundlis, favourites, notifications list
 - App config (versions, maintenance, feature switches) editable in admin

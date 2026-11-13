@@ -20,6 +20,7 @@ Status: ✅ built and tested · ⏳ planned
 | 1 / min and 5 / hour per mobile, 30 / hour per IP | `auth/otp/send` |
 | 10 / min per IP, 30 / hour per mobile | `auth/otp/verify` |
 | 30 / min per user (or IP) | `astro/*` |
+| 60 / min per user (or IP) | `places` |
 
 ---
 
@@ -68,8 +69,9 @@ Until a provider is configured these return **503**, and the app should use its 
 | Status | Method | Path | Notes |
 |---|---|---|---|
 | ✅ | GET | `/astro/panchang?date=&lat=&lng=&tz=` | Places within about 1 km share one cached answer. |
-| ✅🔑 | POST | `/astro/kundli` | `{date, time, lat, lng, tz?}` |
-| ✅🔑 | POST | `/astro/matching` | `{boy:{date,time,lat,lng,tz?}, girl:{...}}` |
+| ✅🔑 | POST | `/astro/kundli` | `{date, time, lat, lng, tz?, timezone?}`. `timezone` (e.g. `America/New_York`, from `/places`) wins over `tz`; the server uses the offset that applied on that date. |
+| ✅🔑 | POST | `/astro/matching` | `{boy:{date,time,lat,lng,tz?,timezone?}, girl:{...}}` |
+| ✅ | GET | `/places?q=` | Birth place search, at least 2 letters, name starts with `q`, biggest first, max 25: `[{id, name, district, state, country_code, lat, lng, timezone}]`. Every Indian city, town and village plus world cities over 15,000 people (GeoNames, loaded with `php artisan places:import`). When fewer than 3 match, OpenStreetMap (India only, cached 30 days) fills in with `id: null`. |
 
 Provider: Prokerala (Lahiri ayanamsa). The server reshapes answers into this app format (indexes follow the app lists:
 rashi 0 = Mesha, nakshatra 0 = Ashwini, yoga 0 = Vishkambha, tithi 0 = Shukla Pratipada ... 14 = Purnima ... 29 = Amavasya):

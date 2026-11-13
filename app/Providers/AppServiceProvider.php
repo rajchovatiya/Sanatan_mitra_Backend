@@ -90,6 +90,8 @@ class AppServiceProvider extends ServiceProvider
 
         // Search scans text, feedback can be spammed.
         RateLimiter::for('search', fn (Request $r) => Limit::perMinute(30)->by($r->user()?->id ?: $r->ip()));
+        // Place search runs as the user types (the app waits for a pause first).
+        RateLimiter::for('places', fn (Request $r) => Limit::perMinute(60)->by($r->user()?->id ?: $r->ip()));
         RateLimiter::for('feedback', fn (Request $r) => Limit::perHour(5)->by($r->user()?->id ?: $r->ip()));
 
         // Provider calls may cost money; cached answers are cheap but still limited.
