@@ -16,7 +16,18 @@ mkdir -p storage/app/public storage/app/private storage/logs \
 chown -R www-data:www-data storage bootstrap/cache
 
 php artisan storage:link 2>/dev/null || true
-php artisan migrate --force
+
+# Railway's private network (and MySQL) can need a little time after a start.
+tries=0
+until php artisan migrate --force; do
+    tries=$((tries + 1))
+    if [ "$tries" -ge 24 ]; then
+        echo "Database still not reachable after 2 minutes; check DB_HOST and that MySQL is running."
+        exit 1
+    fi
+    echo "Database not ready, retrying in 5 seconds ($tries/24)"
+    sleep 5
+done
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
