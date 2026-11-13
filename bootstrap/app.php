@@ -21,6 +21,12 @@ return Application::configure(basePath: dirname(__DIR__))
         // Admin pages: guests go to the admin login, logged-in admins skip it.
         $middleware->redirectGuestsTo(fn () => route('admin.login'));
         $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
+
+        // Behind a hosting proxy (Railway) set TRUSTED_PROXIES=* so links and
+        // redirects use https. Not set on a local machine: nothing changes.
+        if ($proxies = env('TRUSTED_PROXIES')) {
+            $middleware->trustProxies(at: $proxies === '*' ? '*' : explode(',', $proxies));
+        }
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $isApi = fn (Request $request) => $request->is('api/*');
