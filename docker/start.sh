@@ -31,6 +31,11 @@ done
 
 # First admin from FIRST_ADMIN_* variables (only while no admin exists).
 php artisan admin:bootstrap || true
+
+# Test content packed with content:export (IMPORT_SEED_CONTENT=1). Safe to repeat.
+if [ "${IMPORT_SEED_CONTENT:-0}" = "1" ]; then
+    php artisan content:import || true
+fi
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache

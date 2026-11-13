@@ -1,0 +1,476 @@
+{
+    "categories": [
+        {
+            "key": 1,
+            "type": "mantra",
+            "name": {
+                "en": "Aarti",
+                "hi": null,
+                "gu": "Aarti"
+            },
+            "description": {
+                "en": "Aarti",
+                "hi": null,
+                "gu": null
+            },
+            "icon_path": null,
+            "sort_order": 0,
+            "is_active": true
+        },
+        {
+            "key": 2,
+            "type": "mantra",
+            "name": {
+                "en": "Chalisa",
+                "hi": null,
+                "gu": null
+            },
+            "description": {
+                "en": null,
+                "hi": null,
+                "gu": null
+            },
+            "icon_path": null,
+            "sort_order": 0,
+            "is_active": true
+        },
+        {
+            "key": 3,
+            "type": "mantra",
+            "name": {
+                "en": "Path",
+                "hi": null,
+                "gu": null
+            },
+            "description": {
+                "en": null,
+                "hi": null,
+                "gu": null
+            },
+            "icon_path": null,
+            "sort_order": 0,
+            "is_active": true
+        },
+        {
+            "key": 4,
+            "type": "mantra",
+            "name": {
+                "en": "Mantra / Stuti",
+                "hi": null,
+                "gu": null
+            },
+            "description": {
+                "en": null,
+                "hi": null,
+                "gu": null
+            },
+            "icon_path": null,
+            "sort_order": 0,
+            "is_active": true
+        },
+        {
+            "key": 5,
+            "type": "poster",
+            "name": {
+                "en": "Astro",
+                "hi": null,
+                "gu": "Jyotish"
+            },
+            "description": {
+                "en": null,
+                "hi": null,
+                "gu": null
+            },
+            "icon_path": "category-icons/nWJ21ywl0BK38QuxES87q2TMQYPGzrknv4UvZZj6.jpg",
+            "sort_order": 1,
+            "is_active": true
+        },
+        {
+            "key": 6,
+            "type": "poster",
+            "name": {
+                "en": "Good Morning",
+                "hi": "सुप्रभात",
+                "gu": "સુપ્રભાત"
+            },
+            "description": null,
+            "icon_path": null,
+            "sort_order": 1,
+            "is_active": true
+        },
+        {
+            "key": 7,
+            "type": "poster",
+            "name": {
+                "en": "Bhagwan",
+                "hi": "भगवान",
+                "gu": "ભગવાન"
+            },
+            "description": null,
+            "icon_path": null,
+            "sort_order": 2,
+            "is_active": true
+        },
+        {
+            "key": 8,
+            "type": "poster",
+            "name": {
+                "en": "Festival",
+                "hi": "त्योहार",
+                "gu": "તહેવાર"
+            },
+            "description": null,
+            "icon_path": null,
+            "sort_order": 3,
+            "is_active": true
+        },
+        {
+            "key": 9,
+            "type": "poster",
+            "name": {
+                "en": "Suvichar",
+                "hi": "सुविचार",
+                "gu": "સુવિચાર"
+            },
+            "description": null,
+            "icon_path": null,
+            "sort_order": 4,
+            "is_active": true
+        }
+    ],
+    "posters": [
+        {
+            "category": 6,
+            "title": {
+                "en": "Suprabhat 1",
+                "hi": "Suprabhat 1",
+                "gu": "Suprabhat 1"
+            },
+            "image_path": "posters/sample-suprabhat-1.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 0,
+            "is_active": true
+        },
+        {
+            "category": 6,
+            "title": {
+                "en": "Suprabhat 2",
+                "hi": "Suprabhat 2",
+                "gu": "Suprabhat 2"
+            },
+            "image_path": "posters/sample-suprabhat-2.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 1,
+            "is_active": true
+        },
+        {
+            "category": 7,
+            "title": {
+                "en": "Har Har Mahadev",
+                "hi": "Har Har Mahadev",
+                "gu": "Har Har Mahadev"
+            },
+            "image_path": "posters/sample-har-har-mahadev.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 0,
+            "is_active": true
+        },
+        {
+            "category": 7,
+            "title": {
+                "en": "Jai Shri Ram",
+                "hi": "Jai Shri Ram",
+                "gu": "Jai Shri Ram"
+            },
+            "image_path": "posters/sample-jai-shri-ram.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 1,
+            "is_active": true
+        },
+        {
+            "category": 8,
+            "title": {
+                "en": "Chhath Mahaparv",
+                "hi": "Chhath Mahaparv",
+                "gu": "Chhath Mahaparv"
+            },
+            "image_path": "posters/sample-chhath-mahaparv.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 0,
+            "is_active": true
+        },
+        {
+            "category": 8,
+            "title": {
+                "en": "Shubh Deepawali",
+                "hi": "Shubh Deepawali",
+                "gu": "Shubh Deepawali"
+            },
+            "image_path": "posters/sample-shubh-deepawali.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 1,
+            "is_active": true
+        },
+        {
+            "category": 5,
+            "title": {
+                "en": "Bhagvat",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/wh9VY0VV5v1pemQVM9IAGAOIdHswIJUbOyTdenz7.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 0,
+            "is_active": true
+        },
+        {
+            "category": 8,
+            "title": {
+                "en": "Festival",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-festival-2.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 11,
+            "is_active": true
+        },
+        {
+            "category": 8,
+            "title": {
+                "en": "Festival",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-festival-3.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 12,
+            "is_active": true
+        },
+        {
+            "category": 8,
+            "title": {
+                "en": "Festival",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-festival-4.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 13,
+            "is_active": true
+        },
+        {
+            "category": 9,
+            "title": {
+                "en": "Suvichar",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-suvichar-5.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 14,
+            "is_active": true
+        },
+        {
+            "category": 6,
+            "title": {
+                "en": "Good Morning",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-suprabhat-9.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 18,
+            "is_active": true
+        },
+        {
+            "category": 6,
+            "title": {
+                "en": "Good Morning",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-suprabhat-10.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 19,
+            "is_active": true
+        },
+        {
+            "category": 7,
+            "title": {
+                "en": "Bhagwan",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-bhagwan-11.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 20,
+            "is_active": true
+        },
+        {
+            "category": 9,
+            "title": {
+                "en": "Suvichar",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-suvichar-12.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 21,
+            "is_active": true
+        },
+        {
+            "category": 7,
+            "title": {
+                "en": "Bhagwan",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-bhagwan-14.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 23,
+            "is_active": true
+        },
+        {
+            "category": 7,
+            "title": {
+                "en": "Bhagwan",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-bhagwan-15.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 24,
+            "is_active": true
+        },
+        {
+            "category": 7,
+            "title": {
+                "en": "Bhagwan",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-bhagwan-17.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 26,
+            "is_active": true
+        },
+        {
+            "category": 7,
+            "title": {
+                "en": "Bhagwan",
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "posters/sample-bhagwan-18.jpg",
+            "frame": "classic",
+            "show_from": null,
+            "sort_order": 27,
+            "is_active": true
+        }
+    ],
+    "mantras": [
+        {
+            "category": 1,
+            "title": {
+                "en": "Ganesh Aarty",
+                "hi": null,
+                "gu": null
+            },
+            "deity": {
+                "en": "ganesh mantra",
+                "hi": null,
+                "gu": null
+            },
+            "lyrics": {
+                "en": "जय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\nएक दंत दयावंत, चार भुजा धारी।\r\nमाथे सिंदूर सोहे, मूसे की सवारी॥\r\nजय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\nअंधन को आँख देत, कोढ़िन को काया।\r\nबांझन को पुत्र देत, निर्धन को माया॥\r\nजय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\nपान चढ़े, फूल चढ़े, और चढ़े मेवा।\r\nलड्डुअन का भोग लगे, संत करें सेवा॥\r\nजय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\n'सूर' श्याम शरण आए, सफल कीजे सेवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\nजय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥",
+                "hi": "जय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\nएक दंत दयावंत, चार भुजा धारी।\r\nमाथे सिंदूर सोहे, मूसे की सवारी॥\r\nजय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\nअंधन को आँख देत, कोढ़िन को काया।\r\nबांझन को पुत्र देत, निर्धन को माया॥\r\nजय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\nपान चढ़े, फूल चढ़े, और चढ़े मेवा।\r\nलड्डुअन का भोग लगे, संत करें सेवा॥\r\nजय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\n'सूर' श्याम शरण आए, सफल कीजे सेवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥\r\nजय गणेश, जय गणेश, जय गणेश देवा।\r\nमाता जाकी पार्वती, पिता महादेवा॥0",
+                "gu": "જય ગણેશ જય ગણેશ જય ગણેશ દેવા,\r\nમાતા જાકી પાર્વતી પિતા મહાદેવા ॥ટેક॥\r\nએકદંત ચુજબંત ચાર ભુજાધારી,\r\nમથે સિંદૂર સોહે મુસે કી સવારી ॥જય...॥\r\nઅંધન કો આંખ દેત કઢન કો કાયા,\r\nબાંઝન કો પુત્ર દેત નિધન કો માયા ॥જય...॥\r\nહાર ચઢે ફૂલ ચઢે ઔર ચઢે મેવા,\r\nલડ્ડુન કા ભોગ લગે સંત કરે સેવામાં ॥જય...॥\r\nજય ગણેશ જય ગણેશ જય ગણેશ દેવા,\r\nમાતા જાકી પાર્વતી પિતા મહાદેવા ॥જય...॥"
+            },
+            "meaning": {
+                "en": null,
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "mantra-images/yPTa8Ry02dRsinSmgwAx89D6CCjsnXPZ6zRZ7SKf.jpg",
+            "audio_path": "mantra-audio/KmVWVv3uAGDwZdTzqyDwcI7zxiTUOkmVBPcMpJFn.mp3",
+            "duration_seconds": null,
+            "sort_order": 3,
+            "is_active": true
+        },
+        {
+            "category": 2,
+            "title": {
+                "en": "Hanuman chalisha",
+                "hi": null,
+                "gu": null
+            },
+            "deity": {
+                "en": "Hanuman",
+                "hi": null,
+                "gu": null
+            },
+            "lyrics": {
+                "en": "દોહા\r\nશ્રી ગુરુ ચરણ સરોજ રજ નિજમન મુકુર સુધારિ ।\r\nવરણૌ રઘુવર વિમલયશ જો દાયક ફલચારિ ॥\r\nબુદ્ધિહીન તનુજાનિકૈ સુમિરૌ પવન કુમાર ।\r\nબલ બુદ્ધિ વિદ્યા દેહુ મોહિ હરહુ કલેશ વિકાર ॥\r\n\r\nધ્યાનમ્\r\nઅતુલિત બલધામં સ્વર્ણ શૈલાભ દેહમ્ ।\r\nદનુજ વન કૃશાનું જ્ઞાનિના-મગ્રગણ્યમ્ ॥\r\nસકલ ગુણ નિધાનં વાનરાણા-મધીશમ્ ।\r\nરઘુપતિ પ્રિય ભક્તં વાતજાતં નમામિ ॥\r\n\r\nગોષ્પદીકૃત વારાશિં મશકીકૃત રાક્ષસમ્ ।\r\nરામાયણ મહામાલા રત્નં વંદે-(અ)નિલાત્મજમ્ ॥\r\nયત્ર યત્ર રઘુનાથ કીર્તનં તત્ર તત્ર કૃતમસ્તકાંજલિમ્ ।\r\nભાષ્પવારિ પરિપૂર્ણ લોચનં મારુતિં નમત રાક્ષસાંતકમ્ ॥\r\n\r\nમનોજવં મારુત તુલ્યવેગમ્ ।\r\nજિતેંદ્રિયં બુદ્ધિમતાં વરિષ્ઠમ્ ॥\r\nવાતાત્મજં વાનરયૂથ મુખ્યમ્ ।\r\nશ્રી રામ દૂતં શિરસા નમામિ ॥\r\n\r\nચૌપાઈ\r\nજય હનુમાન જ્ઞાન ગુણ સાગર ।\r\nજય કપીશ તિહુ લોક ઉજાગર ॥ 1 ॥\r\n\r\nરામદૂત અતુલિત બલધામા ।\r\nઅંજનિ પુત્ર પવનસુત નામા ॥ 2 ॥\r\n\r\nમહાવીર વિક્રમ બજરંગી ।\r\nકુમતિ નિવાર સુમતિ કે સંગી ॥3 ॥\r\n\r\nકંચન વરણ વિરાજ સુવેશા ।\r\nકાનન કુંડલ કુંચિત કેશા ॥ 4 ॥\r\n\r\nહાથવજ્ર ઔ ધ્વજા વિરાજૈ । [ઔરુ]\r\nકાંધે મૂંજ જનેવૂ સાજૈ ॥ 5॥\r\n\r\nશંકર સુવન કેસરી નંદન । [શંકર સ્વયં]\r\nતેજ પ્રતાપ મહાજગ વંદન ॥ 6 ॥\r\n\r\nવિદ્યાવાન ગુણી અતિ ચાતુર ।\r\nરામ કાજ કરિવે કો આતુર ॥ 7 ॥\r\n\r\nપ્રભુ ચરિત્ર સુનિવે કો રસિયા ।\r\nરામલખન સીતા મન બસિયા ॥ 8॥\r\n\r\nસૂક્ષ્મ રૂપધરિ સિયહિ દિખાવા ।\r\nવિકટ રૂપધરિ લંક જલાવા ॥ 9 ॥\r\n\r\nભીમ રૂપધરિ અસુર સંહારે ।\r\nરામચંદ્ર કે કાજ સંવારે ॥ 10 ॥\r\n\r\nલાય સંજીવન લખન જિયાયે ।\r\nશ્રી રઘુવીર હરષિ ઉરલાયે ॥ 11 ॥\r\n\r\nરઘુપતિ કીન્હી બહુત બડાયી (ઈ) ।\r\nતુમ મમ પ્રિય ભરત સમ ભાયી ॥ 12 ॥\r\n\r\nસહસ્ર વદન તુમ્હરો યશગાવૈ ।\r\nઅસ કહિ શ્રીપતિ કંઠ લગાવૈ ॥ 13 ॥\r\n\r\nસનકાદિક બ્રહ્માદિ મુનીશા ।\r\nનારદ શારદ સહિત અહીશા ॥ 14 ॥\r\n\r\nયમ કુબેર દિગપાલ જહાં તે ।\r\nકવિ કોવિદ કહિ સકે કહાં તે ॥ 15 ॥\r\n\r\nતુમ ઉપકાર સુગ્રીવહિ કીન્હા ।\r\nરામ મિલાય રાજપદ દીન્હા ॥ 16 ॥\r\n\r\nતુમ્હરો મંત્ર વિભીષણ માના ।\r\nલંકેશ્વર ભયે સબ જગ જાના ॥ 17 ॥\r\n\r\nયુગ સહસ્ર યોજન પર ભાનૂ ।\r\nલીલ્યો તાહિ મધુર ફલ જાનૂ ॥ 18 ॥\r\n\r\nપ્રભુ મુદ્રિકા મેલિ મુખ માહી ।\r\nજલધિ લાંઘિ ગયે અચરજ નાહી ॥ 19 ॥\r\n\r\nદુર્ગમ કાજ જગત કે જેતે ।\r\nસુગમ અનુગ્રહ તુમ્હરે તેતે ॥ 20 ॥\r\n\r\nરામ દુઆરે તુમ રખવારે ।\r\nહોત ન આજ્ઞા બિનુ પૈસારે ॥ 21 ॥\r\n\r\nસબ સુખ લહૈ તુમ્હારી શરણા ।\r\nતુમ રક્ષક કાહૂ કો ડર ના ॥ 22 ॥\r\n\r\nઆપન તેજ સમ્હારો આપૈ ।\r\nતીનોં લોક હાંક તે કાંપૈ ॥ 23 ॥\r\n\r\nભૂત પિશાચ નિકટ નહિ આવૈ ।\r\nમહવીર જબ નામ સુનાવૈ ॥ 24 ॥\r\n\r\nનાસૈ રોગ હરૈ સબ પીરા ।\r\nજપત નિરંતર હનુમત વીરા ॥ 25 ॥\r\n\r\nસંકટ સે હનુમાન છુડાવૈ ।\r\nમન ક્રમ વચન ધ્યાન જો લાવૈ ॥ 26 ॥\r\n\r\nસબ પર રામ તપસ્વી રાજા ।\r\nતિનકે કાજ સકલ તુમ સાજા ॥ 27 ॥\r\n\r\nઔર મનોરથ જો કોયિ લાવૈ ।\r\nતાસુ અમિત જીવન ફલ પાવૈ ॥ 28 ॥\r\n\r\nચારો યુગ પ્રતાપ તુમ્હારા ।\r\nહૈ પરસિદ્ધ જગત ઉજિયારા ॥ 29 ॥\r\n\r\nસાધુ સંત કે તુમ રખવારે ।\r\nઅસુર નિકંદન રામ દુલારે ॥ 30 ॥\r\n\r\nઅષ્ટસિદ્ધિ નવ નિધિ કે દાતા ।\r\nઅસ વર દીન્હ જાનકી માતા ॥ 31 ॥\r\n\r\nરામ રસાયન તુમ્હારે પાસા ।\r\nસદા રહો રઘુપતિ કે દાસા ॥ 32 ॥ [સાદ રહો]\r\n\r\nતુમ્હરે ભજન રામકો પાવૈ ।\r\nજન્મ જન્મ કે દુખ બિસરાવૈ ॥ 33 ॥\r\n\r\nઅંત કાલ રઘુપતિ પુરજાયી । [રઘુવર]\r\nજહાં જન્મ હરિભક્ત કહાયી ॥ 34 ॥\r\n\r\nઔર દેવતા ચિત્ત ન ધરયી ।\r\nહનુમત સેયિ સર્વ સુખ કરયી ॥ 35 ॥\r\n\r\nસંકટ ક(હ)ટૈ મિટૈ સબ પીરા ।\r\nજો સુમિરૈ હનુમત બલ વીરા ॥ 36 ॥\r\n\r\nજૈ જૈ જૈ હનુમાન ગોસાયી ।\r\nકૃપા કરહુ ગુરુદેવ કી નાયી ॥ 37 ॥\r\n\r\nયહ શત વાર પાઠ કર કોયી । [જો]\r\nછૂટહિ બંદિ મહા સુખ હોયી ॥ 38 ॥\r\n\r\nજો યહ પડૈ હનુમાન ચાલીસા ।\r\nહોય સિદ્ધિ સાખી ગૌરીશા ॥ 39 ॥\r\n\r\nતુલસીદાસ સદા હરિ ચેરા ।\r\nકીજૈ નાથ હૃદય મહ ડેરા ॥ 40 ॥\r\n\r\nદોહા\r\nપવન તનય સંકટ હરણ - મંગળ મૂરતિ રૂપ્ ।\r\nરામ લખન સીતા સહિત - હૃદય બસહુ સુરભૂપ્ ॥\r\nસિયાવર રામચંદ્રકી જય । પવનસુત હનુમાનકી જય । બોલો ભાયી સબ સંતનકી જય ।",
+                "hi": null,
+                "gu": "દોહા\r\nશ્રી ગુરુ ચરણ સરોજ રજ નિજમન મુકુર સુધારિ ।\r\nવરણૌ રઘુવર વિમલયશ જો દાયક ફલચારિ ॥\r\nબુદ્ધિહીન તનુજાનિકૈ સુમિરૌ પવન કુમાર ।\r\nબલ બુદ્ધિ વિદ્યા દેહુ મોહિ હરહુ કલેશ વિકાર ॥\r\n\r\nધ્યાનમ્\r\nઅતુલિત બલધામં સ્વર્ણ શૈલાભ દેહમ્ ।\r\nદનુજ વન કૃશાનું જ્ઞાનિના-મગ્રગણ્યમ્ ॥\r\nસકલ ગુણ નિધાનં વાનરાણા-મધીશમ્ ।\r\nરઘુપતિ પ્રિય ભક્તં વાતજાતં નમામિ ॥\r\n\r\nગોષ્પદીકૃત વારાશિં મશકીકૃત રાક્ષસમ્ ।\r\nરામાયણ મહામાલા રત્નં વંદે-(અ)નિલાત્મજમ્ ॥\r\nયત્ર યત્ર રઘુનાથ કીર્તનં તત્ર તત્ર કૃતમસ્તકાંજલિમ્ ।\r\nભાષ્પવારિ પરિપૂર્ણ લોચનં મારુતિં નમત રાક્ષસાંતકમ્ ॥\r\n\r\nમનોજવં મારુત તુલ્યવેગમ્ ।\r\nજિતેંદ્રિયં બુદ્ધિમતાં વરિષ્ઠમ્ ॥\r\nવાતાત્મજં વાનરયૂથ મુખ્યમ્ ।\r\nશ્રી રામ દૂતં શિરસા નમામિ ॥\r\n\r\nચૌપાઈ\r\nજય હનુમાન જ્ઞાન ગુણ સાગર ।\r\nજય કપીશ તિહુ લોક ઉજાગર ॥ 1 ॥\r\n\r\nરામદૂત અતુલિત બલધામા ।\r\nઅંજનિ પુત્ર પવનસુત નામા ॥ 2 ॥\r\n\r\nમહાવીર વિક્રમ બજરંગી ।\r\nકુમતિ નિવાર સુમતિ કે સંગી ॥3 ॥\r\n\r\nકંચન વરણ વિરાજ સુવેશા ।\r\nકાનન કુંડલ કુંચિત કેશા ॥ 4 ॥\r\n\r\nહાથવજ્ર ઔ ધ્વજા વિરાજૈ । [ઔરુ]\r\nકાંધે મૂંજ જનેવૂ સાજૈ ॥ 5॥\r\n\r\nશંકર સુવન કેસરી નંદન । [શંકર સ્વયં]\r\nતેજ પ્રતાપ મહાજગ વંદન ॥ 6 ॥\r\n\r\nવિદ્યાવાન ગુણી અતિ ચાતુર ।\r\nરામ કાજ કરિવે કો આતુર ॥ 7 ॥\r\n\r\nપ્રભુ ચરિત્ર સુનિવે કો રસિયા ।\r\nરામલખન સીતા મન બસિયા ॥ 8॥\r\n\r\nસૂક્ષ્મ રૂપધરિ સિયહિ દિખાવા ।\r\nવિકટ રૂપધરિ લંક જલાવા ॥ 9 ॥\r\n\r\nભીમ રૂપધરિ અસુર સંહારે ।\r\nરામચંદ્ર કે કાજ સંવારે ॥ 10 ॥\r\n\r\nલાય સંજીવન લખન જિયાયે ।\r\nશ્રી રઘુવીર હરષિ ઉરલાયે ॥ 11 ॥\r\n\r\nરઘુપતિ કીન્હી બહુત બડાયી (ઈ) ।\r\nતુમ મમ પ્રિય ભરત સમ ભાયી ॥ 12 ॥\r\n\r\nસહસ્ર વદન તુમ્હરો યશગાવૈ ।\r\nઅસ કહિ શ્રીપતિ કંઠ લગાવૈ ॥ 13 ॥\r\n\r\nસનકાદિક બ્રહ્માદિ મુનીશા ।\r\nનારદ શારદ સહિત અહીશા ॥ 14 ॥\r\n\r\nયમ કુબેર દિગપાલ જહાં તે ।\r\nકવિ કોવિદ કહિ સકે કહાં તે ॥ 15 ॥\r\n\r\nતુમ ઉપકાર સુગ્રીવહિ કીન્હા ।\r\nરામ મિલાય રાજપદ દીન્હા ॥ 16 ॥\r\n\r\nતુમ્હરો મંત્ર વિભીષણ માના ।\r\nલંકેશ્વર ભયે સબ જગ જાના ॥ 17 ॥\r\n\r\nયુગ સહસ્ર યોજન પર ભાનૂ ।\r\nલીલ્યો તાહિ મધુર ફલ જાનૂ ॥ 18 ॥\r\n\r\nપ્રભુ મુદ્રિકા મેલિ મુખ માહી ।\r\nજલધિ લાંઘિ ગયે અચરજ નાહી ॥ 19 ॥\r\n\r\nદુર્ગમ કાજ જગત કે જેતે ।\r\nસુગમ અનુગ્રહ તુમ્હરે તેતે ॥ 20 ॥\r\n\r\nરામ દુઆરે તુમ રખવારે ।\r\nહોત ન આજ્ઞા બિનુ પૈસારે ॥ 21 ॥\r\n\r\nસબ સુખ લહૈ તુમ્હારી શરણા ।\r\nતુમ રક્ષક કાહૂ કો ડર ના ॥ 22 ॥\r\n\r\nઆપન તેજ સમ્હારો આપૈ ।\r\nતીનોં લોક હાંક તે કાંપૈ ॥ 23 ॥\r\n\r\nભૂત પિશાચ નિકટ નહિ આવૈ ।\r\nમહવીર જબ નામ સુનાવૈ ॥ 24 ॥\r\n\r\nનાસૈ રોગ હરૈ સબ પીરા ।\r\nજપત નિરંતર હનુમત વીરા ॥ 25 ॥\r\n\r\nસંકટ સે હનુમાન છુડાવૈ ।\r\nમન ક્રમ વચન ધ્યાન જો લાવૈ ॥ 26 ॥\r\n\r\nસબ પર રામ તપસ્વી રાજા ।\r\nતિનકે કાજ સકલ તુમ સાજા ॥ 27 ॥\r\n\r\nઔર મનોરથ જો કોયિ લાવૈ ।\r\nતાસુ અમિત જીવન ફલ પાવૈ ॥ 28 ॥\r\n\r\nચારો યુગ પ્રતાપ તુમ્હારા ।\r\nહૈ પરસિદ્ધ જગત ઉજિયારા ॥ 29 ॥\r\n\r\nસાધુ સંત કે તુમ રખવારે ।\r\nઅસુર નિકંદન રામ દુલારે ॥ 30 ॥\r\n\r\nઅષ્ટસિદ્ધિ નવ નિધિ કે દાતા ।\r\nઅસ વર દીન્હ જાનકી માતા ॥ 31 ॥\r\n\r\nરામ રસાયન તુમ્હારે પાસા ।\r\nસદા રહો રઘુપતિ કે દાસા ॥ 32 ॥ [સાદ રહો]\r\n\r\nતુમ્હરે ભજન રામકો પાવૈ ।\r\nજન્મ જન્મ કે દુખ બિસરાવૈ ॥ 33 ॥\r\n\r\nઅંત કાલ રઘુપતિ પુરજાયી । [રઘુવર]\r\nજહાં જન્મ હરિભક્ત કહાયી ॥ 34 ॥\r\n\r\nઔર દેવતા ચિત્ત ન ધરયી ।\r\nહનુમત સેયિ સર્વ સુખ કરયી ॥ 35 ॥\r\n\r\nસંકટ ક(હ)ટૈ મિટૈ સબ પીરા ।\r\nજો સુમિરૈ હનુમત બલ વીરા ॥ 36 ॥\r\n\r\nજૈ જૈ જૈ હનુમાન ગોસાયી ।\r\nકૃપા કરહુ ગુરુદેવ કી નાયી ॥ 37 ॥\r\n\r\nયહ શત વાર પાઠ કર કોયી । [જો]\r\nછૂટહિ બંદિ મહા સુખ હોયી ॥ 38 ॥\r\n\r\nજો યહ પડૈ હનુમાન ચાલીસા ।\r\nહોય સિદ્ધિ સાખી ગૌરીશા ॥ 39 ॥\r\n\r\nતુલસીદાસ સદા હરિ ચેરા ।\r\nકીજૈ નાથ હૃદય મહ ડેરા ॥ 40 ॥\r\n\r\nદોહા\r\nપવન તનય સંકટ હરણ - મંગળ મૂરતિ રૂપ્ ।\r\nરામ લખન સીતા સહિત - હૃદય બસહુ સુરભૂપ્ ॥\r\nસિયાવર રામચંદ્રકી જય । પવનસુત હનુમાનકી જય । બોલો ભાયી સબ સંતનકી જય ।"
+            },
+            "meaning": {
+                "en": null,
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "mantra-images/iYta3oonQwwjWOfCvgvivZQ6VJejA8Xmzprp7rSN.jpg",
+            "audio_path": "mantra-audio/6HtWhad4rVOT50MWW7dyPeQcinrAMZzCWEonY40w.mp3",
+            "duration_seconds": null,
+            "sort_order": 2,
+            "is_active": true
+        },
+        {
+            "category": 4,
+            "title": {
+                "en": "Kanakdhara Strotram",
+                "hi": null,
+                "gu": null
+            },
+            "deity": {
+                "en": "Kankdhara",
+                "hi": null,
+                "gu": null
+            },
+            "lyrics": {
+                "en": "ॐ वं श्रीं वं ऐं ह्रीं श्रीं क्लीं कनकधारायै नमः",
+                "hi": null,
+                "gu": "ॐ वं श्रीं वं ऐं ह्रीं श्रीं क्लीं कनकधारायै नमः"
+            },
+            "meaning": {
+                "en": null,
+                "hi": null,
+                "gu": null
+            },
+            "image_path": "mantra-images/u0SNLQShCxJZe1M7CtuDMLdvfLrF9eBdwImnfnUT.webp",
+            "audio_path": "mantra-audio/dkt3w2kCJQnyQ0kHFnTarb45tsK0k5SvIjrgPNVN.mp3",
+            "duration_seconds": null,
+            "sort_order": 1,
+            "is_active": true
+        }
+    ]
+}
