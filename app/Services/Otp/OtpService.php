@@ -16,7 +16,10 @@ class OtpService
     public function send(string $mobile): string
     {
         $length = config('sanatan.otp.length');
-        $code = (string) random_int(10 ** ($length - 1), 10 ** $length - 1);
+        $testCode = (string) config('sanatan.otp.test_code');
+        $code = $testCode !== ''
+            ? $testCode
+            : (string) random_int(10 ** ($length - 1), 10 ** $length - 1);
         $expiresAt = now()->addSeconds(config('sanatan.otp.ttl'));
 
         Cache::put($this->key($mobile), [
@@ -25,7 +28,9 @@ class OtpService
             'expires_at' => $expiresAt->getTimestamp(),
         ], $expiresAt);
 
-        $this->sender->send($mobile, $code);
+        if ($testCode === '') {
+            $this->sender->send($mobile, $code);
+        }
 
         return $code;
     }

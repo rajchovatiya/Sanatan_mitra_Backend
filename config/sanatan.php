@@ -8,7 +8,10 @@ return [
     */
     'otp' => [
         'driver' => env('OTP_DRIVER', 'log'),
-        'length' => 6,
+        'length' => (int) env('OTP_LENGTH', 6),
+        // Client testing only: every number gets this code and no SMS is sent.
+        // Remove (leave empty) before launch.
+        'test_code' => env('OTP_TEST_CODE'),
         'ttl' => 300,
         'max_attempts' => 5,
         // Returns the code in the API response so the app can be tested without SMS.

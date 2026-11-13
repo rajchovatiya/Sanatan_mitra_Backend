@@ -19,7 +19,12 @@ class AuthController extends Controller
     {
         $code = $otp->send($request->validated('mobile'));
 
-        $body = ['message' => 'OTP sent.', 'expires_in' => config('sanatan.otp.ttl')];
+        $body = [
+            'message' => 'OTP sent.',
+            'expires_in' => config('sanatan.otp.ttl'),
+            // How many digits the app should ask for.
+            'length' => config('sanatan.otp.length'),
+        ];
 
         // Lets the app be tested without SMS. Never in production.
         if (config('sanatan.otp.expose_code') && ! app()->isProduction()) {
