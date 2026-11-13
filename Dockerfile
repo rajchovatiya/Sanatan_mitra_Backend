@@ -22,8 +22,15 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-av
 WORKDIR /var/www/html
 
 # Dependencies first so they are cached between deploys.
+# GitHub sometimes rate-limits anonymous downloads (HTTP 429), so retry with
+# pauses. Optional: set COMPOSER_AUTH (a GitHub token) as a build variable.
+ARG COMPOSER_AUTH
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-interaction
+RUN for wait in 0 30 90 180; do \
+        sleep $wait; \
+        composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-interaction && exit 0; \
+        echo "composer install failed, retrying after a pause"; \
+    done; exit 1
 
 COPY . .
 RUN composer dump-autoload --optimize --no-dev \
