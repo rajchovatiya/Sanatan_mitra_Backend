@@ -40,4 +40,9 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+# The commands above run as root and can create folders (e.g. posters/ from
+# content:import) and log files Apache could not write to, so admin uploads
+# would save without their picture. Hand everything back to Apache last.
+chown -R www-data:www-data storage bootstrap/cache
+
 exec apache2-foreground

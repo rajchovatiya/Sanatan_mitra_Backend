@@ -14,10 +14,19 @@ final class Media
         return Storage::disk(config('sanatan.media_disk'));
     }
 
-    /** Saves under a random name; returns the stored path. */
+    /**
+     * Saves under a random name; returns the stored path.
+     * Fails loudly when the file can't be written, so a poster is never saved
+     * without its picture.
+     */
     public static function store(UploadedFile $file, string $folder): string
     {
-        return $file->store($folder, config('sanatan.media_disk'));
+        $path = $file->store($folder, config('sanatan.media_disk'));
+        if (! is_string($path) || $path === '') {
+            throw new \RuntimeException("Could not save the uploaded file in \"{$folder}\". Check that the storage folder is writable.");
+        }
+
+        return $path;
     }
 
     /** Stores the new file (if given) and deletes the old one; returns the path to keep. */
