@@ -59,6 +59,17 @@ class PlaceTest extends TestCase
         Http::assertSentCount(1);
     }
 
+    public function test_nearest_place_to_a_gps_position(): void
+    {
+        $this->place(1, 'Junagadh', 320000, ['lat' => 21.5222, 'lng' => 70.4579]);
+        $this->place(2, 'Vanthli', 20000, ['lat' => 21.4800, 'lng' => 70.3300]);
+
+        $this->getJson('/api/v1/places/nearest?lat=21.49&lng=70.34')
+            ->assertOk()->assertJsonPath('data.name', 'Vanthli');
+        $this->getJson('/api/v1/places/nearest?lat=10&lng=10')
+            ->assertOk()->assertJsonPath('data', null);
+    }
+
     public function test_search_needs_two_letters(): void
     {
         $this->getJson('/api/v1/places?q=j')->assertStatus(422);

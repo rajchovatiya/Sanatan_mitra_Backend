@@ -43,6 +43,8 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
 
     Route::get('places', [PlaceController::class, 'search'])
         ->middleware('throttle:places')->name('places.search');
+    Route::get('places/nearest', [PlaceController::class, 'nearest'])
+        ->middleware('throttle:places')->name('places.nearest');
 
     Route::get('posters/categories', [ContentController::class, 'categories'])
         ->defaults('type', 'poster')->name('posters.categories');
