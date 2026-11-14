@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PosterBulkRequest;
 use App\Http\Requests\Admin\PosterRequest;
 use App\Models\Category;
 use App\Models\Poster;
 use App\Support\Media;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class PosterController extends Controller
@@ -59,6 +61,38 @@ class PosterController extends Controller
         Media::delete($poster->image_path);
 
         return back()->with('status', 'Poster deleted.');
+    }
+
+    /** Many posters at once into one category. */
+    public function bulkCreate(): View
+    {
+        return view('admin.posters.bulk', ['categories' => $this->categories()]);
+    }
+
+    public function bulkStore(PosterBulkRequest $request): RedirectResponse
+    {
+        $data = $request->validated();
+        $files = $request->file('images');
+
+        foreach ($files as $i => $file) {
+            // The typed English name, or one made from the file name.
+            $title = trim((string) ($data['titles'][$i] ?? ''))
+                ?: Str::of($file->getClientOriginalName())->beforeLast('.')->replace(['_', '-'], ' ')->squish()->ucfirst()->limit(100, '')->toString();
+
+            Poster::create([
+                'category_id' => $data['category_id'],
+                'title' => ['en' => $title ?: 'Poster'],
+                'image_path' => Media::store($file, 'posters'),
+                'frame' => 'classic',
+                'footer_below' => $data['footer_below'],
+                'is_active' => $data['is_active'],
+                'sort_order' => $data['sort_order'] ?? 0,
+            ]);
+        }
+
+        return redirect()
+            ->route('admin.posters.index', ['category' => $data['category_id']])
+            ->with('status', count($files).' posters added.');
     }
 
     private function form(Poster $poster): View

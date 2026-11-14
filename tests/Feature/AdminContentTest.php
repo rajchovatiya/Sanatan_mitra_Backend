@@ -124,6 +124,48 @@ class AdminContentTest extends TestCase
         $this->getJson("/api/v1/mantras/{$m->id}")->assertOk()->assertJsonPath('data.lyrics', null);
     }
 
+    public function test_admin_uploads_many_posters_at_once(): void
+    {
+        $this->actingAs($this->admin(), 'admin');
+        $cat = Category::create(['type' => 'poster', 'name' => ['en' => 'Good Morning']]);
+
+        $this->get('/admin/posters/bulk')->assertOk()->assertSee('Upload many posters');
+
+        $this->post('/admin/posters/bulk', [
+            'category_id' => $cat->id,
+            'images' => [
+                UploadedFile::fake()->image('good_morning-01.jpg', 1080, 1350),
+                UploadedFile::fake()->image('b.jpg', 1080, 1080),
+                UploadedFile::fake()->image('c.png', 1080, 1080),
+            ],
+            'titles' => ['', 'Jai Shri Ram', ''],
+            'footer_below' => '1',
+            'is_active' => '1',
+        ])->assertRedirect()->assertSessionHasNoErrors();
+
+        $posters = Poster::orderBy('id')->get();
+        $this->assertCount(3, $posters);
+        $this->assertSame(['Good morning 01', 'Jai Shri Ram', 'C'], $posters->map(fn ($p) => $p->title['en'])->all());
+        foreach ($posters as $p) {
+            $this->assertSame($cat->id, $p->category_id);
+            $this->assertTrue($p->footer_below);
+            $this->assertTrue($p->is_active);
+            Storage::disk('public')->assertExists($p->image_path);
+        }
+    }
+
+    public function test_bulk_upload_allows_at_most_ten_pictures(): void
+    {
+        $this->actingAs($this->admin(), 'admin');
+        $cat = Category::create(['type' => 'poster', 'name' => ['en' => 'Daily']]);
+
+        $this->post('/admin/posters/bulk', [
+            'category_id' => $cat->id,
+            'images' => array_map(fn ($i) => UploadedFile::fake()->image("p{$i}.jpg"), range(1, 11)),
+        ])->assertSessionHasErrors('images');
+        $this->assertSame(0, Poster::count());
+    }
+
     public function test_poster_must_use_a_poster_category_and_real_image(): void
     {
         $this->actingAs($this->admin(), 'admin');

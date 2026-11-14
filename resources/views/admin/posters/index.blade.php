@@ -3,7 +3,10 @@
 @section('content')
     <div class="head">
         <h1>Posters</h1>
-        <a class="btn" href="{{ route('admin.posters.create') }}">+ Upload poster</a>
+        <span>
+            <a class="btn" href="{{ route('admin.posters.bulk', ['category' => $category]) }}">+ Upload many (up to 10)</a>
+            <a class="btn" href="{{ route('admin.posters.create') }}">+ Upload poster</a>
+        </span>
     </div>
     @include('admin.partials.category-filter', ['route' => 'admin.posters.index'])
     <div class="grid">

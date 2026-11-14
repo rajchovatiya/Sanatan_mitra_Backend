@@ -41,6 +41,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Content (super admins and editors).
         Route::resource('categories', CategoryController::class)->except('show');
+        Route::get('posters/bulk', [PosterController::class, 'bulkCreate'])->name('posters.bulk');
+        Route::post('posters/bulk', [PosterController::class, 'bulkStore'])->name('posters.bulk.store');
         Route::resource('posters', PosterController::class)->except('show');
         Route::resource('mantras', MantraController::class)->except('show');
         Route::resource('festivals', FestivalController::class)->except('show');
