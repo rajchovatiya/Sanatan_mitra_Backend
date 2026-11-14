@@ -88,6 +88,26 @@ class AdminContentTest extends TestCase
         $this->assertFalse($poster->fresh()->is_active);
     }
 
+    public function test_footer_below_option_is_saved_and_sent_to_the_app(): void
+    {
+        $this->actingAs($this->admin(), 'admin');
+        $cat = Category::create(['type' => 'poster', 'name' => ['en' => 'Daily']]);
+
+        $this->post('/admin/posters', [
+            'category_id' => $cat->id, 'title' => ['en' => 'Full of text'], 'frame' => 'classic',
+            'image' => UploadedFile::fake()->image('p.jpg', 1080, 1350), 'is_active' => '1', 'footer_below' => '1',
+        ])->assertSessionHasNoErrors();
+        $poster = Poster::first();
+        $this->assertTrue($poster->footer_below);
+        $this->getJson('/api/v1/posters')->assertJsonPath('data.0.footer_below', true);
+
+        // Unticking it on edit turns it off.
+        $this->put("/admin/posters/{$poster->id}", [
+            'category_id' => $cat->id, 'title' => ['en' => 'Full of text'], 'frame' => 'classic', 'is_active' => '1',
+        ])->assertSessionHasNoErrors();
+        $this->assertFalse($poster->fresh()->footer_below);
+    }
+
     public function test_poster_must_use_a_poster_category_and_real_image(): void
     {
         $this->actingAs($this->admin(), 'admin');

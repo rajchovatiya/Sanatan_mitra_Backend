@@ -28,6 +28,11 @@
             </label>
         </div>
 
+        <label class="check">
+            <input type="checkbox" name="footer_below" value="1" @checked(old('footer_below', $poster->footer_below))>
+            Poster is full of text: put the user's name and contacts in a strip <b>below</b> the picture (not over it)
+        </label>
+
         <x-admin.common-fields :model="$poster" />
         <button class="btn">Save</button>
         <a href="{{ route('admin.posters.index') }}">Cancel</a>

@@ -52,6 +52,7 @@ class ContentExport extends Command
                 'title' => $p->title,
                 'image_path' => $copy($p->image_path),
                 'frame' => $p->frame,
+                'footer_below' => $p->footer_below,
                 'show_from' => $p->show_from?->format('Y-m-d'),
                 'sort_order' => $p->sort_order,
                 'is_active' => $p->is_active,

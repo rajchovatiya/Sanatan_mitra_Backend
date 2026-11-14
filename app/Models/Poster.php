@@ -8,18 +8,18 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['category_id', 'title', 'image_path', 'frame', 'show_from', 'sort_order', 'is_active'])]
+#[Fillable(['category_id', 'title', 'image_path', 'frame', 'footer_below', 'show_from', 'sort_order', 'is_active'])]
 class Poster extends Model
 {
     use HasTranslations;
 
     public const FRAMES = ['classic', 'bottom_band', 'side_photo', 'minimal'];
 
-    protected $attributes = ['frame' => 'classic', 'sort_order' => 0, 'is_active' => true];
+    protected $attributes = ['frame' => 'classic', 'footer_below' => false, 'sort_order' => 0, 'is_active' => true];
 
     protected function casts(): array
     {
-        return ['title' => 'array', 'show_from' => 'date:Y-m-d', 'is_active' => 'boolean'];
+        return ['title' => 'array', 'show_from' => 'date:Y-m-d', 'is_active' => 'boolean', 'footer_below' => 'boolean'];
     }
 
     /** Active, already released, in admin order. */

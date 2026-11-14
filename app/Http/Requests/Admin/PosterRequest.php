@@ -7,6 +7,13 @@ use Illuminate\Validation\Rule;
 
 class PosterRequest extends ContentRequest
 {
+    protected function prepareForValidation(): void
+    {
+        parent::prepareForValidation();
+        // An unticked checkbox is not sent at all.
+        $this->merge(['footer_below' => $this->boolean('footer_below')]);
+    }
+
     public function rules(): array
     {
         return [
@@ -14,6 +21,7 @@ class PosterRequest extends ContentRequest
             ...TranslatedRules::for('title', max: 100),
             'image' => $this->imageRules($this->isCreate()),
             'frame' => ['required', Rule::in(Poster::FRAMES)],
+            'footer_below' => ['boolean'],
             'show_from' => ['nullable', 'date_format:Y-m-d'],
             ...$this->common(),
         ];

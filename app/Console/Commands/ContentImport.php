@@ -72,6 +72,7 @@ class ContentImport extends Command
                 'title' => $p['title'],
                 'image_path' => $p['image_path'],
                 'frame' => $p['frame'],
+                'footer_below' => $p['footer_below'] ?? false,
                 'show_from' => $p['show_from'],
                 'sort_order' => $p['sort_order'],
                 'is_active' => $p['is_active'],

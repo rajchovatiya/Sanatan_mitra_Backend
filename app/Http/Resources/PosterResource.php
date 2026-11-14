@@ -18,6 +18,7 @@ class PosterResource extends JsonResource
             'title' => $this->tr('title'),
             'image_url' => Media::url($this->image_path),
             'frame' => $this->frame,
+            'footer_below' => (bool) $this->footer_below,
         ];
     }
 }
