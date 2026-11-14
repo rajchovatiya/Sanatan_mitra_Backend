@@ -108,6 +108,22 @@ class AdminContentTest extends TestCase
         $this->assertFalse($poster->fresh()->footer_below);
     }
 
+    public function test_mantra_can_be_saved_without_lyrics(): void
+    {
+        $this->actingAs($this->admin(), 'admin');
+        $cat = Category::create(['type' => 'mantra', 'name' => ['en' => 'Mantra / Stuti']]);
+
+        $this->post('/admin/mantras', [
+            'category_id' => $cat->id, 'title' => ['en' => 'Om Namah Shivay 108'], 'deity' => ['en' => 'Shiv'],
+            'lyrics' => ['en' => '', 'hi' => '', 'gu' => ''],
+            'audio' => UploadedFile::fake()->create('o.mp3', 300, 'audio/mpeg'), 'is_active' => '1',
+        ])->assertSessionHasNoErrors();
+
+        $m = Mantra::first();
+        $this->assertNotNull($m);
+        $this->getJson("/api/v1/mantras/{$m->id}")->assertOk()->assertJsonPath('data.lyrics', null);
+    }
+
     public function test_poster_must_use_a_poster_category_and_real_image(): void
     {
         $this->actingAs($this->admin(), 'admin');

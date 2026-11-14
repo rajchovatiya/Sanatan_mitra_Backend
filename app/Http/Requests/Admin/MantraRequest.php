@@ -12,7 +12,8 @@ class MantraRequest extends ContentRequest
             'category_id' => ['required', Rule::exists('categories', 'id')->where('type', 'mantra')],
             ...TranslatedRules::for('title', max: 120),
             ...TranslatedRules::for('deity', max: 60),
-            ...TranslatedRules::for('lyrics', max: 0),
+            // Optional: without lyrics the app shows the deity's picture while the audio plays.
+            ...TranslatedRules::for('lyrics', required: false, max: 0),
             ...TranslatedRules::for('meaning', required: false, max: 0),
             'image' => $this->imageRules(false),
             // Up to 20 MB; the server's PHP upload limit must allow this.
