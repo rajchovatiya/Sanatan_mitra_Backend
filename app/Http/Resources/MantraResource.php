@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Mantra;
+use App\Support\Lyrics;
 use App\Support\Media;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -20,7 +21,13 @@ class MantraResource extends JsonResource
             'image_url' => Media::url($this->image_path),
             'audio_url' => Media::url($this->audio_path),
             'duration_seconds' => $this->duration_seconds,
-            'lyrics' => $this->when($this->hasText(), fn () => $this->tr('lyrics')),
+            // Plain text for every app version; the timed copy (LRC style, one time
+            // per line) lets newer apps highlight the line being sung.
+            'lyrics' => $this->when($this->hasText(), fn () => Lyrics::plain($this->tr('lyrics'))),
+            'lyrics_timed' => $this->when(
+                $this->hasText() && Lyrics::hasTimes($this->tr('lyrics')),
+                fn () => $this->tr('lyrics'),
+            ),
             'meaning' => $this->when($this->hasText(), fn () => $this->tr('meaning')),
         ];
     }

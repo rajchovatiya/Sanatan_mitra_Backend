@@ -83,6 +83,28 @@ class ContentApiTest extends TestCase
             ->assertJsonPath('data.audio_url', fn ($url) => str_ends_with($url, '/storage/mantra-audio/g.mp3'));
     }
 
+    public function test_timed_lyrics_come_as_plain_text_plus_a_timed_copy(): void
+    {
+        $timed = "[00:00.00] Om bhur bhuva swaha
+
+[00:07.50] Tat savitur varenyam
+[01:02.25] Bhargo devasya dhimahi";
+        $m = $this->mantra($this->category('mantra'));
+        $m->update(['lyrics' => ['en' => $timed]]);
+
+        $this->getJson("/api/v1/mantras/{$m->id}")
+            ->assertOk()
+            ->assertJsonPath('data.lyrics', "Om bhur bhuva swaha
+
+Tat savitur varenyam
+Bhargo devasya dhimahi")
+            ->assertJsonPath('data.lyrics_timed', $timed);
+
+        // Lyrics without times: no timed copy.
+        $plain = $this->mantra($this->category('mantra'));
+        $this->getJson("/api/v1/mantras/{$plain->id}")->assertJsonMissingPath('data.lyrics_timed');
+    }
+
     public function test_inactive_mantra_is_not_found(): void
     {
         $m = $this->mantra($this->category('mantra'), ['is_active' => false]);

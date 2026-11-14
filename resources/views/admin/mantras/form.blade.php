@@ -27,6 +27,38 @@
             </label>
         </div>
 
+        @if ($mantra->audio_path)
+            {{-- Tap-to-sync: play the audio and press "Mark line" as each line starts. --}}
+            <fieldset class="lyrics-sync" data-audio="{{ \App\Support\Media::url($mantra->audio_path) }}">
+                <legend>Sync lyrics with the audio</legend>
+                <p class="hint">
+                    Choose a language, press <b>Start</b>, then press <b>Mark line</b> (or the Space key) each time a new line
+                    begins. Times like <code>[01:05.20]</code> are added in front of the lines. Press <b>Save</b> when done.
+                    In the app the line being sung is highlighted, and tapping a line plays from there.
+                </p>
+                <div class="row">
+                    <label>Language
+                        <select data-sync-lang>
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                            <option value="gu">ગુજરાતી</option>
+                        </select>
+                    </label>
+                </div>
+                <audio data-sync-audio controls preload="metadata" src="{{ \App\Support\Media::url($mantra->audio_path) }}"></audio>
+                <div class="row">
+                    <button type="button" class="btn" data-sync-start>Start</button>
+                    <button type="button" class="btn" data-sync-mark disabled>Mark line ▸</button>
+                    <button type="button" class="btn ghost" data-sync-undo disabled>Undo</button>
+                    <button type="button" class="btn ghost" data-sync-clear>Remove times</button>
+                </div>
+                <p data-sync-status class="hint"></p>
+            </fieldset>
+            <script src="{{ asset('assets/js/admin-lyrics-sync.js') }}" defer></script>
+        @else
+            <p class="hint">Upload the audio and save once; then a "Sync lyrics with the audio" tool appears here.</p>
+        @endif
+
         <x-admin.common-fields :model="$mantra" />
         <button class="btn">Save</button>
         <a href="{{ route('admin.mantras.index') }}">Cancel</a>
