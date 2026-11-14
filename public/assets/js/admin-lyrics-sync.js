@@ -12,12 +12,23 @@
     const undoBtn = box.querySelector('[data-sync-undo]');
     const clearBtn = box.querySelector('[data-sync-clear]');
     const status = box.querySelector('[data-sync-status]');
+    const speedSelect = box.querySelector('[data-sync-speed]');
     const TAGS = /^[ \t]*(?:\[\d{1,3}:\d{2}(?:[.:]\d{1,3})?\][ \t]*)+/;
 
     let lines = [];
     let order = [];   // indexes of the lines that have words
     let next = 0;     // position in `order` of the line to mark next
     let running = false;
+
+    // Faster playback for quick syncing; the times come from the audio's own
+    // position, so they are right at any speed.
+    const applySpeed = () => {
+        const rate = parseFloat(speedSelect ? speedSelect.value : '1') || 1;
+        audio.playbackRate = rate;
+        audio.preservesPitch = true;
+    };
+    if (speedSelect) speedSelect.addEventListener('change', applySpeed);
+    audio.addEventListener('play', applySpeed);
 
     const textarea = () => document.querySelector(`textarea[name="lyrics[${langSelect.value}]"]`);
 

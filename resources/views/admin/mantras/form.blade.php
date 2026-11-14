@@ -44,6 +44,15 @@
                             <option value="gu">ગુજરાતી</option>
                         </select>
                     </label>
+                    <label>Audio speed (times stay correct at any speed)
+                        <select data-sync-speed>
+                            <option value="1">1× normal</option>
+                            <option value="1.5">1.5×</option>
+                            <option value="2">2×</option>
+                            <option value="3">3×</option>
+                            <option value="4">4× fastest</option>
+                        </select>
+                    </label>
                 </div>
                 <audio data-sync-audio controls preload="metadata" src="{{ \App\Support\Media::url($mantra->audio_path) }}"></audio>
                 <div class="row">
