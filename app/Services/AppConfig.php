@@ -12,11 +12,11 @@ class AppConfig
 
     public static function all(): array
     {
-        return Cache::rememberForever(self::CACHE_KEY, function () {
-            $saved = Setting::query()->pluck('value', 'key')->all();
+        // Only the saved values are cached; the defaults are added each time,
+        // so a new default (e.g. poster_design) shows up without clearing the cache.
+        $saved = Cache::rememberForever(self::CACHE_KEY, fn () => Setting::query()->pluck('value', 'key')->all());
 
-            return array_replace(config('sanatan.app'), $saved);
-        });
+        return array_replace(config('sanatan.app'), $saved);
     }
 
     public static function forget(): void
