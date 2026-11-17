@@ -8,6 +8,7 @@ use App\Services\AppConfig;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 /** App settings returned by GET /app/config (super admin only). */
@@ -29,9 +30,14 @@ class SettingsController extends Controller
             'support_email' => ['nullable', 'email', 'max:100'],
             'support_whatsapp' => ['nullable', 'regex:/^\+?\d{10,15}$/'],
             'features' => ['array'],
+            'poster_design' => ['nullable', Rule::in(array_keys(config('sanatan.poster_designs')))],
         ], ['regex' => 'Use a version like 1.2.0 (or a phone number with digits only).']);
 
         $data['maintenance'] = $request->boolean('maintenance');
+        // Not sent: keep the saved design.
+        if (empty($data['poster_design'])) {
+            unset($data['poster_design']);
+        }
         // Every known feature is saved; an unticked box means off.
         $data['features'] = collect(config('sanatan.app.features'))
             ->mapWithKeys(fn ($on, $key) => [$key => (bool) ($request->input("features.{$key}") ?? false)])

@@ -88,6 +88,54 @@ class AdminContentTest extends TestCase
         $this->assertFalse($poster->fresh()->is_active);
     }
 
+    public function test_weekdays_are_saved_and_sent_to_the_app(): void
+    {
+        $this->actingAs($this->admin(), 'admin');
+        $cat = Category::create(['type' => 'poster', 'name' => ['en' => 'Bhagwan']]);
+
+        $this->post('/admin/posters', [
+            'category_id' => $cat->id, 'title' => ['en' => 'Shiv ji'], 'frame' => 'classic',
+            'image' => UploadedFile::fake()->image('p.jpg', 1080, 1350), 'is_active' => '1',
+            'weekdays' => ['1', '1', '7'],
+        ])->assertSessionHasNoErrors();
+        $this->getJson('/api/v1/posters')->assertJsonPath('data.0.weekdays', [1, 7]);
+
+        // None ticked: no particular day.
+        $poster = Poster::first();
+        $this->put("/admin/posters/{$poster->id}", [
+            'category_id' => $cat->id, 'title' => ['en' => 'Shiv ji'], 'frame' => 'classic', 'is_active' => '1',
+        ])->assertSessionHasNoErrors();
+        $this->assertNull($poster->fresh()->weekdays);
+        $this->getJson('/api/v1/posters')->assertJsonPath('data.0.weekdays', []);
+
+        $this->post('/admin/posters', [
+            'category_id' => $cat->id, 'title' => ['en' => 'Bad'], 'frame' => 'classic',
+            'image' => UploadedFile::fake()->image('p.jpg', 1080, 1350), 'weekdays' => ['9'],
+        ])->assertSessionHasErrors('weekdays.0');
+    }
+
+    public function test_date_box_options_are_saved_and_sent_to_the_app(): void
+    {
+        $this->actingAs($this->admin(), 'admin');
+        $cat = Category::create(['type' => 'poster', 'name' => ['en' => 'Daily']]);
+
+        $this->post('/admin/posters', [
+            'category_id' => $cat->id, 'title' => ['en' => 'Dated'], 'frame' => 'classic',
+            'image' => UploadedFile::fake()->image('p.jpg', 1080, 1350), 'is_active' => '1',
+            'show_date' => '1', 'date_position' => 'bottom_left', 'date_on' => '2026-11-17',
+        ])->assertSessionHasNoErrors();
+
+        $this->getJson('/api/v1/posters')
+            ->assertJsonPath('data.0.show_date', true)
+            ->assertJsonPath('data.0.date_position', 'bottom_left')
+            ->assertJsonPath('data.0.date_on', '2026-11-17');
+
+        $this->post('/admin/posters', [
+            'category_id' => $cat->id, 'title' => ['en' => 'Bad'], 'frame' => 'classic',
+            'image' => UploadedFile::fake()->image('p.jpg', 1080, 1350), 'date_position' => 'middle',
+        ])->assertSessionHasErrors('date_position');
+    }
+
     public function test_footer_below_option_is_saved_and_sent_to_the_app(): void
     {
         $this->actingAs($this->admin(), 'admin');

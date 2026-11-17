@@ -53,9 +53,13 @@ class AdminToolsTest extends TestCase
         $this->put('/admin/settings', [
             'android_min_version' => '1.2.0', 'ios_min_version' => '1.0.0', 'latest_version' => '1.3.0',
             'maintenance' => '1', 'maintenance_message' => 'Back soon', 'features' => ['panchang' => '1'],
+            'poster_design' => 'brand',
         ])->assertSessionHasNoErrors();
+        $this->put('/admin/settings', ['android_min_version' => '1.2.0', 'ios_min_version' => '1.0.0', 'latest_version' => '1.3.0', 'poster_design' => 'nope'])
+            ->assertSessionHasErrors('poster_design');
 
         $this->getJson('/api/v1/app/config')
+            ->assertJsonPath('data.poster_design', 'brand')
             ->assertJsonPath('data.android_min_version', '1.2.0')
             ->assertJsonPath('data.maintenance', true)
             ->assertJsonPath('data.features.panchang', true)

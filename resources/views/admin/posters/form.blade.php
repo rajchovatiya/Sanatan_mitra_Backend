@@ -33,6 +33,39 @@
             Poster is full of text: put the user's name and contacts in a strip <b>below</b> the picture (not over it)
         </label>
 
+
+        <fieldset class="langs">
+            <legend>Show first on these days (optional)</legend>
+            <p><small>On a ticked day this poster comes at the top of the Album (e.g. Shiv ji on Monday). Nothing ticked = no particular day.</small></p>
+            <div class="row">
+                @foreach (\App\Models\Poster::WEEKDAYS as $num => $day)
+                    <label class="check">
+                        <input type="checkbox" name="weekdays[]" value="{{ $num }}" @checked(in_array($num, (array) old('weekdays', $poster->weekdays ?? [])))> {{ $day }}
+                    </label>
+                @endforeach
+            </div>
+        </fieldset>
+
+        <fieldset class="langs">
+            <legend>Date on the poster</legend>
+            <label class="check">
+                <input type="checkbox" name="show_date" value="1" @checked(old('show_date', $poster->show_date ?? false))>
+                Show a date box on this poster
+            </label>
+            <div class="row">
+                <label>Where
+                    <select name="date_position">
+                        @foreach (\App\Models\Poster::DATE_POSITIONS as $key => $label)
+                            <option value="{{ $key }}" @selected(old('date_position', $poster->date_position ?? 'top_right') === $key)>{{ $label }}</option>
+                        @endforeach
+                    </select>
+                </label>
+                <label>Fixed date (optional; empty = the day the user shares it)
+                    <input type="date" name="date_on" value="{{ old('date_on', $poster->date_on?->format('Y-m-d')) }}">
+                </label>
+            </div>
+        </fieldset>
+
         <x-admin.common-fields :model="$poster" />
         <button class="btn">Save</button>
         <a href="{{ route('admin.posters.index') }}">Cancel</a>

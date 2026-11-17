@@ -69,6 +69,9 @@ return [
         'maintenance_message' => null,
         'support_email' => null,
         'support_whatsapp' => null,
+        // Poster design every poster in the app starts with (users can still
+        // tap "Change design"). One of the keys of 'poster_designs' below.
+        'poster_design' => 'royal',
         'features' => [
             'panchang' => true, 'rashifal' => true, 'kundli' => true, 'matching' => true,
             'muhurat' => true, 'gems' => true, 'tarot' => true, 'numerology' => true,
@@ -76,5 +79,13 @@ return [
             'mantra' => true, 'temples' => true, 'festivals' => true, 'library' => true,
             'learning' => true,
         ],
+    ],
+
+    // Poster designs of the app (keys must match the app's PosterDesign names).
+    'poster_designs' => [
+        'royal' => 'Royal – ivory header with round logo, maroon & gold footer, big portrait (users can customise colours, font, sizes)',
+        'brand' => 'Brand – white header with full logo, big photo on the left, big WhatsApp + social',
+        'saral' => 'Saral – simple footer',
+        'shringar' => 'Shringar – curved cream & gold header, maroon footer with double gold border and floral corners, round gold-framed photo',
     ],
 ];

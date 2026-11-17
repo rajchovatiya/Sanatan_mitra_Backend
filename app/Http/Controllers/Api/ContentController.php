@@ -35,7 +35,7 @@ class ContentController extends Controller
 
         $posters = Poster::visible()
             ->when($request->integer('category'), fn ($q, $id) => $q->where('category_id', $id))
-            ->select(['id', 'category_id', 'title', 'image_path', 'frame', 'footer_below'])
+            ->select(['id', 'category_id', 'title', 'image_path', 'frame', 'footer_below', 'show_date', 'date_position', 'date_on', 'weekdays'])
             ->paginate(self::PER_PAGE);
 
         return PosterResource::collection($posters);

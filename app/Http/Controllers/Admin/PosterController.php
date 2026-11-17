@@ -85,6 +85,9 @@ class PosterController extends Controller
                 'image_path' => Media::store($file, 'posters'),
                 'frame' => 'classic',
                 'footer_below' => $data['footer_below'],
+                'show_date' => $data['show_date'],
+                'date_position' => $data['date_position'] ?? 'top_right',
+                'weekdays' => $data['weekdays'] ?? null,
                 'is_active' => $data['is_active'],
                 'sort_order' => $data['sort_order'] ?? 0,
             ]);

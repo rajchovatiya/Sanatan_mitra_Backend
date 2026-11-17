@@ -19,6 +19,12 @@ class PosterResource extends JsonResource
             'image_url' => Media::url($this->image_path),
             'frame' => $this->frame,
             'footer_below' => (bool) $this->footer_below,
+            // Date badge: corner, and a fixed date or null (= the day it is shared).
+            'show_date' => (bool) $this->show_date,
+            'date_position' => $this->date_position ?? 'top_right',
+            'date_on' => $this->date_on?->format('Y-m-d'),
+            // Days the app shows this poster first (1 = Monday … 7 = Sunday).
+            'weekdays' => array_values(array_map('intval', $this->weekdays ?? [])),
         ];
     }
 }

@@ -18,6 +18,27 @@
             <input type="checkbox" name="footer_below" value="1" @checked(old('footer_below'))>
             Posters are full of text: put the user's name and contacts in a strip <b>below</b> the picture (all posters)
         </label>
+        <fieldset class="langs">
+            <legend>Show first on these days (optional)</legend>
+            <p><small>On a ticked day these posters come at the top of the Album (e.g. Shiv ji on Monday). Nothing ticked = no particular day.</small></p>
+            <div class="row">
+                @foreach (\App\Models\Poster::WEEKDAYS as $num => $day)
+                    <label class="check">
+                        <input type="checkbox" name="weekdays[]" value="{{ $num }}" @checked(in_array($num, (array) old('weekdays', [])))> {{ $day }}
+                    </label>
+                @endforeach
+            </div>
+        </fieldset>
+
+        <label class="check">
+            <input type="checkbox" name="show_date" value="1" @checked(old('show_date'))>
+            Show a date box (the day the user shares it) on all these posters, at
+            <select name="date_position">
+                @foreach (\App\Models\Poster::DATE_POSITIONS as $key => $label)
+                    <option value="{{ $key }}" @selected(old('date_position', 'top_right') === $key)>{{ $label }}</option>
+                @endforeach
+            </select>
+        </label>
         <label class="check">
             <input type="checkbox" name="is_active" value="1" @checked(old('is_active', true))> Show in app (all posters)
         </label>

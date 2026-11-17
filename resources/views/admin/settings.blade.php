@@ -29,6 +29,18 @@
         </fieldset>
 
         <fieldset class="langs">
+            <legend>Poster design</legend>
+            <p><small>Every poster in the Album starts with this design (the user's photo, name and contacts on it). Users can still tap "Change design"; their own choice is kept on their phone.</small></p>
+            <label>Default design
+                <select name="poster_design">
+                    @foreach (config('sanatan.poster_designs') as $key => $label)
+                        <option value="{{ $key }}" @selected(old('poster_design', $config['poster_design'] ?? 'royal') === $key)>{{ $label }}</option>
+                    @endforeach
+                </select>
+            </label>
+        </fieldset>
+
+        <fieldset class="langs">
             <legend>Features shown in the app</legend>
             <div class="row">
                 @foreach (config('sanatan.app.features') as $key => $default)
