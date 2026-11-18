@@ -99,6 +99,10 @@ class AdminContentTest extends TestCase
             'weekdays' => ['1', '1', '7'],
         ])->assertSessionHasNoErrors();
         $this->getJson('/api/v1/posters')->assertJsonPath('data.0.weekdays', [1, 7]);
+        // Day filter: Monday finds it, Tuesday doesn't.
+        $this->getJson('/api/v1/posters?weekday=1')->assertJsonCount(1, 'data');
+        $this->getJson('/api/v1/posters?weekday=2')->assertJsonCount(0, 'data');
+        $this->getJson('/api/v1/posters?weekday=9')->assertStatus(422);
 
         // None ticked: no particular day.
         $poster = Poster::first();
@@ -202,14 +206,14 @@ class AdminContentTest extends TestCase
         }
     }
 
-    public function test_bulk_upload_allows_at_most_ten_pictures(): void
+    public function test_bulk_upload_allows_at_most_forty_pictures(): void
     {
         $this->actingAs($this->admin(), 'admin');
         $cat = Category::create(['type' => 'poster', 'name' => ['en' => 'Daily']]);
 
         $this->post('/admin/posters/bulk', [
             'category_id' => $cat->id,
-            'images' => array_map(fn ($i) => UploadedFile::fake()->image("p{$i}.jpg"), range(1, 11)),
+            'images' => array_map(fn ($i) => UploadedFile::fake()->image("p{$i}.jpg"), range(1, 41)),
         ])->assertSessionHasErrors('images');
         $this->assertSame(0, Poster::count());
     }

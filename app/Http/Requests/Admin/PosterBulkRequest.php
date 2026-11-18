@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
 /** Up to 10 posters at once into one category; each gets an English title. */
 class PosterBulkRequest extends ContentRequest
 {
-    public const MAX_FILES = 10;
+    public const MAX_FILES = 40;
 
     protected function prepareForValidation(): void
     {

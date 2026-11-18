@@ -21,7 +21,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
     && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf \
-    && printf "upload_max_filesize=30M\npost_max_size=35M\nmemory_limit=256M\nexpose_php=Off\n" \
+    && printf "upload_max_filesize=30M\npost_max_size=150M\nmax_file_uploads=50\nmax_execution_time=180\nmax_input_time=180\nmemory_limit=256M\nexpose_php=Off\n" \
         > /usr/local/etc/php/conf.d/app.ini
 
 WORKDIR /var/www/html
