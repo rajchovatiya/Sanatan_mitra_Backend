@@ -1,8 +1,12 @@
 # Progress and next steps
 
-Update this file at the end of every work session. Last update: 2026-11-13.
+Update this file at the end of every work session. Last update: 2026-11-19.
 
-## Done (87 tests passing)
+## Done (115 tests passing)
+- 2026-11-19: public web pages /privacy, /terms (default text until Admin → Pages has text; SUPPORT_EMAIL shows a contact)
+  and /delete-account (request form → Feedback inbox); super admin can delete an app user (AccountDeleter).
+- 2026-11-19: posters get `today_on` (app's "Today All" for that date, API `?date=`); one-time migration merged the
+  weekday categories into "Days" (weekday kept as ticked day), moved Ram ji into ભગવાન and set the chip order.
 - Birth place search `/places` (GeoNames: every Indian village/town/city + world cities, ~580k rows via
   `php artisan places:import`; OpenStreetMap fallback). Kundli/Matching accept `timezone` for births abroad.
   The preview database already has the places loaded. App renamed to "Sanatan Shaily" (package id unchanged).

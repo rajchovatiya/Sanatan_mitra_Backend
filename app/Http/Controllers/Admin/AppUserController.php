@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Support\AccountDeleter;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,5 +45,13 @@ class AppUserController extends Controller
         });
 
         return back()->with('status', $user->isBlocked() ? 'User blocked and logged out.' : 'User unblocked.');
+    }
+
+    /** Permanent deletion, e.g. for a request from the public delete-account page (super admin only). */
+    public function destroy(User $user): RedirectResponse
+    {
+        AccountDeleter::delete($user);
+
+        return redirect()->route('admin.users.index')->with('status', "Account {$user->mobile} deleted.");
     }
 }

@@ -88,6 +88,7 @@ class PosterController extends Controller
                 'show_date' => $data['show_date'],
                 'date_position' => $data['date_position'] ?? 'top_right',
                 'weekdays' => $data['weekdays'] ?? null,
+                'today_on' => $data['today_on'] ?? null,
                 'is_active' => $data['is_active'],
                 'sort_order' => $data['sort_order'] ?? 0,
             ]);

@@ -31,6 +31,7 @@ class PosterBulkRequest extends ContentRequest
             'show_date' => ['boolean'],
             'weekdays' => ['nullable', 'array'],
             'weekdays.*' => ['integer', 'between:1,7'],
+            'today_on' => ['nullable', 'date_format:Y-m-d'],
             'date_position' => ['nullable', Rule::in(array_keys(\App\Models\Poster::DATE_POSITIONS))],
             ...$this->common(),
         ];

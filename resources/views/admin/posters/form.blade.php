@@ -26,6 +26,9 @@
             <label>Show from date (optional, e.g. festival day)
                 <input type="date" name="show_from" value="{{ old('show_from', $poster->show_from?->format('Y-m-d')) }}">
             </label>
+            <label>Show in app's "Today All" on (optional)
+                <input type="date" name="today_on" value="{{ old('today_on', $poster->today_on?->format('Y-m-d')) }}">
+            </label>
         </div>
 
         <label class="check">

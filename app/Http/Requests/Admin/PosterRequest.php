@@ -31,6 +31,7 @@ class PosterRequest extends ContentRequest
             'weekdays' => ['nullable', 'array'],
             'weekdays.*' => ['integer', 'between:1,7'],
             'show_from' => ['nullable', 'date_format:Y-m-d'],
+            'today_on' => ['nullable', 'date_format:Y-m-d'],
             ...$this->common(),
         ];
     }

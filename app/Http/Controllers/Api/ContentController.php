@@ -31,13 +31,19 @@ class ContentController extends Controller
 
     public function posters(Request $request): AnonymousResourceCollection
     {
-        $request->validate(['category' => ['nullable', 'integer'], 'weekday' => ['nullable', 'integer', 'between:1,7']]);
+        $request->validate([
+            'category' => ['nullable', 'integer'],
+            'weekday' => ['nullable', 'integer', 'between:1,7'],
+            'date' => ['nullable', 'date_format:Y-m-d'],
+        ]);
 
         $posters = Poster::visible()
             ->when($request->integer('category'), fn ($q, $id) => $q->where('category_id', $id))
             // Only the posters the admin ticked for this day of the week.
             ->when($request->integer('weekday'), fn ($q, $day) => $q->whereJsonContains('weekdays', $day))
-            ->select(['id', 'category_id', 'title', 'image_path', 'frame', 'footer_below', 'show_date', 'date_position', 'date_on', 'weekdays'])
+            // "Today All": the posters the admin picked for this date.
+            ->when($request->input('date'), fn ($q, $date) => $q->whereDate('today_on', $date))
+            ->select(['id', 'category_id', 'title', 'image_path', 'frame', 'footer_below', 'show_date', 'date_position', 'date_on', 'weekdays', 'today_on'])
             ->paginate(self::PER_PAGE);
 
         return PosterResource::collection($posters);

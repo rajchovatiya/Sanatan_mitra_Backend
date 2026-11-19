@@ -8,6 +8,13 @@
             @csrf @method('PATCH')
             <button class="btn">{{ $user->isBlocked() ? 'Unblock' : 'Block' }}</button>
         </form>
+        @can('manage-admins')
+            <form method="post" action="{{ route('admin.users.destroy', $user) }}"
+                  onsubmit="return confirm('Permanently delete this account and all its data? This cannot be undone.')">
+                @csrf @method('DELETE')
+                <button class="btn danger">Delete account</button>
+            </form>
+        @endcan
     </div>
     <p><a href="{{ route('admin.users.index') }}">‹ All users</a></p>
     <div class="card">

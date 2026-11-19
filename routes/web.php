@@ -22,10 +22,20 @@ use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Admin\SuvicharController;
 use App\Http\Controllers\Admin\TempleController;
 use App\Http\Controllers\Admin\TranslateController;
+use App\Http\Controllers\PublicPageController;
 use App\Http\Middleware\AuditAdminChanges;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => view('welcome'));
+
+/* Public pages for the app stores (privacy policy, terms, account deletion). */
+Route::name('public.')->group(function () {
+    Route::get('privacy', [PublicPageController::class, 'privacy'])->name('privacy');
+    Route::get('terms', [PublicPageController::class, 'terms'])->name('terms');
+    Route::get('delete-account', [PublicPageController::class, 'deleteAccount'])->name('delete-account');
+    Route::post('delete-account', [PublicPageController::class, 'requestDeletion'])
+        ->middleware('throttle:feedback')->name('delete-account.request');
+});
 
 /* Admin panel: HTML pages, session login (admins table), never used by the app. */
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -78,6 +88,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
             Route::resource('admins', AdminUserController::class)->except(['show', 'destroy']);
             Route::get('audit', [AdminUserController::class, 'audit'])->name('audit.index');
+            Route::delete('users/{user}', [AppUserController::class, 'destroy'])->name('users.destroy');
         });
     });
 });

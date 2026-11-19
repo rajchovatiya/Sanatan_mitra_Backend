@@ -25,6 +25,8 @@ class PosterResource extends JsonResource
             'date_on' => $this->date_on?->format('Y-m-d'),
             // Days the app shows this poster first (1 = Monday … 7 = Sunday).
             'weekdays' => array_values(array_map('intval', $this->weekdays ?? [])),
+            // The date it is in the app's "Today All", if any.
+            'today_on' => $this->today_on?->format('Y-m-d'),
         ];
     }
 }

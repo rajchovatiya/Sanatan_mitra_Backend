@@ -18,6 +18,11 @@
             <input type="checkbox" name="footer_below" value="1" @checked(old('footer_below'))>
             Posters are full of text: put the user's name and contacts in a strip <b>below</b> the picture (all posters)
         </label>
+        <label>Show in app's "Today All" on (optional)
+            <input type="date" name="today_on" value="{{ old('today_on') }}">
+            <small>Pick 5–15 posters per category for a date; on that date the app's "Today All" shows them all.</small>
+        </label>
+
         <fieldset class="langs">
             <legend>Show first on these days (optional)</legend>
             <p><small>On a ticked day these posters come at the top of the Album (e.g. Shiv ji on Monday). Nothing ticked = no particular day.</small></p>

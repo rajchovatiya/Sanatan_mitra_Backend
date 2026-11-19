@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['category_id', 'title', 'image_path', 'frame', 'footer_below', 'show_date', 'date_position', 'date_on', 'weekdays', 'show_from', 'sort_order', 'is_active'])]
+#[Fillable(['category_id', 'title', 'image_path', 'frame', 'footer_below', 'show_date', 'date_position', 'date_on', 'weekdays', 'today_on', 'show_from', 'sort_order', 'is_active'])]
 class Poster extends Model
 {
     use HasTranslations;
@@ -25,7 +25,7 @@ class Poster extends Model
 
     protected function casts(): array
     {
-        return ['title' => 'array', 'show_from' => 'date:Y-m-d', 'is_active' => 'boolean', 'footer_below' => 'boolean', 'show_date' => 'boolean', 'date_on' => 'date:Y-m-d', 'weekdays' => 'array'];
+        return ['title' => 'array', 'show_from' => 'date:Y-m-d', 'is_active' => 'boolean', 'footer_below' => 'boolean', 'show_date' => 'boolean', 'date_on' => 'date:Y-m-d', 'weekdays' => 'array', 'today_on' => 'date:Y-m-d'];
     }
 
     /** Active, already released, in admin order. */

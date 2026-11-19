@@ -54,6 +54,9 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    // Shown on the public privacy / terms pages (SUPPORT_EMAIL in .env).
+    'support_email' => env('SUPPORT_EMAIL'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
