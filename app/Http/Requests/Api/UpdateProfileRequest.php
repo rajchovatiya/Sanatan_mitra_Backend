@@ -11,6 +11,8 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'name' => ['sometimes', 'nullable', 'string', 'max:80'],
+            // Optional since Google login; printed on posters.
+            'mobile' => ['sometimes', 'nullable', 'digits:10'],
             'gender' => ['sometimes', 'nullable', 'in:male,female,other'],
             'birth_date' => ['sometimes', 'nullable', 'date_format:Y-m-d', 'before_or_equal:today', 'after:1900-01-01'],
             'birth_time' => ['sometimes', 'nullable', 'date_format:H:i'],

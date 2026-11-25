@@ -35,6 +35,8 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
 
     Route::post('auth/otp/send', [AuthController::class, 'sendOtp'])
         ->middleware('throttle:otp-send')->name('auth.otp.send');
+    Route::post('auth/google', [AuthController::class, 'google'])
+        ->middleware('throttle:otp-verify')->name('auth.google');
     Route::post('auth/otp/verify', [AuthController::class, 'verifyOtp'])
         ->middleware('throttle:otp-verify')->name('auth.otp.verify');
 

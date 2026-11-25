@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\GoogleLoginRequest;
 use App\Http\Requests\Api\SendOtpRequest;
 use App\Http\Requests\Api\VerifyOtpRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Services\Auth\GoogleTokenVerifier;
 use App\Services\Otp\OtpService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -54,6 +56,39 @@ class AuthController extends Controller
         return response()->json([
             'token' => $user->createToken($data['device_name'] ?? 'app')->plainTextToken,
             'is_new' => $user->wasRecentlyCreated,
+            'user' => new UserResource($user),
+        ]);
+    }
+
+    /**
+     * Google Sign-In: checks the ID token, finds the user by Google account (or
+     * creates one on first login) and returns a token, like verifyOtp.
+     */
+    public function google(GoogleLoginRequest $request, GoogleTokenVerifier $google): JsonResponse
+    {
+        $claims = $google->verify($request->validated('id_token'));
+        if ($claims === null) {
+            throw ValidationException::withMessages(['id_token' => 'Google sign-in failed. Please try again.']);
+        }
+
+        // google_id and email are set by the server only, so not mass assignable.
+        $user = User::where('google_id', $claims['sub'])->first() ?? new User;
+        $isNew = ! $user->exists;
+        $user->forceFill(['google_id' => $claims['sub'], 'email' => $claims['email']]);
+        if ($isNew) {
+            $user->name = $claims['name'] ? mb_substr($claims['name'], 0, 80) : null;
+        }
+
+        if ($user->exists && $user->isBlocked()) {
+            return response()->json(['message' => 'This account is blocked. Please contact support.'], 403);
+        }
+
+        $user->last_login_at = now();
+        $user->save();
+
+        return response()->json([
+            'token' => $user->createToken($request->validated('device_name') ?? 'app')->plainTextToken,
+            'is_new' => $isNew,
             'user' => new UserResource($user),
         ]);
     }

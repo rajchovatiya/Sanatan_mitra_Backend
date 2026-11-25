@@ -2,7 +2,10 @@
 
 Update this file at the end of every work session. Last update: 2026-11-19.
 
-## Done (115 tests passing)
+## Done (125 tests passing)
+- 2026-11-25: Google Sign-In replaces mobile OTP in the app: POST /auth/google {id_token} (checked with Google tokeninfo,
+  aud must be in GOOGLE_CLIENT_IDS); users get google_id + email; mobile is now an optional, non-unique profile field
+  (PATCH /me mobile). OTP endpoints still exist but the app no longer uses them.
 - 2026-11-19: public web pages /privacy, /terms (default text until Admin → Pages has text; SUPPORT_EMAIL shows a contact)
   and /delete-account (request form → Feedback inbox); super admin can delete an app user (AccountDeleter).
 - 2026-11-19: posters get `today_on` (app's "Today All" for that date, API `?date=`); one-time migration merged the
@@ -41,5 +44,6 @@ Update this file at the end of every work session. Last update: 2026-11-19.
 ## Waiting on the user
 - MySQL 9.7 root password
 - (done) Prokerala keys added
-- SMS provider choice
+- (not needed now) SMS provider choice: login is Google Sign-In
+- GOOGLE_CLIENT_IDS (Web OAuth client ID) in Railway variables
 - Firebase project (service-account JSON) for push notifications

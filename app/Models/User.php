@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
-/** An app user. Signs in with mobile OTP; status and last_login_at are set by the server only. */
+/** An app user. Signs in with Google (older accounts: mobile OTP); status and last_login_at are set by the server only. */
 #[Fillable([
     'mobile', 'name', 'gender', 'birth_date', 'birth_time', 'birth_place', 'birth_lat', 'birth_lng',
     'city', 'rashi', 'language', 'notifications_enabled',

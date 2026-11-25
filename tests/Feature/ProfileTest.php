@@ -39,7 +39,8 @@ class ProfileTest extends TestCase
             ->assertJsonPath('data.birth_time', '06:30')
             ->assertJsonPath('data.rashi', 4)
             ->assertJsonPath('data.language', 'hi')
-            ->assertJsonPath('data.mobile', '9876543210');
+            // Mobile is a normal profile field since Google login.
+            ->assertJsonPath('data.mobile', '9000000000');
 
         $this->assertSame(User::STATUS_ACTIVE, $user->fresh()->status);
     }

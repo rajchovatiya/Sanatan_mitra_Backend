@@ -6,6 +6,13 @@ return [
     | Login OTP. "log" writes the code to storage/logs (development only).
     | A real SMS driver is added before launch.
     */
+    // Google Sign-In: OAuth client IDs whose ID tokens are accepted (the Web
+    // client ID the app passes as serverClientId). Comma separated. The
+    // default is the Sanatan Shaily Web client (a public ID, not a secret).
+    'google' => [
+        'client_ids' => array_values(array_filter(array_map('trim', explode(',', (string) env('GOOGLE_CLIENT_IDS', '437970053845-mi3crbeh0ddp1tcsv62sbi88pe3rikfo.apps.googleusercontent.com'))))),
+    ],
+
     'otp' => [
         'driver' => env('OTP_DRIVER', 'log'),
         'length' => (int) env('OTP_LENGTH', 6),
