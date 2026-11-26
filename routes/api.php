@@ -33,12 +33,9 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
     Route::post('feedback', [SupportController::class, 'feedback'])->middleware('throttle:feedback')->name('feedback');
     Route::get('pages/{slug}', [SupportController::class, 'page'])->whereAlpha('slug')->name('pages.show');
 
-    Route::post('auth/otp/send', [AuthController::class, 'sendOtp'])
-        ->middleware('throttle:otp-send')->name('auth.otp.send');
+    // Sign-in is Google only (mobile OTP login was removed on 2026-11-26).
     Route::post('auth/google', [AuthController::class, 'google'])
         ->middleware('throttle:otp-verify')->name('auth.google');
-    Route::post('auth/otp/verify', [AuthController::class, 'verifyOtp'])
-        ->middleware('throttle:otp-verify')->name('auth.otp.verify');
 
     Route::get('astro/panchang', [AstrologyController::class, 'panchang'])
         ->middleware('throttle:astro')->name('astro.panchang');
