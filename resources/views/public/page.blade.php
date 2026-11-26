@@ -13,52 +13,58 @@
         <div class="body">{{ $body }}</div>
 
     @elseif ($slug === 'privacy')
-        <p class="muted">Last updated: 18 November 2026</p>
+        <p class="muted">Last updated: 26 November 2026</p>
         <p>This policy explains what the Sanatan Shaily app (“the app”, “we”) collects, why, and the choices you have.
             By using the app you agree to this policy.</p>
 
+        <h2>Using the app without an account</h2>
+        <p>You can tap <b>Continue as Guest</b>. As a guest, your profile and posters stay only on your phone and nothing
+            about you is stored on our servers. Kundli and Kundli Matching need a Google account.</p>
+
         <h2>What we collect</h2>
         <ul>
-            <li><b>Mobile number</b>: to log you in with a one-time code (OTP).</li>
-            <li><b>Profile details you choose to enter</b>: name, gender, date, time and place of birth, city and app language.
-                Birth details are used to calculate your Kundli, Panchang and Rashifal.</li>
+            <li><b>Google account</b>: when you sign in with Google we receive your name, email address and Google account
+                ID, to create and identify your account. We never see your Google password.</li>
+            <li><b>Profile details you choose to enter</b>: name, mobile number (optional, printed on your posters), gender,
+                date, time and place of birth, city and app language.</li>
             <li><b>Business details you choose to enter</b>: business name, type, address and other details, shown on the
                 posters you make.</li>
             <li><b>Saved items</b>: Kundlis you save and items you mark as favourite.</li>
-            <li><b>Location (only if you allow it)</b>: your device location is used to find your nearest city so
-                Panchang timings (sunrise, Rahu Kaal, etc.) are correct. We do not store your exact location on our servers.</li>
-            <li><b>Device information</b>: app version, phone type and a notification token, to send notifications you
-                have switched on.</li>
+            <li><b>Location (only if you allow it)</b>: your phone’s location is sent to our server only to find the
+                nearest town, so Panchang timings (sunrise, Rahu Kaal, etc.) are correct for where you are. It is used for
+                that request and not stored. You can pick a city by hand instead.</li>
             <li><b>Feedback</b> you send us, with the contact details you add to it.</li>
         </ul>
+        <p>We do not use analytics or advertising SDKs, do not track you across apps and do not collect device advertising IDs.</p>
 
         <h2>Photos</h2>
-        <p>Your profile photo, business logo and the posters you create are stored on your phone. The app reads your photos
-            only when you pick one. Posters are shared only when you tap Share.</p>
+        <p>Your profile photo, business logo and the posters you create stay on your phone; they are not uploaded to our
+            servers. The app reads a photo only when you pick it with the phone’s photo picker. Removing the background from
+            your photo happens on your phone. Posters leave your phone only when you tap Share, Status or Download.</p>
 
         <h2>How we use it</h2>
         <ul>
-            <li>To run the app’s features: login, Kundli, Panchang, Rashifal, posters and saved items.</li>
-            <li>To send notifications you have turned on (festivals, daily Panchang). You can turn them off in Settings.</li>
+            <li>To run the app’s features: sign-in, Kundli, Kundli Matching, Panchang, Rashifal, posters and saved items.</li>
             <li>To keep the service secure and fix problems.</li>
         </ul>
         <p>We do <b>not</b> sell your personal data and do not use it for advertising.</p>
 
         <h2>Who we share it with</h2>
         <ul>
-            <li><b>Astrology calculation provider</b>: birth date, time and place are sent to calculate charts.</li>
-            <li><b>Hosting and notification services</b> that run our servers and deliver notifications.</li>
-            <li><b>SMS provider</b> to deliver your login code.</li>
+            <li><b>Astrology calculation provider</b> (Prokerala): birth date, time and place are sent only to calculate your
+                Kundli and Kundli Matching.</li>
+            <li><b>Google</b>: to sign you in with your Google account.</li>
+            <li><b>Hosting provider</b> that runs our servers (data is stored on their servers for us).</li>
             <li>Authorities, only when required by law.</li>
         </ul>
-        <p>Data is sent over encrypted connections (HTTPS).</p>
+        <p>All data is sent over encrypted connections (HTTPS).</p>
 
         <h2>Keeping and deleting your data</h2>
         <p>We keep your data while you have an account. You can delete your account at any time in the app:
             <b>Profile → Delete account</b>, or by request on our
             <a href="{{ route('public.delete-account') }}">account deletion page</a>. This permanently deletes your
-            profile, saved Kundlis, favourites and devices from our servers. Feedback messages may be kept without your
-            account link.</p>
+            profile, Google account link, saved Kundlis and favourites from our servers. Feedback messages may be kept
+            without your account link. Signing out or uninstalling the app does not delete the account.</p>
 
         <h2>Children</h2>
         <p>The app is not meant for children under 13, and we do not knowingly collect their data.</p>
@@ -68,9 +74,8 @@
 
         <h2>Contact</h2>
         <p>Questions or requests about your data:
-            @if ($email) <a href="mailto:{{ $email }}">{{ $email }}</a>. @endif
+            @if ($email) <a href="mailto:{{ $email }}">{{ $email }}</a>. @else use the contact email on the app’s Google Play listing. @endif
             You can also use our <a href="{{ route('public.delete-account') }}">account deletion page</a>.</p>
-
     @else
         <p class="muted">Last updated: 18 November 2026</p>
         <p>By using the Sanatan Shaily app you agree to these terms.</p>

@@ -39,18 +39,18 @@ class PublicPagesTest extends TestCase
     {
         $this->get('/delete-account')->assertOk()->assertSee('Request deletion');
 
-        $this->post('/delete-account', ['mobile' => '+91 98765 43210', 'note' => 'Please remove'])
+        $this->post('/delete-account', ['email' => ' Raj@Gmail.com ', 'note' => 'Please remove'])
             ->assertRedirect('/delete-account');
 
         $f = Feedback::sole();
-        $this->assertSame('919876543210', $f->contact);
+        $this->assertSame('raj@gmail.com', $f->contact);
         $this->assertStringContainsString('ACCOUNT DELETION REQUEST', $f->message);
         $this->get('/delete-account')->assertSee('Request received');
     }
 
-    public function test_deletion_request_needs_a_valid_number(): void
+    public function test_deletion_request_needs_a_valid_email(): void
     {
-        $this->post('/delete-account', ['mobile' => 'abc'])->assertSessionHasErrors('mobile');
+        $this->post('/delete-account', ['email' => 'abc'])->assertSessionHasErrors('email');
         $this->assertSame(0, Feedback::count());
     }
 

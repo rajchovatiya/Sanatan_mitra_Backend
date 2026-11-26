@@ -33,16 +33,17 @@ class PublicPageController extends Controller
     /** A deletion request from someone who no longer has the app; lands in Admin → Feedback. */
     public function requestDeletion(Request $request): RedirectResponse
     {
+        // Accounts sign in with Google, so the request names the email address.
         $data = $request->validate([
-            'mobile' => ['required', 'regex:/^\+?[0-9 ]{10,15}$/'],
+            'email' => ['required', 'email:rfc', 'max:191'],
             'note' => ['nullable', 'string', 'max:500'],
         ]);
-        $mobile = preg_replace('/\D/', '', $data['mobile']);
+        $email = strtolower(trim($data['email']));
 
         Feedback::create([
-            'message' => "ACCOUNT DELETION REQUEST for mobile {$mobile}."
+            'message' => "ACCOUNT DELETION REQUEST for {$email}."
                 .(filled($data['note'] ?? null) ? "\nNote: {$data['note']}" : ''),
-            'contact' => $mobile,
+            'contact' => $email,
             'platform' => 'web',
         ]);
 
