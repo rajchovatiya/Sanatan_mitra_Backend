@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\ClearsHomeCache;
 use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 #[Fillable(['chapter', 'verse', 'sanskrit', 'transliteration', 'meaning', 'is_featured'])]
 class GitaVerse extends Model
 {
-    use HasTranslations;
+    use ClearsHomeCache, HasTranslations;
 
     protected $attributes = ['is_featured' => false];
 

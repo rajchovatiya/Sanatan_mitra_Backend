@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\ClearsHomeCache;
 use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 #[Fillable(['is_vrat', 'name', 'tithi', 'about', 'rituals', 'date', 'image_path', 'sort_order', 'is_active'])]
 class Festival extends Model
 {
-    use HasTranslations;
+    use ClearsHomeCache, HasTranslations;
 
     protected $attributes = ['is_vrat' => false, 'sort_order' => 0, 'is_active' => true];
 

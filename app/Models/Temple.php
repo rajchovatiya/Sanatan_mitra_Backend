@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\ClearsHomeCache;
 use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 ])]
 class Temple extends Model
 {
-    use HasTranslations;
+    use ClearsHomeCache, HasTranslations;
 
     public const TYPES = ['jyotirlinga' => 'Jyotirlinga', 'shakti_peeth' => 'Shakti Peeth', 'char_dham' => 'Char Dham', 'other' => 'Other'];
 

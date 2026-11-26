@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\ClearsHomeCache;
 use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable(['date', 'temple_id', 'title', 'image_path', 'video_url', 'is_active'])]
 class Darshan extends Model
 {
-    use HasTranslations;
+    use ClearsHomeCache, HasTranslations;
 
     protected $attributes = ['is_active' => true];
 

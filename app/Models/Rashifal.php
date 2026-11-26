@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\ClearsHomeCache;
 use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Cache;
 ])]
 class Rashifal extends Model
 {
-    use HasTranslations;
+    use ClearsHomeCache, HasTranslations;
 
     /** Index 0..11, same order as the app. */
     public const RASHIS = [

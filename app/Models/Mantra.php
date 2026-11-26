@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\ClearsHomeCache;
 use App\Models\Concerns\HasTranslations;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 ])]
 class Mantra extends Model
 {
-    use HasTranslations;
+    use ClearsHomeCache, HasTranslations;
 
     protected $attributes = ['sort_order' => 0, 'is_active' => true];
 
