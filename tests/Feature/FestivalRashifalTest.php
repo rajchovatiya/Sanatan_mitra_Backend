@@ -17,6 +17,13 @@ class FestivalRashifalTest extends TestCase
         return Festival::create(['name' => ['en' => 'Diwali', 'hi' => 'दीवाली'], 'date' => $date] + $extra);
     }
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // Start from no festivals (a migration adds real ones for the app).
+        Festival::query()->delete();
+    }
+
     private function admin(): Admin
     {
         return Admin::create(['name' => 'A', 'email' => 'a@example.com', 'password' => 'secret-pass-1']);
